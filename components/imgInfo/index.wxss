@@ -2,3 +2,30 @@
     width: 100%;
     height: 100vh;
 }
+
+.nextBtn {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    transform: translateY(-30px);
+}
+
+.nextBtn view {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBtn view:first-child {
+    margin-left: 20px;
+}
+
+.nextBtn view:last-child {
+    margin-right: 20px;
+}

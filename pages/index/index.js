@@ -22,14 +22,17 @@ Page({
 
     getImgInfo: function (e) {
         var that = this;
-        let src = e.target.dataset.src;
-        console.log(src)
+        let index = e.target.dataset.index;
+        let value = that.data.hotImg;
+        let bigImg = null;
+        value.forEach((val,lst) => {
+            if(lst == index) {
+                bigImg = val;
+            }
+        });
         that.setData({
             imgInfoShow: true,
-            bigImg: src,
-            success: function () {
-                console.log(src)
-            }
+            bigImg
         })
     },
 

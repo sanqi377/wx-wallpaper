@@ -22,7 +22,7 @@
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
                 <l-transition show="{{!show}}" name="fade">
-                    <image src="{{item}}" data-src="{{item}}" catchtap="getImgInfo" />
+                    <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo" />
                 </l-transition>
             </block>
             <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
