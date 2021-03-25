@@ -2,6 +2,9 @@
 	"usingComponents": {
 		"l-segment": "/miniprogram_npm/lin-ui/segment/index",
 		"l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
-		"l-loading":"/miniprogram_npm/lin-ui/loading/index"
-	}
+		"l-loading": "/miniprogram_npm/lin-ui/loading/index",
+		"l-transition": "/miniprogram_npm/lin-ui/transition/index",
+		"l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
+	},
+	"onReachBottomDistance": 50
 }

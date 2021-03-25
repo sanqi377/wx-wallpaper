@@ -19,8 +19,12 @@
         <l-loading show="{{show}}" color="#666" type="flash"></l-loading>
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
-                <image src="{{item}}" />
+                <l-transition show="{{!show}}" name="fade-right">
+                    <image src="{{item}}" />
+                </l-transition>
             </block>
+            <l-loadmore show="{{loading}}" type="loading" loading-text="加载中" line></l-loadmore>
+            <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
         </view>
     </view>
 </view>

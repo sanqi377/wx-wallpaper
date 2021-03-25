@@ -22,6 +22,21 @@
     justify-content: center;
 }
 
+.main l-transition {
+    width: 30%;
+}
+
+.main l-transition::after {
+    content: "";
+    display: flex;
+}
+
+.main l-loadmore {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .main .hotImg {
     display: flex;
     justify-content: space-between;
@@ -30,7 +45,7 @@
 }
 
 .main .hotImg image {
-    width: 30%;
+    width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
 }

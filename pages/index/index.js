@@ -14,7 +14,9 @@ Page({
             }
         ],
         hotImg: [],
-        show: true
+        show: true,
+        buttom: false,
+        loading: false
     },
 
     changeTabs: function (e) {
@@ -62,12 +64,19 @@ Page({
     onReady: function () {
         var that = this;
         let hotImg = [];
+        let page = 5;
+        wx.setStorage({
+            key: 'page',
+            data: page
+        })
         wx.$util.request({
-            url: "http://m.bcoderss.com/wp-json/wp/v2/posts?per_page=21&page=1"
+            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
         }).then(result => {
             let data = result.data;
             data.forEach(val => {
-                hotImg.push(val.content);
+                val.wallpaper.forEach(val => {
+                    hotImg.push(val.full);
+                })
             });
             that.setData({
                 hotImg,
@@ -108,7 +117,55 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        var that = this;
+        let hotImg = [];
+        wx.getStorage({
+            key: 'page',
+            success: function (res) {
+                let page = res.data + 2;
+                if (page <= 90) {
+                    wx.setStorage({
+                        key: 'page',
+                        data: page,
+                        success: function () {
+                            that.setData({
+                                loading: true
+                            })
+                            wx.$util.request({
+                                url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
+                            }).then(result => {
+                                let data = result.data;
+                                data.forEach(val => {
+                                    val.wallpaper.forEach(val => {
+                                        hotImg.push(val.full);
+                                    })
+                                });
+                                that.setData({
+                                    hotImg,
+                                    loading: false
+                                });
+                            })
+                        }
+                    })
+                } else {
+                    wx.$util.request({
+                        url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=99"
+                    }).then(result => {
+                        let data = result.data;
+                        data.forEach(val => {
+                            val.wallpaper.forEach(val => {
+                                hotImg.push(val.full);
+                            })
+                        });
+                        that.setData({
+                            hotImg,
+                            buttom: true
+                        });
+                    })
+                    console.log("到底了")
+                }
+            }
+        })
     },
 
     /**
