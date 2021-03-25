@@ -1,0 +1,2 @@
+<!--index.wxml-->
+<l-button type="default">默认按钮</l-button>
