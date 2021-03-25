@@ -11,8 +11,10 @@
         </view>
     </view>
     <view class="main">
-        <l-segment bind:linchange="changeTabs">
-            <l-segment-item tab="热门壁纸" key="hot" />
+        <l-segment bind:linchange="changeTabs" animated-for-line l-class="tabs">
+            <l-segment-item key="hot" slot="hot">
+                <view class="tabs">热门壁纸</view>
+            </l-segment-item>
             <l-segment-item tab="猜你喜欢" key="love" />
             <l-segment-item tab="最新壁纸" key="new" />
         </l-segment>
