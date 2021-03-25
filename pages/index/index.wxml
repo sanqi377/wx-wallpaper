@@ -21,7 +21,7 @@
         <l-loading show="{{show}}" color="#ffd833" type="flash"></l-loading>
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
-                <l-transition show="{{!show}}" name="fade">
+                <l-transition show="{{!show}}">
                     <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo" />
                 </l-transition>
             </block>
