@@ -38,4 +38,4 @@
     </view>
   </view>
 </view>
-<l-tab-bar list="{{list}}" />
+<tabber></tabber>

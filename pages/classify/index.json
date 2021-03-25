@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "l-tab-bar":"/miniprogram_npm/lin-ui/tab-bar/index"
-
+    "l-tab-bar":"/miniprogram_npm/lin-ui/tab-bar/index",
+		"tabber":"/components/tabber/tabber"
   }
 }
