@@ -1,5 +1,5 @@
 {
     "component": true,
     "usingComponents": {},
-    "onReachBottomDistance": 50
+    "navigationStyle": "custom"
 }

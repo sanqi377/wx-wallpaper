@@ -1,3 +1,8 @@
+.bigImg{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
 .bigImg image {
     width: 100%;
     height: 100vh;
@@ -20,6 +25,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.nextBtn view image{
+    width: 20px;
+    height: 20px;
 }
 
 .nextBtn view:first-child {

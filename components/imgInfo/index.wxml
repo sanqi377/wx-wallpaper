@@ -3,7 +3,11 @@
         <image src="{{bigImg}}"></image>
     </view>
     <view class="nextBtn">
-        <view class="left">1</view>
-        <view class="right">2</view>
+        <view class="left">
+            <image src="/public/ico/bigimg-back.png"></image>
+        </view>
+        <view class="right">
+            <image src="/public/ico/bigimg-next.png"></image>
+        </view>
     </view>
 </view>
