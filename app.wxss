@@ -6,3 +6,13 @@ view {
     font-weight: 300;
     background: none;
 }
+
+.lu-tab-bar .lu-tab-bar__item-image {
+    width: 23px !important;
+    height: 23px !important;
+}
+
+.lu-tab-bar .lu-tab-bar__item-text {
+    margin-top: 10rpx !important;
+    font-size: 11px;
+}
