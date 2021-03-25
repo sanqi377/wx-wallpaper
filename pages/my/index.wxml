@@ -1,0 +1,32 @@
+<view class="my">
+  <view class="container">
+    <view class="header">
+      <l-avatar open-data="{{['userAvatarUrl']}}" size="150" />
+      <view class="info">
+        <view class="name">CN 柯南</view>
+        <view class="region">Shanxi，Yanan</view>
+      </view>
+    </view>
+    <view class="list">
+      <view class="menu">
+        <view class="main">
+        <i class="iconfont icon-qianshou"></i>
+          <view class="text">邀请好友</view>
+          <view class="tips">+10 一位</view>
+        </view>
+        <view class="main">
+          <view class="icon">
+          </view>
+          <view class="text">明日再来</view>
+          <view class="tips">已签到一天</view>
+        </view>
+        <view class="main">
+          <view class="icon">
+          </view>
+          <view class="text">积分任务</view>
+          <view class="tips">多多赚积分</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

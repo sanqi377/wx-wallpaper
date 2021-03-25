@@ -1,0 +1,42 @@
+/* pages/my/index.wxss */
+/* 头部界面样式 */
+.my .header {
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+}
+
+/* 头像区域样式 */
+.header .info {
+  margin-left: 20px;
+  font-size: 25px;
+}
+.header .info .name{
+  font-weight: 500;
+}
+.header .info .region{
+  line-height: 30px;
+  font-size: 15px;
+}
+.list{
+  background: #fbfbfb;
+  height: 100vh;
+}
+.menu{
+  display: flex;
+  justify-content: space-between;
+}
+.menu .main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 120px;
+  height: 130px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 5px 1px #efefef;
+}
+.menu .main .text{
+  padding: 5px;
+}
