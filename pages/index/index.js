@@ -16,6 +16,21 @@ Page({
         hotImg: [],
         show: true,
         buttom: false,
+        imgInfoShow: false,
+        bigImg: null
+    },
+
+    getImgInfo: function (e) {
+        var that = this;
+        let src = e.target.dataset.src;
+        console.log(src)
+        that.setData({
+            imgInfoShow: true,
+            bigImg: src,
+            success: function () {
+                console.log(src)
+            }
+        })
     },
 
     changeTabs: function (e) {
@@ -138,6 +153,7 @@ Page({
                         if (type == "hot") {
                             if (page <= 90) {
                                 that.setData({
+                                    hotImg: [],
                                     show: true
                                 })
                                 wx.setStorage({

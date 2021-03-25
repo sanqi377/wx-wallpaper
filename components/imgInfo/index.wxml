@@ -1,0 +1,5 @@
+<view style="background: #EFEFEF;">
+    <view class="bigImg">
+        <image src="{{bigImg}}"></image>
+    </view>
+</view>

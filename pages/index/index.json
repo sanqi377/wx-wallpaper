@@ -2,10 +2,12 @@
 	"usingComponents": {
 		"l-segment": "/miniprogram_npm/lin-ui/segment/index",
 		"l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
-		"tabber":"/components/tabber/tabber",
+		"tabber": "/components/tabber/tabber",
+		"imgInfo": "/components/imgInfo/index",
 		"l-loading": "/miniprogram_npm/lin-ui/loading/index",
 		"l-transition": "/miniprogram_npm/lin-ui/transition/index",
 		"l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
 	},
-	"onReachBottomDistance": 50
+	"onReachBottomDistance": 50,
+	"navigationStyle": "custom"
 }
