@@ -1,3 +1,5 @@
 <!--components/tabber/tabber.wxml-->
-<l-tab-bar list="{{list}}" />
+<view id="tabber">
+  <l-tab-bar l-class="tab-ber" list="{{list}}" />
+</view>
 

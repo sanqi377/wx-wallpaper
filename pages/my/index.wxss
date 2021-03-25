@@ -20,7 +20,7 @@
 }
 .list{
   background: #fbfbfb;
-  height: 100vh;
+  height: 120vh;
 }
 .menu{
   display: flex;
@@ -59,4 +59,9 @@
 }
 .content .l-list{
  min-height: 65px;
+}
+.content .l-list image{
+  width: 25px !important;
+  height: 25px !important;
+  margin-right: 15px !important;
 }
