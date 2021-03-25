@@ -156,7 +156,6 @@ Page({
                         if (type == "hot") {
                             if (page <= 90) {
                                 that.setData({
-                                    hotImg: [],
                                     show: true
                                 })
                                 wx.setStorage({

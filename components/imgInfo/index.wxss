@@ -1,8 +1,9 @@
-.bigImg{
+.bigImg {
     width: 100%;
     height: 100vh;
     overflow: hidden;
 }
+
 .bigImg image {
     width: 100%;
     height: 100vh;
@@ -26,9 +27,18 @@
     justify-content: center;
     align-items: center;
 }
-.nextBtn view image{
+
+.nextBtn view image {
     width: 20px;
     height: 20px;
+}
+
+.nextBtn view:first-child image {
+    margin-right: 3px;
+}
+
+.nextBtn view:last-child image {
+    margin-left: 3px;
 }
 
 .nextBtn view:first-child {
