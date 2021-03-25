@@ -1,2 +1,3 @@
 <!--pages/classify/index.wxml-->
-<text>pages/classify/index.wxml</text>
+dsdsa
+<l-tab-bar list="{{list}}" />

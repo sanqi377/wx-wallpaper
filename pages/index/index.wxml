@@ -18,3 +18,4 @@
         </l-segment>
     </view>
 </view>
+<l-tab-bar list="{{list}}" />

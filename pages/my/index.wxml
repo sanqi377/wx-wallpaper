@@ -32,10 +32,10 @@
         </view>
       </view>
       <view class="content">
-        <l-list l-class="l-list" title="购物车" image="cart"/>
-        <l-list l-class="l-list" title="消息" image="notification" />
-        <l-list l-class="l-list" title="客厅" image="dasdsa"/>
+        <l-list l-class="l-list" title="我的积分" image="/public/ico/my-jifen.png"/>
+        <l-list l-class="l-list" title="消息" image="/public/ico/my-xx.png" />
       </view>
     </view>
   </view>
 </view>
+<l-tab-bar list="{{list}}" />

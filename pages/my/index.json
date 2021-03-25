@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "l-list": "/miniprogram_npm/lin-ui/list",
-    "l-avatar": "/miniprogram_npm/lin-ui/avatar"
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar",
+    "l-tab-bar":"/miniprogram_npm/lin-ui/tab-bar/index"
   }
 }
