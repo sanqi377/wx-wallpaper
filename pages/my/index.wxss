@@ -11,7 +11,8 @@
     font-size: 25px;
 }
 
-.header .info .name {
+.header .info .username {
+    font-size: 25px;
     font-weight: 500;
 }
 
@@ -82,4 +83,13 @@ l-list:last-child .l-list {
     width: 20px !important;
     height: 20px !important;
     margin-right: 15px !important;
+}
+
+button{
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white;
+    border-bottom: 1px solid #f3f3f3;
+    width: 100% !important;
+    height: 100% !important;
 }

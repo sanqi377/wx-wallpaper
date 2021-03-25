@@ -25,8 +25,8 @@ Component({
             {
                 pagePath: "/pages/sleep/index",
                 text: "哄睡",
-                iconPath: "/public/ico/bar-classify.png",
-                selectedIconPath: "/public/ico/bar-classify-o.png"
+                iconPath: "/public/ico/bar-sleep.png",
+                selectedIconPath: "/public/ico/bar-sleep-o.png"
             },
             {
                 pagePath: "/pages/my/index",

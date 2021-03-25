@@ -2,7 +2,7 @@
   <view class="header">
     <l-avatar open-data="{{['userAvatarUrl']}}" size="150" />
     <view class="info">
-      <view class="name">CN 柯南</view>
+      <l-avatar open-data="{{['userNickName']}}"  l-text-class="username" />
       <view class="region">Shanxi，Yanan</view>
     </view>
   </view>
@@ -37,15 +37,17 @@
       </view>
       <view class="content">
         <l-list l-class="l-list" title="我的收藏"image="/public/ico/my-collect.png"/>
-        <l-list l-class="l-list" title="我的下载" image="/public/ico/my-xx.png" />
+        <l-list l-class="l-list" title="我的下载" image="/public/ico/my-download.png" />
         <l-list l-class="l-list" title="我的投稿"image="/public/ico/my-contribute.png"/>
-        <l-list l-class="l-list" title="最近浏览" image="/public/ico/my-xx.png" />
+        <l-list l-class="l-list" title="最近浏览" image="/public/ico/my-recently.png" />
       </view>
       <view class="content">
         <l-list l-class="l-list" title="意见反馈"image="/public/ico/my-feedback.png"/>
-        <l-list l-class="l-list" title="联系客服" image="/public/ico/my-contact.png" />
+        <button open-type="contact">
+          <l-list l-class="l-list" title="联系客服" image="/public/ico/my-contact.png" />
+        </button>
         <l-list l-class="l-list" title="清理缓存"image="/public/ico/my-clear.png"/>
-        <l-list l-class="l-list" title="关于我们" image="/public/ico/my-xx.png" />
+        <l-list l-class="l-list" title="关于我们" image="/public/ico/my-we.png" />
       </view>
     </view>
   </view>
