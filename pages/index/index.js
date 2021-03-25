@@ -14,9 +14,12 @@ Page({
             }
         ],
         hotImg: [],
+<<<<<<< HEAD
+=======
         show: true,
         buttom: false,
         loading: false
+>>>>>>> 46b582f5c3155a0abd9d6694e290dc97dd4366b9
     },
 
     changeTabs: function (e) {
