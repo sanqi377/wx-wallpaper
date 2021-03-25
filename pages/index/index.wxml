@@ -1,2 +1,7 @@
-<!--index.wxml-->
-<l-button type="default">默认按钮</l-button>
+<view class="container">
+    <view class="header">
+        <view class="logo">猫耳壁纸</view>
+        <view class="search">搜索</view>
+        <view class="swiper">轮播</view>
+    </view>
+</view>
