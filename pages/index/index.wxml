@@ -1,9 +1,9 @@
 <view class="container">
     <view class="header">
         <view class="logo">猫耳壁纸</view>
-        <view class="search">搜索</view>
+        <!-- <view class="search">搜索</view> -->
         <view class="swiper">
-            <swiper indicator-dots indicator-color="#000000" indicator-active-color="#FFFFFF" autoplay>
+            <swiper previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular indicator-active-color="#FFFFFF" autoplay>
                 <swiper-item wx:for="{{img}}">
                     <image src="{{item.src}}" />
                 </swiper-item>
@@ -12,20 +12,17 @@
     </view>
     <view class="main">
         <l-segment bind:linchange="changeTabs" animated-for-line l-class="tabs">
-            <l-segment-item key="hot" slot="hot">
-                <view class="tabs">热门壁纸</view>
-            </l-segment-item>
+            <l-segment-item tab="热门壁纸" key="hot" />
             <l-segment-item tab="猜你喜欢" key="love" />
             <l-segment-item tab="最新壁纸" key="new" />
         </l-segment>
-        <l-loading show="{{show}}" color="#666" type="flash"></l-loading>
+        <l-loading show="{{show}}" color="#ffd833" type="flash"></l-loading>
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
-                <l-transition show="{{!show}}" name="fade-right">
+                <l-transition name="fade-right">
                     <image src="{{item}}" />
                 </l-transition>
             </block>
-            <l-loadmore show="{{loading}}" type="loading" loading-text="加载中" line></l-loadmore>
             <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
         </view>
     </view>
