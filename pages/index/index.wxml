@@ -12,9 +12,15 @@
     </view>
     <view class="main">
         <l-segment bind:linchange="changeTabs">
-            <l-segment-item tab="热门壁纸" key="hot" data-cell="{{hotImg}}"/>
+            <l-segment-item tab="热门壁纸" key="hot" />
             <l-segment-item tab="猜你喜欢" key="love" />
             <l-segment-item tab="最新壁纸" key="new" />
         </l-segment>
+        <l-loading show="{{show}}" color="#666" type="flash"></l-loading>
+        <view class="hotImg">
+            <block wx:for="{{hotImg}}">
+                <image src="{{item}}" />
+            </block>
+        </view>
     </view>
 </view>
