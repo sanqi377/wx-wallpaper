@@ -2,6 +2,19 @@
     <view class="header">
         <view class="logo">猫耳壁纸</view>
         <view class="search">搜索</view>
-        <view class="swiper">轮播</view>
+        <view class="swiper">
+            <swiper indicator-dots indicator-color="#000000" indicator-active-color="#FFFFFF" autoplay>
+                <swiper-item wx:for="{{img}}">
+                    <image src="{{item.src}}" />
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+    <view class="main">
+        <l-segment bind:linchange="changeTabs">
+            <l-segment-item tab="热门壁纸" key="hot" data-cell="{{hotImg}}"/>
+            <l-segment-item tab="猜你喜欢" key="love" />
+            <l-segment-item tab="最新壁纸" key="new" />
+        </l-segment>
     </view>
 </view>

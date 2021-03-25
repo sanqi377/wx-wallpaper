@@ -35,8 +35,28 @@
   height: 130px;
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0px 5px 1px #efefef;
+  box-shadow: 5px 5px 20px #efefef;
 }
 .menu .main .text{
   padding: 5px;
+  font-weight: 600;
+}
+.menu .main .tips{
+  font-size: 14px;
+}
+.menu .main .icon{
+  width: 55px;
+}
+
+.menu .main .icon image{
+  border-radius: 50%;
+  width: 100%;
+}
+.content{
+  margin-top: 24px;
+  background: white !important;
+  border-radius: 10px;
+}
+.content .l-list{
+ min-height: 65px;
 }
