@@ -1,13 +1,18 @@
 <view style="background: #EFEFEF;">
     <view class="bigImg">
-        <image src="{{bigImg}}"></image>
+        <swiper bindchange="getImg" current="{{imgIndex}}">
+            <swiper-item wx:for="{{bigImg}}">
+                <image src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
     </view>
-    <view class="nextBtn">
-        <view class="left">
-            <image src="/public/ico/bigimg-back.png"></image>
-        </view>
-        <view class="right">
-            <image src="/public/ico/bigimg-next.png"></image>
+    <view class="tools">
+        <view class="content">
+            <view>返回</view>
+            <view>收藏</view>
+            <view>下载</view>
+            <view>海报</view>
+            <view>分享</view>
         </view>
     </view>
 </view>

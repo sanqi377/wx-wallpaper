@@ -17,23 +17,21 @@ Page({
         show: true,
         buttom: false,
         imgInfoShow: false,
-        bigImg: null
+        bigImg: null,
+        imgIndex: null
     },
 
     getImgInfo: function (e) {
         var that = this;
         let index = e.target.dataset.index;
         let value = that.data.hotImg;
-        let bigImg = null;
-        value.forEach((val,lst) => {
-            if(lst == index) {
-                bigImg = val;
-            }
-        });
+
         that.setData({
             imgInfoShow: true,
-            bigImg
+            bigImg: value,
+            imgIndex: index,
         })
+
     },
 
     changeTabs: function (e) {
@@ -153,6 +151,7 @@ Page({
                     success: function (result) {
                         let type = result.data;
                         let page = res.data + 2;
+
                         if (type == "hot") {
                             if (page <= 90) {
                                 wx.setStorage({
@@ -162,6 +161,7 @@ Page({
                                         wx.$util.request({
                                             url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
                                         }).then(result => {
+                                            // console.log(result)
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {

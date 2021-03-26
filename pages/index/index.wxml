@@ -30,4 +30,4 @@
     </view>
 </view>
 <tabber style="{{imgInfoShow ? 'display:none' : 'display:block'}}"></tabber>
-<imgInfo style="{{!imgInfoShow ? 'display:none' : 'display:block'}}" bigImg="{{bigImg}}"></imgInfo>
+<imgInfo style="{{!imgInfoShow ? 'display:none' : 'display:block'}}" bigImg="{{bigImg}}" imgIndex="{{imgIndex}}"></imgInfo>
