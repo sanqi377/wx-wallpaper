@@ -155,9 +155,6 @@ Page({
                         let page = res.data + 2;
                         if (type == "hot") {
                             if (page <= 90) {
-                                that.setData({
-                                    show: true
-                                })
                                 wx.setStorage({
                                     key: 'page',
                                     data: page,
@@ -197,9 +194,6 @@ Page({
                             }
                         } else if (type == "love") {
                             if (page <= 90) {
-                                that.setData({
-                                    show: true
-                                })
                                 wx.setStorage({
                                     key: 'page',
                                     data: page,
@@ -243,9 +237,6 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
-                                        that.setData({
-                                            show: true
-                                        })
                                         wx.$util.request({
                                             url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page
                                         }).then(result => {
