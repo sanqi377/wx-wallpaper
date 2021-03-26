@@ -1,20 +1,16 @@
-// pages/my/index.js
+// pages/task/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  clickTask:function(){
-    wx.navigateTo({
-      url: '../task/index',
-    })
-  },
   onLoad: function (options) {
 
   },

@@ -1,7 +1,8 @@
 {
-  "usingComponents": {
-    "l-list": "/miniprogram_npm/lin-ui/list",
-    "l-avatar": "/miniprogram_npm/lin-ui/avatar",
-		"tabber":"/components/tabber/tabber"
-  }
+	"usingComponents": {
+		"l-list": "/miniprogram_npm/lin-ui/list",
+		"l-avatar": "/miniprogram_npm/lin-ui/avatar",
+		"tabber": "/components/tabber/tabber"
+	},
+	"navigationBarTitleText": ""
 }

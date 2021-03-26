@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "l-steps":"/miniprogram_npm/lin-ui/steps",
+    "l-step":"/miniprogram_npm/lin-ui/step",
+    "l-list": "/miniprogram_npm/lin-ui/list"
+  },
+  "navigationBarTitleText":"任务中心"
+}

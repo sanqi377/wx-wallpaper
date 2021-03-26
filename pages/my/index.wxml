@@ -1,55 +1,65 @@
 <view class="my">
-  <view class="header">
-    <l-avatar open-data="{{['userAvatarUrl']}}" size="150" />
-    <view class="info">
-      <l-avatar open-data="{{['userNickName']}}"  l-text-class="username" />
-      <view class="region">Shanxi，Yanan</view>
-    </view>
-  </view>
-  <view class="list">
-    <view class="container">
-      <view class="menu">
-        <view class="main">
-          <view class="icon">
-            <image mode="widthFix" src="../../public/ico/my-xinxi.png"></image>
-          </view>
-          <view class="text">邀请好友</view>
-          <view class="tips">+10积分/位</view>
-        </view>
-        <view class="main">
-          <view class="icon">
-            <image mode="widthFix" src="../../public/ico/my-sign.png"></image>
-          </view>
-          <view class="text">点击签到</view>
-          <view class="tips">已签到一天</view>
-        </view>
-        <view class="main">
-          <view class="icon">
-            <image mode="widthFix" src="../../public/ico/my-inte.png"></image>
-          </view>
-          <view class="text">积分任务</view>
-          <view class="tips">多多赚积分</view>
-        </view>
-      </view>
-      <view class="content">
-        <l-list l-class="l-list" title="我的积分"image="/public/ico/my-jifen.png"/>
-        <l-list l-class="l-list" title="消息" image="/public/ico/my-xx.png" />
-      </view>
-      <view class="content">
-        <l-list l-class="l-list" title="我的收藏"image="/public/ico/my-collect.png"/>
-        <l-list l-class="l-list" title="我的下载" image="/public/ico/my-download.png" />
-        <l-list l-class="l-list" title="我的投稿"image="/public/ico/my-contribute.png"/>
-        <l-list l-class="l-list" title="最近浏览" image="/public/ico/my-recently.png" />
-      </view>
-      <view class="content">
-        <l-list l-class="l-list" title="意见反馈"image="/public/ico/my-feedback.png"/>
-        <button open-type="contact">
-          <l-list l-class="l-list" title="联系客服" image="/public/ico/my-contact.png" />
-        </button>
-        <l-list l-class="l-list" title="清理缓存"image="/public/ico/my-clear.png"/>
-        <l-list l-class="l-list" title="关于我们" image="/public/ico/my-we.png" />
-      </view>
-    </view>
-  </view>
+	<view class="header">
+		<l-avatar open-data="{{['userAvatarUrl']}}" size="150" />
+		<view class="info">
+			<l-avatar open-data="{{['userNickName']}}" l-text-class="username" />
+			<view class="region">Shanxi，Yanan</view>
+		</view>
+	</view>
+	<view class="list">
+		<view class="container">
+			<view class="menu">
+				<view class="main">
+					<button open-type="share">
+						<view class="menu-content">
+							<view class="icon">
+								<image mode="widthFix" src="../../public/ico/my-xinxi.png"></image>
+							</view>
+							<view class="text">邀请好友</view>
+							<view class="tips">+10积分/位</view>
+						</view>
+					</button>
+				</view>
+				<view class="main">
+					<view class="menu-content">
+						<view class="icon">
+							<image mode="widthFix" src="../../public/ico/my-sign.png"></image>
+						</view>
+						<view class="text">点击签到</view>
+						<view class="tips">已签到一天</view>
+					</view>
+				</view>
+				<view class="main" bindtap="clickTask">
+					<view class="menu-content">
+						<view class="icon">
+							<image mode="widthFix" src="../../public/ico/my-inte.png"></image>
+						</view>
+						<view class="text">积分任务</view>
+						<view class="tips">多多赚积分</view>
+					</view>
+				</view>
+			</view>
+			<view class="content">
+				<l-list l-class="l-list" title="我的积分" image="/public/ico/my-jifen.png" />
+				<l-list l-class="l-list" title="消息" image="/public/ico/my-xx.png" />
+			</view>
+			<view class="content">
+				<l-list l-class="l-list" title="我的收藏" image="/public/ico/my-collect.png" />
+				<l-list l-class="l-list" title="我的下载" image="/public/ico/my-download.png" />
+				<l-list l-class="l-list" title="我的投稿" image="/public/ico/my-contribute.png" />
+				<l-list l-class="l-list" title="最近浏览" image="/public/ico/my-recently.png" />
+			</view>
+			<view class="content">
+				<button open-type='feedback'>
+					<l-list l-class="l-list" title="意见反馈" image="/public/ico/my-feedback.png" />
+				</button>
+				<button open-type="contact">
+					<l-list l-class="l-list" title="联系客服" image="/public/ico/my-contact.png" />
+				</button>
+				<l-list l-class="l-list" title="清理缓存" image="/public/ico/my-clear.png" />
+				<l-list l-class="l-list" title="关于我们" image="/public/ico/my-we.png" />
+			</view>
+		</view>
+	</view>
 </view>
 <tabber></tabber>

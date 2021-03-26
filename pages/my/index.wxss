@@ -35,8 +35,7 @@ l-list:last-child .l-list {
     display: flex;
     justify-content: space-between;
 }
-
-.menu .main {
+.menu .main .menu-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +46,6 @@ l-list:last-child .l-list {
     background: #fff;
     box-shadow: 5px 5px 20px #efefef;
 }
-
 .menu .main .text {
     margin-top: 3px;
     padding: 5px;
