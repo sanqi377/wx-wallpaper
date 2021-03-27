@@ -23,13 +23,19 @@ Page({
         let index = e.target.dataset.index;
         let value = that.data.hotImg;
 
-        that.setData({
-            bigImg: value,
-            imgIndex: index,
+        wx.setStorage({
+            key: 'value',
+            data: value,
+            success: function () {
+                wx.setStorage({
+                    key: 'index',
+                    data: index
+                })
+            }
         })
 
         wx.navigateTo({
-          url: '/pages/imgInfo/index',
+            url: '/pages/imgInfo/index',
         })
     },
 

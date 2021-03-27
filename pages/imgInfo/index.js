@@ -5,7 +5,12 @@ Page({
      * 页面的初始数据
      */
     data: {
+        value: [],
+        index: null
+    },
 
+    back: function() {
+        wx.navigateBack();
     },
 
     /**
@@ -19,7 +24,22 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        var that = this;
+        wx.getStorage({
+            key: 'value',
+            success: function (res) {
+                console.log(res)
+                wx.getStorage({
+                    key: 'index',
+                    success: function (result) {
+                        that.setData({
+                            index: result.data,
+                            value: res.data
+                        })
+                    }
+                })
+            }
+        })
     },
 
     /**

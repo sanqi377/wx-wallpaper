@@ -1,16 +1,13 @@
 <view class="content">
-    <swiper circular>
-        <swiper-item>
-            <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
-        </swiper-item>
-        <swiper-item>
-            <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203735237.jpeg" />
+    <swiper circular current="{{index}}">
+        <swiper-item wx:for="{{value}}">
+            <image src="{{item}}" />
         </swiper-item>
     </swiper>
 </view>
 <view class="footer">
     <view class="item">
-        <view>
+        <view bindtap="back">
             <image src="/public/ico/bigimg-back.png" />
             <text>返回</text>
         </view>
