@@ -1,5 +1,4 @@
-<view style="{{headerShow ? 'height: 88px;background: #FFFFFF;' : ''}}"></view>
-<view class="container" style="{{imgInfoShow ? 'display:none' : 'display:block;top:' + top + 'px'}}">
+<view class="container">
     <view class="header">
         <view class="logo">猫耳壁纸</view>
         <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7" shape="circle" />
@@ -29,5 +28,4 @@
         </view>
     </view>
 </view>
-<tabber style="{{imgInfoShow ? 'display:none' : 'display:block'}}"></tabber>
-<imgInfo style="{{!imgInfoShow ? 'display:none' : 'display:block'}}" bind:setImgShow="backHome" bigImg="{{bigImg}}" imgIndex="{{imgIndex}}" imgInfoShow="{{imgInfoShow}}" headerShow="{{headerShow}}"></imgInfo>
+<tabber></tabber>

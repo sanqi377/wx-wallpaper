@@ -15,40 +15,22 @@ Page({
         ],
         hotImg: [],
         show: true,
-        buttom: false,
-        imgInfoShow: false,
-        bigImg: null,
-        imgIndex: null,
-        headerShow: true,
-        top: null
-    },
-
-    backHome: function (e) {
-        let imgInfoShow = !e.detail[0];
-        let headerShow = !e.detail[1];
-        this.setData({
-            imgInfoShow,
-            headerShow
-        })
+        buttom: false
     },
 
     getImgInfo: function (e) {
-        
-        let top = e.currentTarget.offsetTop - 327;
-        window.scrollTo(0,top)
-        console.log(top)
         var that = this;
         let index = e.target.dataset.index;
         let value = that.data.hotImg;
 
         that.setData({
-            imgInfoShow: true,
             bigImg: value,
             imgIndex: index,
-            headerShow: false,
-            top
         })
 
+        wx.navigateTo({
+          url: '/pages/imgInfo/index',
+        })
     },
 
     changeTabs: function (e) {

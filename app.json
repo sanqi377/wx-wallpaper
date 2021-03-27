@@ -4,7 +4,8 @@
         "pages/my/index",
         "pages/task/index",
         "pages/sleep/index",
-        "pages/classify/index"
+        "pages/classify/index",
+        "pages/imgInfo/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

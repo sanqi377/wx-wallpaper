@@ -1,29 +1,35 @@
 {
-  "setting": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/my/index",
-          "pathName": "pages/my/index",
-          "query": "",
-          "scene": null
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
         },
-        {
-          "name": "pages/task/index",
-          "pathName": "pages/task/index",
-          "scene": null
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/my/index",
+                    "pathName": "pages/my/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/task/index",
+                    "pathName": "pages/task/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/imgInfo/index",
+                    "pathName": "pages/imgInfo/index",
+                    "scene": null
+                }
+            ]
         }
-      ]
     }
-  }
 }
