@@ -1,12 +1,13 @@
 <view class="container">
     <view class="header">
         <view class="logo">猫耳壁纸</view>
-        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7" shape="circle" />
+        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7"
+            shape="circle" />
         <view class="swiper">
-            <swiper previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular
+            <swiper bindchange="swiperChange" previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular
                 indicator-active-color="#FFFFFF" autoplay>
                 <swiper-item wx:for="{{img}}">
-                    <image src="{{item.src}}" />
+                    <image src="{{item.src}}" class="{{swiperIndex == index ? 'active' : ''}}" />
                 </swiper-item>
             </swiper>
         </view>

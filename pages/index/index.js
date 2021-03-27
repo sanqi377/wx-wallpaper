@@ -1,8 +1,6 @@
 Page({
-    /**
-     * 页面的初始数据
-     */
     data: {
+        // 轮播图数据
         img: [{
                 src: "../../public/img/1.jpg"
             },
@@ -13,10 +11,26 @@ Page({
                 src: "../../public/img/3.jpg"
             }
         ],
+        // 当前轮播图 Index
+        swiperIndex: 0,
+        // 当前页面的图片数据
         hotImg: [],
+        // loading 加载效果
         show: true,
+        // 底部加载完了效果
         buttom: false
     },
+
+    /**
+     * 轮播滑动时，获取当前的轮播id
+     */
+    swiperChange(e) {
+        var that = this;
+        that.setData({
+            swiperIndex: e.detail.current,
+        })
+    },
+
 
     getImgInfo: function (e) {
         var that = this;
