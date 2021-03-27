@@ -1,3 +1,7 @@
+.container {
+    z-index: -100;
+}
+
 .header .logo {
     font-size: 22px;
 }
@@ -55,4 +59,16 @@
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+imginfo {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.search {
+    padding: 0 !important;
+    margin: 10px 0;
 }

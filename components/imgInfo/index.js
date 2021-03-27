@@ -10,6 +10,14 @@ Component({
         imgIndex: {
             type: Number,
             value: null
+        },
+        imgInfoShow: {
+            type: Boolean,
+            value: null
+        },
+        headerShow: {
+            type: Boolean,
+            value: null
         }
     },
 
@@ -22,14 +30,9 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        getImg(e) {
-            // let data = this.data.bigImg;
-            // let index = this.data.imgIndex;
-            // let current = e.detail.current;
-            // let imgSrc = null;
-            // this.setData({
-            //     imgIndex: index + 1
-            // })
+        back() {
+            let Show = [this.data.imgInfoShow,this.data.headerShow];
+            this.triggerEvent('setImgShow',Show)
         }
     }
 })
