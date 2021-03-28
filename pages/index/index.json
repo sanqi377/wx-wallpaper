@@ -3,7 +3,7 @@
 		"l-segment": "/miniprogram_npm/lin-ui/segment/index",
 		"l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
 		"tabber": "/components/tabber/tabber",
-		"l-loading": "/miniprogram_npm/lin-ui/loading/index",
+		"l-toast": "/miniprogram_npm/lin-ui/toast/index",
 		"l-transition": "/miniprogram_npm/lin-ui/transition/index",
 		"l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
 		"l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index"

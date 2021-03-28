@@ -33,13 +33,9 @@
     margin-bottom: 15px;
 }
 
-.main l-loading {
+.main .loading {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
+    bottom: 50px;
 }
 
 .main l-transition {
@@ -62,6 +58,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 90px;
 }
 
 .main .hotImg image {

@@ -4,8 +4,8 @@
         <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7"
             shape="circle" />
         <view class="swiper">
-            <swiper bindchange="swiperChange" previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular
-                indicator-active-color="#FFFFFF" autoplay>
+            <swiper bindchange="swiperChange" previous-margin="25rpx" next-margin="25rpx" indicator-dots
+                indicator-color="#000000" circular indicator-active-color="#FFFFFF" autoplay>
                 <swiper-item wx:for="{{img}}">
                     <image src="{{item.src}}" class="{{swiperIndex == index ? 'active' : ''}}" />
                 </swiper-item>
@@ -18,13 +18,14 @@
             <l-segment-item tab="猜你喜欢" key="love" />
             <l-segment-item tab="最新壁纸" key="new" />
         </l-segment>
-        <l-loading show="{{show}}" color="#ffd833" type="flash"></l-loading>
+        <l-toast show="{{show}}" icon="loading" title="加载中" />
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
                 <l-transition show="{{!show}}">
                     <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo" />
                 </l-transition>
             </block>
+            <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中"></l-loadmore>
             <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
         </view>
     </view>
