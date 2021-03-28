@@ -20,7 +20,9 @@ Page({
         // 底部加载完了效果
         buttom: false,
         // 底部加载中效果
-        buttomLoad: false
+        buttomLoad: false,
+        // 今日壁纸
+        todayImg: [],
     },
 
     /**
@@ -30,6 +32,29 @@ Page({
         var that = this;
         that.setData({
             swiperIndex: e.detail.current,
+        })
+    },
+
+    /*
+     * 每日壁纸事件
+     */
+    ImgInfo: function (e) {
+        var that = this;
+        let type = e.target.dataset.type;
+        let index = e.target.dataset.index;
+        if (type == 'today') {
+            var value = that.data.todayImg;
+        } else if (type == 'index') {
+            var value = that.data.hotImg;
+        }
+        wx.setStorage({
+            key: 'value',
+            data: value,
+            success: function () {
+                wx.navigateTo({
+                    url: '/pages/imgInfo/index?index=' + index,
+                })
+            }
         })
     },
 
@@ -142,6 +167,20 @@ Page({
                 })
             }
         })
+
+        // 获取每日壁纸
+        let todayImg = []
+        wx.$util.request({
+            url: "https://wallpaper.zuimeix.com/wp-json/wp/v2/posts?sticky=true&per_page=15"
+        }).then(result => {
+            let data = result.data;
+            data.forEach(val => {
+                todayImg.push(val.wallpaper[0].full);
+            });
+            that.setData({
+                todayImg,
+            });
+        })
     },
 
     /**
@@ -192,7 +231,7 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
-                                        if(page > 5) {
+                                        if (page > 5) {
                                             that.setData({
                                                 buttomLoad: true
                                             })
@@ -224,7 +263,6 @@ Page({
                                         })
                                     });
                                 })
-                                console.log("到底了")
                             }
                         } else if (type == "love") {
                             if (page <= 90) {
@@ -232,7 +270,7 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
-                                        if(page > 5) {
+                                        if (page > 5) {
                                             that.setData({
                                                 buttomLoad: true
                                             })
@@ -276,7 +314,7 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
-                                        if(page > 5) {
+                                        if (page > 5) {
                                             that.setData({
                                                 buttomLoad: true
                                             })

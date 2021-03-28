@@ -19,21 +19,10 @@
         </view>
         <view class="content">
             <scroll-view scroll-x="{{true}}" enable-flex="{{true}}">
-                <view>
-                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                <view wx:for="{{todayImg}}">
+                    <image src="{{item}}" data-type="today" data-index="{{index}}" catchtap="ImgInfo" />
                 </view>
-                <view>
-                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
-                </view>
-                <view>
-                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
-                </view>
-                <view>
-                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
-                </view>
-                <view>
-                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
-                </view>
+                <!-- <view>昨日壁纸</view> -->
             </scroll-view>
         </view>
     </view>
@@ -47,7 +36,7 @@
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
                 <l-transition show="{{!show}}">
-                    <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo" />
+                    <image src="{{item}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
                 </l-transition>
             </block>
             <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中"></l-loadmore>

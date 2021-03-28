@@ -26,7 +26,6 @@ Page({
         wx.getSetting({
             success(res) {
                 if (!res.authSetting['scope.writePhotosAlbum']) {
-                    console.log("没授权")
                     wx.authorize({
                         scope: "scope.writePhotosAlbum",
                         success: function () {
@@ -34,7 +33,6 @@ Page({
                         }
                     })
                 } else {
-                    console.log("授权了")
                     that.downloadImg()
                 }
             }
@@ -63,7 +61,6 @@ Page({
                             that.setData({
                                 downloadShow: true
                             })
-                            console.log(res)
                         }
                     })
                 }
@@ -77,12 +74,10 @@ Page({
         wx.getSetting({
             success(res) {
                 if (!res.authSetting['scope.writePhotosAlbum']) {
-                    console.log("没授权1")
                     that.setData({
                         dialogShow: true
                     })
                 } else {
-                    console.log("授权了1")
                     that.downloadImg()
                 }
             }
@@ -94,18 +89,14 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
+        let index = options.index;
         wx.getStorage({
-            key: 'value' ? 'value' : 'collect',
+            key: 'value',
             success: function (res) {
-                wx.getStorage({
-                    key: 'index',
-                    success: function (result) {
-                        that.setData({
-                            index: result.data,
-                            value: res.data,
-                            loading: false
-                        })
-                    }
+                that.setData({
+                    index: index,
+                    value: res.data,
+                    loading: false
                 })
             },
             fail: function () {
