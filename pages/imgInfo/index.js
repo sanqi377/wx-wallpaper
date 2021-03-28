@@ -83,14 +83,14 @@ Page({
                     that.setData({
                         dialogShow: true
                     })
-                    wx.openSetting({
-                        success(res) {
-                            let status = res.authSetting['scope.writePhotosAlbum'];
-                            if (status == true) {
-                                that.downloadImg()
-                            }
-                        }
-                    })
+                    // wx.openSetting({
+                    //     success(res) {
+                    //         let status = res.authSetting['scope.writePhotosAlbum'];
+                    //         if (status == true) {
+                    //             that.downloadImg()
+                    //         }
+                    //     }
+                    // })
                 } else {
                     console.log("授权了")
                     that.downloadImg()
