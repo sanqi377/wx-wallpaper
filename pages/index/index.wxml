@@ -12,6 +12,31 @@
             </swiper>
         </view>
     </view>
+    <view class="todayImg">
+        <view class="header">
+            <view>每日壁纸</view>
+            <view class="yesterday">往日</view>
+        </view>
+        <view class="content">
+            <scroll-view scroll-x="{{true}}" enable-flex="{{true}}">
+                <view>
+                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                </view>
+                <view>
+                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                </view>
+                <view>
+                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                </view>
+                <view>
+                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                </view>
+                <view>
+                    <image src="https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203732333.jpeg" />
+                </view>
+            </scroll-view>
+        </view>
+    </view>
     <view class="main">
         <l-segment bind:linchange="changeTabs" animated-for-line l-class="tabs">
             <l-segment-item tab="热门壁纸" key="hot" />

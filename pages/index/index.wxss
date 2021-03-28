@@ -71,3 +71,43 @@
     padding: 0 !important;
     margin: 10px 0;
 }
+
+.todayImg .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.todayImg .header .yesterday {
+    font-size: 15px;
+    color: #898989;
+}
+
+.todayImg .content {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.todayImg .content scroll-view {
+    height: 260px;
+}
+
+.todayImg .content scroll-view view {
+    display: inline-block;
+    width: 38%;
+    height: 100%;
+    margin-right: 8px;
+}
+
+.todayImg .content scroll-view view:last-child {
+    margin-right: 0;
+}
+
+.todayImg .content scroll-view image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

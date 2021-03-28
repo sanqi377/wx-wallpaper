@@ -15,7 +15,7 @@
             <image src="/public/ico/bigimg-collect.png" />
             <text>收藏</text>
         </view>
-        <view>
+        <view bindtap="download">
             <image src="/public/ico/bigimg-dowload.png" />
             <text>下载</text>
         </view>
@@ -29,3 +29,10 @@
         </view>
     </view>
 </view>
+
+<l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请打开保存到相册权限" bind:linconfirm="openAuth"
+    confirm-color="#fea731" />
+
+<l-toast show="{{downloadShow}}" icon="success" title="保存成功" />
+
+<l-toast show="{{loading}}" mask="{{true}}" icon="loading" title="加载中" zIndex="999" />
