@@ -1,11 +1,28 @@
 wx.$util = require("./utils/util");
 App({
-
+    // 全局变量
+    collect:{
+        data:[]
+    },
     /**
      * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
      */
     onLaunch: function () {
-        
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    //发起网络请求
+                    wx.request({
+                        url: 'https://test.com/onLogin',
+                        data: {
+                            code: res.code
+                        }
+                    })
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
+        })
     },
 
     /**

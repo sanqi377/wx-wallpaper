@@ -19,41 +19,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let imgArr = [];
         wx.getStorage({
             key: 'collect',
             success: (result) => {
-                imgArr = result.data;
+                this.setData({
+                    collectImg:result.data
+                })
+
             }
         })
-        wx.getStorage({
-            key: 'value',
-            success: (result) => {
-                wx.getStorage({
-                    key: 'index',
-                    success: (res) => {
-                        imgArr.unshift(result.data[res.data])
-                        wx.setStorage({
-                            data: imgArr,
-                            key: 'collect',
-                        })
-                    }
-                })
-            },
-        })
         wx.removeStorage({
-            key: 'value',
+          key: 'value',
         })
-        setTimeout(() => {
-            wx.getStorage({
-                key: 'collect',
-                success: (result) => {
-                    this.setData({
-                        collectImg: result.data
-                    })
-                }
-            })
-        }, 300);
     },
 
     /**

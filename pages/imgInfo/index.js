@@ -1,6 +1,6 @@
 // pages/imgInfo/index.js
+var app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -14,7 +14,6 @@ Page({
         // 页面加载轻提示
         loading: true
     },
-
     // 返回上一页
     back: function () {
         wx.navigateBack();
@@ -103,28 +102,41 @@ Page({
                 wx.getStorage({
                     key: 'collect',
                     success: function (res) {
-                        wx.getStorage({
-                            key: 'index',
-                            success: function (result) {
-                                that.setData({
-                                    index: result.data,
-                                    value: res.data
-                                })
-                            }
+                        that.setData({
+                            index: index,
+                            value: res.data
                         })
                     }
                 })
             }
         })
-
+        /*
+         * 添加到用户历史界面
+         */
+        wx.getStorage({
+          key: 'collect',
+          success:(result)=>{
+              app.collect.data=result.data;
+              wx.getStorage({
+                  key: 'value',
+                  success: (result) => {
+                      if (app.collect.data.indexOf(result.data[index]) < 0) {
+                          app.collect.data.unshift(result.data[index]);
+                          wx.setStorage({
+                              data: app.collect.data,
+                              key: 'collect',
+                          })
+                      }
+                  }
+              })
+          }
+        })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-
-    },
+    onReady: function () {},
 
     /**
      * 生命周期函数--监听页面显示
