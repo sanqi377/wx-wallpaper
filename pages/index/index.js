@@ -173,9 +173,9 @@ Page({
         wx.$util.request({
             url: "https://wallpaper.zuimeix.com/wp-json/wp/v2/posts?sticky=true&per_page=15"
         }).then(result => {
-            let data = result.data;
+            let data = result.data[0].wallpaper;
             data.forEach(val => {
-                todayImg.push(val.wallpaper[0].full);
+                todayImg.push(val.full);
             });
             that.setData({
                 todayImg,
