@@ -1,0 +1,9 @@
+<view class="history">
+    <view class="container">
+        <view class="collect-image">
+            <block wx:for="{{collectImg}}">
+                <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo"/>
+            </block>
+        </view>
+    </view>
+</view>

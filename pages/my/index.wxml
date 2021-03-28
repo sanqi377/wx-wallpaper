@@ -44,10 +44,10 @@
 				<l-list l-class="l-list" title="消息" image="/public/ico/my-xx.png" />
 			</view>
 			<view class="content">
-				<l-list l-class="l-list" title="我的收藏" image="/public/ico/my-collect.png" />
+				<l-list bind:lintap="clickCollect" l-class="l-list" title="我的收藏" image="/public/ico/my-collect.png" />
 				<l-list l-class="l-list" title="我的下载" image="/public/ico/my-download.png" />
 				<l-list l-class="l-list" title="我的投稿" image="/public/ico/my-contribute.png" />
-				<l-list l-class="l-list" title="最近浏览" image="/public/ico/my-recently.png" />
+				<l-list l-class="l-list" bind:lintap="clickHistory" title="最近浏览" image="/public/ico/my-recently.png" />
 			</view>
 			<view class="content">
 				<button open-type='feedback'>

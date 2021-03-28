@@ -3,12 +3,15 @@
         "pages/index/index",
         "pages/my/index",
         "pages/task/index",
-        "pages/classify/index"
+        "pages/history/index",    
+        "pages/collect/index",
+        "pages/classify/index",
+        "pages/imgInfo/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarTitleText": "猫耳壁纸",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {

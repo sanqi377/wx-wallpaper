@@ -1,15 +1,13 @@
-<view style="{{headerShow ? 'height: 88px;background: #FFFFFF;' : ''}}"></view>
-<view class="container" style="{{imgInfoShow ? 'display:none' : 'display:block;top:' + top + 'px'}}">
+<view class="container">
     <view class="header">
         <view class="logo">猫耳壁纸</view>
-        <view class="search">
-        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7" shape="circle"/>
-        </view>
+        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7"
+            shape="circle" />
         <view class="swiper">
-            <swiper previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular
-                indicator-active-color="#FFFFFF" autoplay>
+            <swiper bindchange="swiperChange" previous-margin="25rpx" next-margin="25rpx" indicator-dots
+                indicator-color="#000000" circular indicator-active-color="#FFFFFF" autoplay>
                 <swiper-item wx:for="{{img}}">
-                    <image src="{{item.src}}" />
+                    <image src="{{item.src}}" class="{{swiperIndex == index ? 'active' : ''}}" mode="widthFix" />
                 </swiper-item>
             </swiper>
         </view>
@@ -20,16 +18,16 @@
             <l-segment-item tab="猜你喜欢" key="love" />
             <l-segment-item tab="最新壁纸" key="new" />
         </l-segment>
-        <l-loading show="{{show}}" color="#ffd833" type="flash"></l-loading>
+        <l-toast show="{{show}}" icon="loading" title="加载中" />
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
                 <l-transition show="{{!show}}">
                     <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo" />
                 </l-transition>
             </block>
+            <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中"></l-loadmore>
             <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
         </view>
     </view>
 </view>
-<tabber style="{{imgInfoShow ? 'display:none' : 'display:block'}}"></tabber>
-<imgInfo style="{{!imgInfoShow ? 'display:none' : 'display:block'}}" bind:setImgShow="backHome" bigImg="{{bigImg}}" imgIndex="{{imgIndex}}" imgInfoShow="{{imgInfoShow}}" headerShow="{{headerShow}}"></imgInfo>
+<tabber></tabber>

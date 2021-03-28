@@ -1,0 +1,17 @@
+/* pages/collect/index.wxss */
+.history{
+    margin-top: 10px;
+    display: flex;
+}
+.history .collect-image{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.history image{
+    box-sizing: border-box;
+    width: 115px;
+    height: 220px;
+    border-radius: 10px;
+    margin: 5px 6px;
+}

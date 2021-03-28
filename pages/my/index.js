@@ -15,6 +15,16 @@ Page({
       url: '../task/index',
     })
   },
+  clickCollect:function(){
+    wx.navigateTo({
+      url: '../collect/index',
+    })
+  },
+  clickHistory:function(){
+    wx.navigateTo({
+      url: '../history/index',
+    })
+  },
   onLoad: function (options) {
 
   },

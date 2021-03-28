@@ -1,0 +1,15 @@
+/* pages/collect/index.wxss */
+.collect{
+    margin-top: 10px;
+}
+.collect .collect-image{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.collect image{
+    width: 123px;
+    height: 220px;
+    border-radius: 10px;
+    margin: 5px 0;
+}

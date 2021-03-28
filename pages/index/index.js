@@ -1,8 +1,6 @@
 Page({
-    /**
-     * 页面的初始数据
-     */
     data: {
+        // 轮播图数据
         img: [{
                 src: "../../public/img/1.jpg"
             },
@@ -13,43 +11,55 @@ Page({
                 src: "../../public/img/3.jpg"
             }
         ],
+        // 当前轮播图 Index
+        swiperIndex: 0,
+        // 当前页面的图片数据
         hotImg: [],
+        // loading 加载效果
         show: true,
+        // 底部加载完了效果
         buttom: false,
-        imgInfoShow: false,
-        bigImg: null,
-        imgIndex: null,
-        headerShow: true,
-        top: null
+        // 底部加载中效果
+        buttomLoad: false
     },
 
-    backHome: function (e) {
-        let imgInfoShow = !e.detail[0];
-        let headerShow = !e.detail[1];
-        this.setData({
-            imgInfoShow,
-            headerShow
+    /**
+     * 轮播滑动时，获取当前的轮播id
+     */
+    swiperChange(e) {
+        var that = this;
+        that.setData({
+            swiperIndex: e.detail.current,
         })
     },
 
+    /*
+     * 点击壁纸事件
+     */
     getImgInfo: function (e) {
-        let top = e.currentTarget.offsetTop - 327;
-        window.scrollTo(0,top)
-        console.log(top)
         var that = this;
         let index = e.target.dataset.index;
         let value = that.data.hotImg;
 
-        that.setData({
-            imgInfoShow: true,
-            bigImg: value,
-            imgIndex: index,
-            headerShow: false,
-            top
+        wx.setStorage({
+            key: 'value',
+            data: value,
+            success: function () {
+                wx.setStorage({
+                    key: 'index',
+                    data: index
+                })
+            }
         })
 
+        wx.navigateTo({
+            url: '/pages/imgInfo/index',
+        })
     },
 
+    /*
+     * 点击 Tabs 事件
+     */
     changeTabs: function (e) {
         let key = e.detail.activeKey;
         var that = this;
@@ -58,6 +68,9 @@ Page({
                 key: 'type',
                 data: "hot",
                 success: function () {
+                    that.setData({
+                        show: true
+                    })
                     wx.setStorage({
                         key: 'page',
                         data: 3,
@@ -72,6 +85,9 @@ Page({
                 key: 'type',
                 data: "love",
                 success: function () {
+                    that.setData({
+                        show: true
+                    })
                     wx.setStorage({
                         key: 'page',
                         data: 3,
@@ -86,6 +102,9 @@ Page({
                 key: 'type',
                 data: "new",
                 success: function () {
+                    that.setData({
+                        show: true
+                    })
                     wx.setStorage({
                         key: 'page',
                         data: 3,
@@ -167,17 +186,20 @@ Page({
                     success: function (result) {
                         let type = result.data;
                         let page = res.data + 2;
-
                         if (type == "hot") {
                             if (page <= 90) {
                                 wx.setStorage({
                                     key: 'page',
                                     data: page,
                                     success: function () {
+                                        if(page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
+                                            })
+                                        }
                                         wx.$util.request({
                                             url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
                                         }).then(result => {
-                                            // console.log(result)
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
@@ -201,10 +223,6 @@ Page({
                                             hotImg.push(val.full);
                                         })
                                     });
-                                    that.setData({
-                                        hotImg,
-                                        buttom: true
-                                    });
                                 })
                                 console.log("到底了")
                             }
@@ -214,6 +232,11 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
+                                        if(page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
+                                            })
+                                        }
                                         wx.$util.request({
                                             url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page
                                         }).then(result => {
@@ -253,6 +276,11 @@ Page({
                                     key: 'page',
                                     data: page,
                                     success: function () {
+                                        if(page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
+                                            })
+                                        }
                                         wx.$util.request({
                                             url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page
                                         }).then(result => {
