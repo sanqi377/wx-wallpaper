@@ -114,22 +114,36 @@ Page({
          * 添加到用户历史界面
          */
         wx.getStorage({
-          key: 'collect',
-          success:(result)=>{
-              app.collect.data=result.data;
-              wx.getStorage({
-                  key: 'value',
-                  success: (result) => {
-                      if (app.collect.data.indexOf(result.data[index]) < 0) {
-                          app.collect.data.unshift(result.data[index]);
-                          wx.setStorage({
-                              data: app.collect.data,
-                              key: 'collect',
-                          })
-                      }
-                  }
-              })
-          }
+            key: 'collect',
+            success: (result) => {
+                app.collect.data = result.data;
+                wx.getStorage({
+                    key: 'value',
+                    success: (result) => {
+                        if (app.collect.data.indexOf(result.data[index]) < 0) {
+                            app.collect.data.unshift(result.data[index]);
+                            wx.setStorage({
+                                data: app.collect.data,
+                                key: 'collect',
+                            })
+                        }
+                    }
+                })
+            },
+            fail: function () {
+                wx.getStorage({
+                    key: 'value',
+                    success: (result) => {
+                        if (app.collect.data.indexOf(result.data[index]) < 0) {
+                            app.collect.data.unshift(result.data[index]);
+                            wx.setStorage({
+                                data: app.collect.data,
+                                key: 'collect',
+                            })
+                        }
+                    }
+                })
+            }
         })
     },
 
