@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
+    "l-toast": "/miniprogram_npm/lin-ui/toast/index"
+  },
   "navigationStyle":"custom"
 }
