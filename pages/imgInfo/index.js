@@ -27,12 +27,10 @@ Page({
             success(res) {
                 if (!res.authSetting['scope.writePhotosAlbum']) {
                     console.log("没授权")
-                    wx.openSetting({
-                        success(res) {
-                            let status = res.authSetting['scope.writePhotosAlbum'];
-                            if (status == true) {
-                                that.downloadImg()
-                            }
+                    wx.authorize({
+                        scope: "scope.writePhotosAlbum",
+                        success: function () {
+                            that.downloadImg()
                         }
                     })
                 } else {
@@ -79,20 +77,12 @@ Page({
         wx.getSetting({
             success(res) {
                 if (!res.authSetting['scope.writePhotosAlbum']) {
-                    console.log("没授权")
+                    console.log("没授权1")
                     that.setData({
                         dialogShow: true
                     })
-                    // wx.openSetting({
-                    //     success(res) {
-                    //         let status = res.authSetting['scope.writePhotosAlbum'];
-                    //         if (status == true) {
-                    //             that.downloadImg()
-                    //         }
-                    //     }
-                    // })
                 } else {
-                    console.log("授权了")
+                    console.log("授权了1")
                     that.downloadImg()
                 }
             }
@@ -105,7 +95,7 @@ Page({
     onLoad: function (options) {
         var that = this;
         wx.getStorage({
-            key: 'value'?'value':'collect',
+            key: 'value' ? 'value' : 'collect',
             success: function (res) {
                 wx.getStorage({
                     key: 'index',
@@ -118,7 +108,7 @@ Page({
                     }
                 })
             },
-            fail:function(){
+            fail: function () {
                 wx.getStorage({
                     key: 'collect',
                     success: function (res) {
@@ -135,7 +125,7 @@ Page({
                 })
             }
         })
-        
+
     },
 
     /**
