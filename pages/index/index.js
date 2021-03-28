@@ -33,7 +33,6 @@ Page({
     },
 
     getImgInfo: function (e) {
-        
         let top = e.currentTarget.offsetTop - 327;
         window.scrollTo(0,top)
         console.log(top)

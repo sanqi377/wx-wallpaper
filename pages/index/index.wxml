@@ -2,7 +2,9 @@
 <view class="container" style="{{imgInfoShow ? 'display:none' : 'display:block;top:' + top + 'px'}}">
     <view class="header">
         <view class="logo">猫耳壁纸</view>
-        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7" shape="circle" />
+        <view class="search">
+        <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7" shape="circle"/>
+        </view>
         <view class="swiper">
             <swiper previous-margin="25rpx" next-margin="25rpx" indicator-dots indicator-color="#000000" circular
                 indicator-active-color="#FFFFFF" autoplay>

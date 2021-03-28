@@ -23,12 +23,6 @@ Component({
                 selectedIconPath: "/public/ico/bar-classify-o.png"
             },
             {
-                pagePath: "/pages/sleep/index",
-                text: "哄睡",
-                iconPath: "/public/ico/bar-sleep.png",
-                selectedIconPath: "/public/ico/bar-sleep-o.png"
-            },
-            {
                 pagePath: "/pages/my/index",
                 text: "我的",
                 iconPath: "/public/ico/bar-user.png",

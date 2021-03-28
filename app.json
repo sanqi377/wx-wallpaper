@@ -3,7 +3,6 @@
         "pages/index/index",
         "pages/my/index",
         "pages/task/index",
-        "pages/sleep/index",
         "pages/classify/index"
     ],
     "window": {
@@ -23,9 +22,6 @@
             },
             {
                 "pagePath": "pages/classify/index"
-            },
-            {
-                "pagePath": "pages/sleep/index"
             },
             {
                 "pagePath": "pages/my/index"
