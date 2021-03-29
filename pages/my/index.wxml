@@ -3,7 +3,7 @@
 		<l-avatar open-data="{{['userAvatarUrl']}}" size="150" />
 		<view class="info">
 			<l-avatar open-data="{{['userNickName']}}" l-text-class="username" />
-			<view class="region">Shanxi，Yanan</view>
+			<view class="region">{{city}}</view>
 		</view>
 	</view>
 	<view class="list">

@@ -51,4 +51,7 @@
         </view>
     </view>
 </view>
+<l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请授权登录" bind:linconfirm="openAuth"
+    confirm-color="#fea731" bind:lincancel="clickCancel" id="my-dialog" />
+<l-dialog type="confirm" confirm-color="#fea731" id="my-dialog1" />
 <tabber></tabber>

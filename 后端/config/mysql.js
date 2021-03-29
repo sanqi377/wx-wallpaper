@@ -18,6 +18,18 @@ module.exports = {
         } else {
             var sql = `select ${field} from ${table} order by id desc`;
         }
+        console.log(sql);
+        connection.query(sql, (err, res) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
+    // 按条件查询
+    select: (field, table, where,value, callback) => {
+        var sql = `select ${field} from ${table} where ${where}='${value}' order by id desc`;
         connection.query(sql, (err, res) => {
             if (err) {
                 console.log(err);
@@ -29,7 +41,7 @@ module.exports = {
 
     // 封装 mysql 插入
     insert: (field, data, table, callback) => {
-        var sql = `insert into ${table} (${field}) values (${data})`;
+        var sql = `insert into ${table} (${field}) values ('${data}')`;
         connection.query(sql, (err, res) => {
             if (err) {
                 console.log(err);

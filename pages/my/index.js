@@ -5,11 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    city:''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   clickTask:function(){
     wx.navigateTo({
       url: '../task/index',
@@ -25,8 +24,19 @@ Page({
       url: '../history/index',
     })
   },
+    /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
-
+    wx.getStorage({
+      key: 'userinfo',
+      success:(res=>{
+        console.log(res);
+        this.setData({
+          city:res.data.province+','+res.data.city
+        })
+      })
+    })
   },
 
   /**

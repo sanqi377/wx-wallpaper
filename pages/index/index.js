@@ -1,3 +1,4 @@
+import url from "../../config/cofig.js"
 Page({
     data: {
         // 轮播图数据
@@ -24,7 +25,9 @@ Page({
         // 今日壁纸
         todayImg: [],
         // 超过这个高度给热门、猜你、最新设置fixed
-        scrollTop: null
+        scrollTop: null,
+        // 提示用户登录的弹窗
+        dialogShow: false,
     },
 
     onPageScroll: function (e) {
@@ -134,11 +137,66 @@ Page({
         }
     },
 
+    // 用户取消登录授权时
+    clickCancel: function () {
+        const toast = this.selectComponent('#my-dialog1');
+        // 显示 Toast
+        toast.linShow({
+            title: '您取消了授权'
+        });
+    },
+    // 用户确认授权时
+    openAuth: function () {
+        wx.login({
+            success(res) {
+                wx.request({
+                    url: url + 'user/login',
+                    method: 'POST',
+                    data: {
+                        code: res.code
+                    },
+                    success(res) {
+                        wx.setStorage({
+                            data: res.data.sessionKey,
+                            key: 'sessionkey',
+                        })
+                        wx.setStorage({
+                            data: res.data.id,
+                            key: 'userid',
+                        })
+                    }
+                })
+            }
+        })
+        wx.getUserProfile({
+            desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (res) => {
+                wx.setStorage({
+                    data: res.userInfo,
+                    key: 'userinfo',
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        const that=this;
+        wx.checkSession({
+            success() {
+                //session_key 未过期，并且在本生命周期一直有效
+                that.setData({
+                    dialogShow: false
+                })
+            },
+            fail() {
+                // session_key 已经失效，需要重新执行登录流程
+                that.setData({
+                    dialogShow: true
+                })
+            }
+        })
     },
 
     /**
