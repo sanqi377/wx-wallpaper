@@ -23,6 +23,14 @@ Page({
         buttomLoad: false,
         // 今日壁纸
         todayImg: [],
+        // 超过这个高度给热门、猜你、最新设置fixed
+        scrollTop: null
+    },
+
+    onPageScroll: function (e) {
+        this.setData({
+            scrollTop: e.scrollTop,
+        })
     },
 
     /**
@@ -59,30 +67,6 @@ Page({
     },
 
     /*
-     * 点击壁纸事件
-     */
-    getImgInfo: function (e) {
-        var that = this;
-        let index = e.target.dataset.index;
-        let value = that.data.hotImg;
-
-        wx.setStorage({
-            key: 'value',
-            data: value,
-            success: function () {
-                wx.setStorage({
-                    key: 'index',
-                    data: index
-                })
-            }
-        })
-
-        wx.navigateTo({
-            url: '/pages/imgInfo/index',
-        })
-    },
-
-    /*
      * 点击 Tabs 事件
      */
     changeTabs: function (e) {
@@ -100,6 +84,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })
@@ -117,6 +104,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })
@@ -134,6 +124,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })

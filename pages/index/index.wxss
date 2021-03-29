@@ -1,9 +1,27 @@
 .container {
-    z-index: -100;
+    margin-bottom: 120rpx;
 }
 
 .header .logo {
+    display: block;
+    width: 100%;
     font-size: 22px;
+    padding: 0 15px;
+}
+
+.header .content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 60px;
+    background: #ffffff;
+    z-index: 999;
+}
+
+.header .content l-search-bar {
+    display: block;
+    margin: 0 15px;
 }
 
 .header .swiper swiper-item {
@@ -14,23 +32,23 @@
 }
 
 .header swiper {
-    height: 150px;
+    height: 130px;
 }
 
 .header .swiper image {
     width: 100%;
-    height: 130px;
+    height: 115px !important;
     border-radius: 10px;
     margin: 0 5px;
 }
 
 .header .swiper .active {
-    height: 150px !important;
+    height: 130px !important;
 }
 
 .main l-segment {
     display: block;
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .main .loading {
@@ -110,4 +128,35 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+.tabs_active {
+    color: #000000;
+    min-height: 30px !important;
+    background: #f8f8f8;
+    border-radius: 30px;
+    background: linear-gradient(to right,#faeb69 , #f1d15d);
+    box-shadow: 0 3px 5px rgb(241, 209, 93,.5);
+    border-bottom: 0 !important;
+}
+
+.tabs_default {
+    margin: 0 10px;
+    min-height: 30px !important;
+    background: #f8f8f8;
+    border-radius: 30px;
+}
+
+.tbas_fixed {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    padding-top: 10px;
+    z-index: 999;
+}
+
+.tbas_fixed l-segment {
+    margin: 0 15px !important;
 }
