@@ -7,12 +7,13 @@ Page({
     data: {
         collectImg: []
     },
-        /*
+    /*
      * 点击壁纸事件
      */
-    getImgInfo: function (e) {        
+    getImgInfo: function (e) {
+        let index = e.target.dataset.index;
         wx.navigateTo({
-            url: '/pages/imgInfo/index',
+            url: '/pages/imgInfo/index?index='+index,
         })
     },
     /**
@@ -23,13 +24,13 @@ Page({
             key: 'collect',
             success: (result) => {
                 this.setData({
-                    collectImg:result.data
+                    collectImg: result.data
                 })
 
             }
         })
         wx.removeStorage({
-          key: 'value',
+            key: 'value',
         })
     },
 

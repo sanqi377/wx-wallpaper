@@ -8,6 +8,7 @@ App({
      * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
      */
     onLaunch: function () {
+<<<<<<< HEAD
         // wx.login({
         //     success(res) {
         //         if (res.code) {
@@ -23,6 +24,9 @@ App({
         //         }
         //     }
         // })
+=======
+
+>>>>>>> b11b41765d67a23e5707208b92a12a3eaf72666b
     },
 
     /**

@@ -1,5 +1,5 @@
 <view class="content">
-    <swiper circular current="{{index}}">
+    <swiper circular current="{{index}}" bindchange="slideImg">
         <swiper-item wx:for="{{value}}">
             <image src="{{item}}" />
         </swiper-item>

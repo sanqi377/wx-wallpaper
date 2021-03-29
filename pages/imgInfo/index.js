@@ -83,6 +83,10 @@ Page({
         });
     },
 
+    //滑动图片事件
+    slideImg:function(e){
+        this.addHistory(e.detail.current);
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -113,6 +117,11 @@ Page({
         /*
          * 添加到用户历史界面
          */
+        this.addHistory(index);
+    },
+
+    // 添加到历史方法
+    addHistory(index){
         wx.getStorage({
             key: 'collect',
             success: (result) => {
@@ -125,6 +134,10 @@ Page({
                             wx.setStorage({
                                 data: app.collect.data,
                                 key: 'collect',
+                            })
+                            wx.setStorage({
+                                data:index,
+                                key: 'index',
                             })
                         }
                     }
@@ -140,13 +153,16 @@ Page({
                                 data: app.collect.data,
                                 key: 'collect',
                             })
+                            wx.setStorage({
+                                data: index,
+                                key: 'index',
+                            })
                         }
                     }
                 })
             }
         })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
