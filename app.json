@@ -6,7 +6,9 @@
         "pages/history/index",    
         "pages/collect/index",
         "pages/classify/index",
-        "pages/imgInfo/index"
+        "pages/imgInfo/index",
+        "pages/catsInfo/index",
+        "pages/ranking/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

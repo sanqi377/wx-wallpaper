@@ -39,6 +39,18 @@
                 {
                     "name": "pages/history/index",
                     "pathName": "pages/history/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/classify/index",
+                    "pathName": "pages/classify/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/ranking/index",
+                    "pathName": "pages/ranking/index",
                     "scene": null
                 }
             ]
