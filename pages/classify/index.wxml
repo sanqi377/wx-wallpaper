@@ -1,3 +1,11 @@
-<!--pages/classify/index.wxml-->
-dsdsa
-<tabber></tabber>
+<view class="header">
+    <view class="logo">
+        猫耳壁纸
+    </view>
+    <view class="search">
+        搜索
+    </view>
+</view>
+<view class="content">
+    1
+</view>

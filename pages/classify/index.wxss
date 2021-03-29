@@ -1,1 +1,19 @@
-/* pages/classify/index.wxss */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.header view {
+    width: 100%;
+}
+
+.content {
+    margin-top: 100px;
+}

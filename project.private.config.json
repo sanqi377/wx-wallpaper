@@ -39,6 +39,12 @@
                 {
                     "name": "pages/history/index",
                     "pathName": "pages/history/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/classify/index",
+                    "pathName": "pages/classify/index",
                     "scene": null
                 }
             ]
