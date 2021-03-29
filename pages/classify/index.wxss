@@ -3,11 +3,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
     background: #ffffff;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    padding-top: 60px;
+    z-index: 9999;
 }
 
 .header view {
@@ -15,5 +16,119 @@
 }
 
 .content {
-    margin-top: 100px;
+    margin-top: 150px;
+}
+
+.header .logo {
+    display: block;
+    width: 100%;
+    font-size: 22px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.content .rank {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.content .rank view {
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    margin-right: 8px;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+.content .rank view text {
+    display: block;
+}
+
+.content .rank view.download {
+    background: linear-gradient(to right, #8dd48c, #75bf94);
+    box-shadow: 0 0 10px rgb(115, 190, 143, .5);
+}
+
+.content .rank view.new {
+    background: linear-gradient(to right, #efcb5f, #edb356);
+    box-shadow: 0 0 10px rgb(237, 180, 85, .5);
+}
+
+.content .rank view.collect {
+    background: linear-gradient(to right, #6c9eee, #7573f3);
+    box-shadow: 0 0 10px rgb(114, 117, 243, .5);
+}
+
+.content .rank view.hot {
+    background: linear-gradient(to right, #dd93dd, #e66b66);
+    box-shadow: 0 0 10px rgb(228, 105, 123, .5);
+}
+
+.content .rank view text:last-child {
+    font-size: 13px;
+    color: rgb(255, 255, 255, .5);
+}
+
+.tags {
+    margin-top: 15px;
+}
+
+.title {
+    color: #535353;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.tags .main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags .main .item {
+    color: #000000;
+    text-align: center;
+    width: 20%;
+}
+
+.tags .main .item view {
+    background: #f3f4f8;
+    margin: 0 5px;
+    padding: 3px 8px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.cat .title {
+    margin-top: 10px;
+}
+
+.cat .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cat .main .item {
+    width: 47%;
+    height: 95px;
+}
+
+.cat .main .item view image {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.cat .main .item view text {
+    color: #ffffff;
+    font-size: 14px;
+    position: relative;
+    top: -40px;
+    left: 10px;
 }

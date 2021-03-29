@@ -125,6 +125,7 @@ Page({
 
     // 添加到历史方法
     addHistory(index){
+    const that=this;
         wx.getStorage({
             key: 'collect',
             success: (result) => {
@@ -132,17 +133,7 @@ Page({
                 wx.getStorage({
                     key: 'value',
                     success: (result) => {
-                        if (app.collect.data.indexOf(result.data[index]) < 0) {
-                            app.collect.data.unshift(result.data[index]);
-                            wx.setStorage({
-                                data: app.collect.data,
-                                key: 'collect',
-                            })
-                            wx.setStorage({
-                                data:index,
-                                key: 'index',
-                            })
-                        }
+                        that.addHis(index,result);
                     }
                 })
             },
@@ -150,21 +141,40 @@ Page({
                 wx.getStorage({
                     key: 'value',
                     success: (result) => {
-                        if (app.collect.data.indexOf(result.data[index]) < 0) {
-                            app.collect.data.unshift(result.data[index]);
-                            wx.setStorage({
-                                data: app.collect.data,
-                                key: 'collect',
-                            })
-                            wx.setStorage({
-                                data: index,
-                                key: 'index',
-                            })
-                        }
+                        that.addHis(index,result);
                     }
                 })
             }
         })
+    },
+    // 添加用户浏览历史方法
+    addHis(index,result){
+        let index1=app.collect.data.findIndex(item=>{
+            return item===result.data[index];
+        })
+        if (index1<0) {
+            app.collect.data.unshift(result.data[index]);
+            wx.setStorage({
+                data: app.collect.data,
+                key: 'collect',
+            })
+            wx.setStorage({
+                data: index,
+                key: 'index',
+            })
+        }else{
+            app.collect.data.splice(index1,1);
+            app.collect.data.unshift(result.data[index]);
+            wx.setStorage({
+                data: app.collect.data,
+                key: 'collect',
+            })
+            wx.setStorage({
+                data: index,
+                key: 'index',
+            })
+
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

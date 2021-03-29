@@ -45,6 +45,12 @@
                 {
                     "name": "pages/classify/index",
                     "pathName": "pages/classify/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/ranking/index",
+                    "pathName": "pages/ranking/index",
                     "scene": null
                 }
             ]

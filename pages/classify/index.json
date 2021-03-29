@@ -1,7 +1,7 @@
 {
     "usingComponents": {
-        "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index",
-        "tabber": "/components/tabber/tabber"
+        "tabber": "/components/tabber/tabber",
+        "l-search-bar" :"/miniprogram_npm/lin-ui/search-bar/index"
     },
     "navigationStyle": "custom"
 }

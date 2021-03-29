@@ -1,11 +1,41 @@
-<view class="header">
-    <view class="logo">
-        猫耳壁纸
+<view class="container">
+    <view class="header">
+        <view class="logo">猫耳壁纸</view>
+        <view class="search" style="{{scrollTop > 515 ? 'display:none' : 'display:block'}}">
+            <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}" bg-color="#f4f5f7"
+                shape="circle" />
+        </view>
     </view>
-    <view class="search">
-        搜索
+    <view class="content">
+        <view class="rank">
+            <scroll-view scroll-x="{{true}}">
+                <block wx:for="{{rank}}">
+                    <view class="{{item.class}}" data-key="{{item.key}}" catchtap="routerRank">
+                        <text>{{item.name}}</text>
+                        <text>{{item.ename}}</text>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+        <view class="tags">
+            <view class="title">标签</view>
+            <view class="main">
+                <view wx:for="{{tags}}" class="item">
+                    <view data-id="{{item.id}}" bindtap="imgInfo">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="cat">
+            <view class="title">分类</view>
+            <view class="main">
+                <view class="item" wx:for="{{cats}}">
+                    <view>
+                        <image src="{{item.cover}}" />
+                        <text>{{item.name}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
     </view>
 </view>
-<view class="content">
-    1
-</view>
+<tabber></tabber>
