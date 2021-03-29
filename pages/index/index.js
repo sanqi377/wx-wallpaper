@@ -57,31 +57,6 @@ Page({
             }
         })
     },
-
-    /*
-     * 点击壁纸事件
-     */
-    getImgInfo: function (e) {
-        var that = this;
-        let index = e.target.dataset.index;
-        let value = that.data.hotImg;
-
-        wx.setStorage({
-            key: 'value',
-            data: value,
-            success: function () {
-                wx.setStorage({
-                    key: 'index',
-                    data: index
-                })
-            }
-        })
-
-        wx.navigateTo({
-            url: '/pages/imgInfo/index',
-        })
-    },
-
     /*
      * 点击 Tabs 事件
      */

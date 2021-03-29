@@ -2,7 +2,7 @@
     <view class="container">
         <view class="collect-image">
             <block wx:for="{{collectImg}}">
-                <image src="{{item}}" data-index="{{index}}" catchtap="getImgInfo"/>
+                <image src="{{item}}" data-type="index" data-index="{{index}}" catchtap="getImgInfo"/>
             </block>
         </view>
     </view>
