@@ -13,29 +13,19 @@ app.use(express.json());
 
 // 登录验证中间件
 app.use((req, res, next) => {
-  // let data = req.body;
-  // let token = md5("sanqi" + data.user_id);
-  // if (data.token == token) {
-  //     console.log("验证通过");
-  //     next();
-  // } else {
-  //     if (req.path == "/user/login") {
-  //         next();
-  //     } else {
-  //         console.log("验证未通过");
-  //         res.send({ code: 400, msg: "登录状态过期" });
-  //     }
-  // }
-  let session_key = req.body;
-  if (session_key) {
-    next();
-  } else {
-    if (req.path == "/user/login") {
-      next();
+    let session_key = req.body.session_key;
+    if (session_key) {
+        next();
     } else {
-      res.send({ code: 400, msg: "登录状态过期" });
+        if (req.path == "/user/login") {
+            next();
+        } else {
+            res.send({
+                code: 400,
+                msg: "登录状态过期"
+            });
+        }
     }
-  }
 });
 
 app.use("/user", userRouter);
@@ -43,7 +33,7 @@ app.use("/user", userRouter);
 app.use("/class", classRouter);
 
 app.listen(3000, () => {
-  console.log("网站服务器已启动");
+    console.log("网站服务器已启动");
 });
 
 module.exports = app;
