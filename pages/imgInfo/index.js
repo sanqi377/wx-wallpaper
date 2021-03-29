@@ -85,6 +85,9 @@ Page({
 
     //滑动图片事件
     slideImg:function(e){
+        this.setData({
+            index: e.detail.current
+        })
         this.addHistory(e.detail.current);
     },
     /**

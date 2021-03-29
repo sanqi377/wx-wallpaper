@@ -23,6 +23,14 @@ Page({
         buttomLoad: false,
         // 今日壁纸
         todayImg: [],
+        // 超过这个高度给热门、猜你、最新设置fixed
+        scrollTop: null
+    },
+
+    onPageScroll: function (e) {
+        this.setData({
+            scrollTop: e.scrollTop,
+        })
     },
 
     /**
@@ -75,6 +83,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })
@@ -92,6 +103,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })
@@ -109,6 +123,9 @@ Page({
                         key: 'page',
                         data: 3,
                         success: function () {
+                            wx.pageScrollTo({
+                                scrollTop: 516
+                            })
                             that.onReachBottom();
                         }
                     })
