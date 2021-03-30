@@ -8,12 +8,15 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        collectImg:[]
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        const that=this;
         wx.getStorage({
             key: 'userid',
             success: function (res1) {
@@ -24,7 +27,9 @@ Page({
                         "userid": res1.data
                     }
                 }).then(res2 => {
-                    console.log(res2);
+                    that.setData({
+                        collectImg:res2
+                    })
                 })
             }
         })

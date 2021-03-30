@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 29/03/2021 21:33:55
+ Date: 30/03/2021 15:22:03
 */
 
 SET NAMES utf8mb4;
@@ -28,11 +28,15 @@ CREATE TABLE `collect`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of collect
 -- ----------------------------
+INSERT INTO `collect` VALUES (1, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193205635.jpeg', 7);
+INSERT INTO `collect` VALUES (2, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193205635.jpeg', 7);
+INSERT INTO `collect` VALUES (3, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193209274.jpeg', 7);
+INSERT INTO `collect` VALUES (4, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193213816.jpeg', 7);
 
 -- ----------------------------
 -- Table structure for integration
@@ -101,12 +105,13 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `openid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `session_key` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'afa1d770f5ef23de763f2f85ef923cef');
+INSERT INTO `user` VALUES (7, '5e543256c480ac577d30f76f9120eb74', '5e543256c480ac577d30f76f9120eb74');
 
 SET FOREIGN_KEY_CHECKS = 1;
