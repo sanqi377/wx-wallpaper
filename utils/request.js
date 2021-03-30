@@ -15,7 +15,6 @@ export default function request(options) {
         server,
         etcs
     } = options
-    console.log(configs,options);
     return new Promise(function (resolve, reject) {
         wx.getStorage({
             key: 'sessionkey',

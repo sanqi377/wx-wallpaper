@@ -20,15 +20,25 @@ app.use((req, res, next) => {
     db.select("*", "user", "session_key", session_key, (val) => {
       if (val[0]) {
         next();
-      }else{
-      res.send({ code: 400, msg: "登录状态过期" });
+      } else {
+        res.send({
+          code: 400,
+          msg: "登录状态过期"
+        });
       }
     });
   } else {
     if (req.path == "/user/login") {
       next();
     } else {
-      res.send({ code: 400, msg: "登录状态过期" });
+      if (req.path == "/user/login") {
+        next();
+      } else {
+        res.send({
+          code: 400,
+          msg: "登录状态过期"
+        });
+      }
     }
   }
 });

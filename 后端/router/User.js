@@ -58,4 +58,9 @@ router
     
   })
 
+    // 添加到收藏
+    .post("/collect", (req, res) => {
+        res.send("dasdasd");
+    })
+
 module.exports = router;
