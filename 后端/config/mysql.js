@@ -18,7 +18,6 @@ module.exports = {
         } else {
             var sql = `select ${field} from ${table} order by id desc`;
         }
-        console.log(sql);
         connection.query(sql, (err, res) => {
             if (err) {
                 console.log(err);
@@ -42,6 +41,17 @@ module.exports = {
     // 封装 mysql 插入
     insert: (field, data, table, callback) => {
         var sql = `insert into ${table} (${field}) values ('${data}')`;
+        connection.query(sql, (err, res) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
+    // 封装 mysql 更新
+    update: (where, data, table, callback) => {
+        var sql = `update ${table} set ${data} where ${where}`;
         connection.query(sql, (err, res) => {
             if (err) {
                 console.log(err);

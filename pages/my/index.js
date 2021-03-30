@@ -31,7 +31,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success:(res=>{
-        console.log(res);
         this.setData({
           city:res.data.province+','+res.data.city
         })
@@ -43,7 +42,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
