@@ -1,3 +1,9 @@
-const url="http://127.0.0.1:3000/"
-
-module.exports=url;
+export default {
+    // tabs: ['home', 'article', 'profile'],
+    // 远端地址，上线切换
+    // serverPath: 'https://xxx.com/xx/',
+    // 本地地址
+    serverPath: 'http://127.0.0.1:3000/',
+    // 图片服务器
+    // imagePath: 'https://xxx.com/xximg/',
+  }

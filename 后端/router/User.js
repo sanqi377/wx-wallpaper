@@ -38,21 +38,24 @@ router
       body = JSON.parse(body);
       let openid = body.openid;
       let sessionKey=body.session_key;
+      sessionKey=md5(sessionKey);
       openid = md5(openid);
       db.select("*", "user", "openid",openid, (val) => {
         if (!val[0]) {
-          db.insert("openid", openid, "user", (val1) => {
+          db.insert("openid,session_key",`${openid}','${sessionKey}`, "user", (val1) => {
             res.status(200).send({ id: val1.insertId,sessionKey, message: "登录成功" });
           });
         } else {
-          res.status(200).send({ id: val[0].id,sessionKey, message: "登录成功" });
+          db.update(`openid='${openid}'`,`session_key='${sessionKey}'`,'user',(val2)=>{
+            res.status(200).send({ id: val[0].id,sessionKey, message: "登录成功" });
+          });
         }
       });
     });
   })
   // 添加到收藏
   .post("/collect",(req,res)=>{
-    res.send("dasdasd");
+    
   })
 
 module.exports = router;

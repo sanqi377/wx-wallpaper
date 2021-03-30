@@ -1,4 +1,5 @@
 // pages/my/index.js
+import request from "../../utils/request.js"
 Page({
 
   /**
@@ -31,11 +32,13 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success:(res=>{
-        console.log(res);
         this.setData({
           city:res.data.province+','+res.data.city
         })
       })
+    })
+    request({url:"user/collect",method:"POST",}).then(res=>{
+      console.log(res)
     })
   },
 
@@ -43,7 +46,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

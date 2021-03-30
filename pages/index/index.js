@@ -1,4 +1,4 @@
-import url from "../../config/cofig.js"
+import serverPath from "../../config/cofig.js"
 Page({
     data: {
         // 轮播图数据
@@ -150,7 +150,7 @@ Page({
         wx.login({
             success(res) {
                 wx.request({
-                    url: url + 'user/login',
+                    url: serverPath.serverPath + 'user/login',
                     method: 'POST',
                     data: {
                         code: res.code
@@ -164,7 +164,7 @@ Page({
                             data: res.data.id,
                             key: 'userid',
                         })
-                    }
+                    },
                 })
             }
         })
@@ -182,7 +182,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const that=this;
+        const that = this;
         wx.checkSession({
             success() {
                 //session_key 未过期，并且在本生命周期一直有效

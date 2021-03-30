@@ -50,4 +50,15 @@ module.exports = {
             callback(res);
         });
     },
+    // 封装 mysql 更新
+    update: (where, data, table, callback) => {
+        var sql = `update ${table} set ${data} where ${where}`;
+        connection.query(sql, (err, res) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
 };
