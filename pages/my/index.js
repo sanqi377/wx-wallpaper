@@ -37,9 +37,6 @@ Page({
         })
       })
     })
-    request({url:"user/collect",method:"POST",}).then(res=>{
-      console.log(res)
-    })
   },
 
   /**

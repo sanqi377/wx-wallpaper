@@ -18,7 +18,6 @@ module.exports = {
         } else {
             var sql = `select ${field} from ${table} order by id desc`;
         }
-        console.log(sql);
         connection.query(sql, (err, res) => {
             if (err) {
                 console.log(err);
