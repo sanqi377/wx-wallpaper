@@ -32,15 +32,43 @@ Page({
         type: null
     },
 
-    changeTabs: function(e) {
-        if(typeof(e) == "string") {
+    // 进入大图
+    imgInfo: function (e) {
+        let index = e.target.dataset.index;
+        let type = this.data.type;
+        let tabs = this.data.tabs;
+        var value = [];
+        tabs.forEach(val => {
+            if (val.key == type) {
+                (val.value).forEach(val => {
+                    value.push(val)
+                })
+            }
+        })
+        wx.setStorage({
+            key: 'value',
+            data: value,
+            success: function () {
+                wx.navigateTo({
+                    url: '/pages/imgInfo/index?index=' + index,
+                })
+            }
+        })
+    },
+
+    // 切换Tabs事件
+    changeTabs: function (e) {
+        if (typeof (e) == "string") {
             var activeKey = e;
         } else {
             var activeKey = e.detail.activeKey;
         }
+        this.setData({
+            type: activeKey
+        })
         var that = this;
         var value = that.data.tabs;
-        if (activeKey ==  "download") {
+        if (activeKey == "download") {
             var rankapi = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=15&meta=downs";
             var value = that.data.tabs[0].value;
         } else if (activeKey == "new") {

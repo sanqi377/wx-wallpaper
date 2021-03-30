@@ -12,6 +12,11 @@ const request = (params) => {
     })
 }
 
+const app = () => {
+    console.log("这是函数")
+}
+
 module.exports = {
-    request
+    request,
+    app
 }

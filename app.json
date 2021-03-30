@@ -8,7 +8,8 @@
         "pages/classify/index",
         "pages/imgInfo/index",
         "pages/catsInfo/index",
-        "pages/ranking/index"
+        "pages/ranking/index",
+        "pages/tags/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

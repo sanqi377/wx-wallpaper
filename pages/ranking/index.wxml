@@ -4,7 +4,7 @@
         <l-tabpanel tab="{{item.name}}" key="{{item.key}}" slot="{{item.key}}">
             <view class="container">
                 <block wx:for="{{item.value}}">
-                    <image src="{{item}}" />
+                    <image src="{{item}}" bindtap="imgInfo" data-index="{{index}}"/>
                 </block>
             </view>
         </l-tabpanel>
