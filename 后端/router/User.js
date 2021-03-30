@@ -83,8 +83,8 @@ router
     })
  
   })
-  .get("/getcollect",(req,res)=>{
-    const user_id=req.query.userid;
+  .post("/getcollect",(req,res)=>{
+    const user_id=req.body.userid;
     db.query("*","collect",`user_id='${user_id}'`,(val)=>{
       res.status(200).send(val);
     })

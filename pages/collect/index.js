@@ -1,16 +1,33 @@
+const {
+    req
+} = require("../../utils/util")
+
 // pages/collect/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
-    data: {
-    },
+    data: {},
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        wx.getStorage({
+            key: 'userid',
+            success: function (res1) {
+                req({
+                    url: "user/getcollect",
+                    method: "POST",
+                    data: {
+                        "userid": res1.data
+                    }
+                }).then(res2 => {
+                    console.log(res2);
+                })
+            }
+        })
     },
 
     /**
