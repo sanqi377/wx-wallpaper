@@ -84,7 +84,7 @@ Page({
     },
 
     //滑动图片事件
-    slideImg:function(e){
+    slideImg: function (e) {
         this.setData({
             index: e.detail.current
         })
@@ -124,8 +124,8 @@ Page({
     },
 
     // 添加到历史方法
-    addHistory(index){
-    const that=this;
+    addHistory(index) {
+        const that = this;
         wx.getStorage({
             key: 'collect',
             success: (result) => {
@@ -133,7 +133,7 @@ Page({
                 wx.getStorage({
                     key: 'value',
                     success: (result) => {
-                        that.addHis(index,result);
+                        that.addHis(index, result);
                     }
                 })
             },
@@ -141,39 +141,30 @@ Page({
                 wx.getStorage({
                     key: 'value',
                     success: (result) => {
-                        that.addHis(index,result);
+                        that.addHis(index, result);
                     }
                 })
             }
         })
     },
     // 添加用户浏览历史方法
-    addHis(index,result){
-        let index1=app.collect.data.findIndex(item=>{
-            return item===result.data[index];
+    addHis(index, result) {
+        let index1 = app.collect.data.findIndex(item => {
+            return item === result.data[index];
         })
-        if (index1<0) {
+        if (index1 < 0) {
             app.collect.data.unshift(result.data[index]);
             wx.setStorage({
                 data: app.collect.data,
                 key: 'collect',
             })
-            wx.setStorage({
-                data: index,
-                key: 'index',
-            })
-        }else{
-            app.collect.data.splice(index1,1);
+        } else {
+            app.collect.data.splice(index1, 1);
             app.collect.data.unshift(result.data[index]);
             wx.setStorage({
                 data: app.collect.data,
                 key: 'collect',
             })
-            wx.setStorage({
-                data: index,
-                key: 'index',
-            })
-
         }
     },
     /**

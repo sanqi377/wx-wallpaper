@@ -1,0 +1,7 @@
+<view class="container" style="margin-top: 15px;">
+    <view class="content">
+        <block wx:for="{{value}}">
+            <image src="{{item}}" data-index="{{index}}" bindtap="imgInfo" />
+        </block>
+    </view>
+</view>

@@ -28,7 +28,7 @@
         <view class="cat">
             <view class="title">分类</view>
             <view class="main">
-                <view class="item" wx:for="{{cats}}">
+                <view class="item" wx:for="{{cats}}" data-id="{{item.id}}" bindtap="catInfo" >
                     <view>
                         <image src="{{item.cover}}" />
                         <text>{{item.name}}</text>

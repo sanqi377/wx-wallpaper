@@ -37,17 +37,35 @@ Page({
         cats: []
     },
 
+    // 分类点击事件
+    catInfo: function(e) {
+        let catId = e.currentTarget.dataset.id;
+        wx.navigateTo({
+          url: '/pages/catsInfo/index?catid=' + catId,
+        })
+    },
+
+    // 榜单点击事件
     routerRank: function (e) {
         let rankType = e.currentTarget.dataset.key;
         wx.navigateTo({
-          url: '/pages/ranking/index?type=' + rankType,
+            url: '/pages/ranking/index?type=' + rankType,
         })
     },
 
     // 标签点击事件
     imgInfo: function (e) {
-        let id = e.target.dataset.id;
-        console.log(id)
+        var tag = e.target.dataset.id;
+        var data = this.data.tags;
+        var title = null;
+        data.forEach(val => {
+            if (val.id == tag) {
+                title = val.name;
+            }
+        });
+        wx.navigateTo({
+            url: '/pages/tags/index?title=' + title + '&tag=' + tag,
+        })
     },
 
     /**
