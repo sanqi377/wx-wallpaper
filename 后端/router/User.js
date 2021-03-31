@@ -70,7 +70,7 @@ router
         if (!val1[0]) {
           db.insert(
             "image_url,user_id",
-            `${imgurl.src}','${userid}`,
+            `${imgurl}','${userid}`,
             "collect",
             (val2) => {
               res
