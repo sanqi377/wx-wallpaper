@@ -1,0 +1,14 @@
+<view class='modal_box' wx:if="{{isShow}}">
+    <view class='cont_box'>
+        <view class='modal_head'>
+            <image src="/public/ico/task-mn.png"></image>
+        </view>
+        <view class='modal_content'>
+            <slot></slot>
+        </view>
+        <view class='modal_footer'>
+            <text catchtap='_confirmEvent'>{{confirmText }}</text>
+            <text catchtap='_cancelEvent'>{{cancelText }}</text>
+        </view>
+    </view>
+</view>

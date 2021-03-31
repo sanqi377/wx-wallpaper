@@ -12,7 +12,8 @@ Page({
         // 下载成功轻提示
         downloadShow: false,
         // 页面加载轻提示
-        loading: true
+        loading: true,
+        dialog:false
     },
     // 返回上一页
     back: function () {
@@ -43,7 +44,7 @@ Page({
                 wx.$util.req(data).then((res) => {
                     console.log(res)
                 })
-            }
+            },
         })
 
         console.log(img)

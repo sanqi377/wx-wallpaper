@@ -132,7 +132,7 @@ router
                 (val2) => {
                   res
                     .status(200)
-                    .send({ message: "签到成功1", count: val[0].count + 1 });
+                    .send({ message: "签到成功", count: val[0].count + 1 });
                 }
               );
             }
@@ -155,7 +155,7 @@ router
               (val2) => {
                 res
                   .status(200)
-                  .send({ message: "签到成功", count: val[0].count + 1 });
+                  .send({ message: "签到成功", count:1 });
               }
             );
           }
@@ -167,7 +167,12 @@ router
   .post("/getsign",(req,res)=>{
     const user_id=req.body.userid;
     db.query('*',"sign",`user_id='${user_id}'`,(val)=>{
-      res.status(200).send({count:val[0].count});
+      if(val[0]){
+
+        res.status(200).send({count:val[0].count});
+      }else{
+        res.status(200).send({count:0});
+      }
     })
   })
 module.exports = router;

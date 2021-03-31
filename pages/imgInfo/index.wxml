@@ -32,7 +32,7 @@
 
 <l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请打开保存到相册权限" bind:linconfirm="openAuth"
     confirm-color="#fea731" />
-
+<dialog></dialog>
 <l-toast show="{{downloadShow}}" icon="success" title="下载成功" />
 
 <l-toast show="{{loading}}" mask="{{true}}" icon="loading" title="加载中" zIndex="999" />

@@ -12,6 +12,9 @@
         "pages/ranking/index",
         "pages/tags/index"
     ],
+    "usingComponents": {
+        "dialog": "/components/dialog/dialog"
+    },
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#ffffff",
