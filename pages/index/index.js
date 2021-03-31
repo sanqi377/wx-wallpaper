@@ -294,7 +294,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -333,7 +336,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -350,7 +356,10 @@ Page({
                                     let data = result.data;
                                     data.forEach(val => {
                                         val.wallpaper.forEach(val => {
-                                            hotImg.push(val.full);
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
                                         })
                                     });
                                     that.setData({
@@ -377,7 +386,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -394,7 +406,10 @@ Page({
                                     let data = result.data;
                                     data.forEach(val => {
                                         val.wallpaper.forEach(val => {
-                                            hotImg.push(val.full);
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
                                         })
                                     });
                                     that.setData({

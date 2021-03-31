@@ -1,7 +1,7 @@
 <view class="content">
     <swiper circular current="{{index}}" bindchange="slideImg">
         <swiper-item wx:for="{{value}}">
-            <image src="{{item}}" />
+            <image src="{{item.src}}" />
         </swiper-item>
     </swiper>
 </view>
@@ -11,7 +11,7 @@
             <image src="/public/ico/bigimg-back.png" />
             <text>返回</text>
         </view>
-        <view>
+        <view bindtap="collect">
             <image src="/public/ico/bigimg-collect.png" />
             <text>收藏</text>
         </view>

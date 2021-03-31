@@ -23,7 +23,10 @@ Page({
         ],
         type: "jx",
         catId: null,
-        loading: true
+        loading: true,
+        // 页面默认加载页数
+        page: 15,
+        getStatus: true
     },
 
     // 切换 Tabs 事件
@@ -35,27 +38,26 @@ Page({
         }
         this.setData({
             type: activeKey,
+            loading: true
         })
         var that = this;
         var value = that.data.tabs;
         var catId = that.data.catId;
-        value.forEach(val => {
+        var page = this.data.page;
+        value.forEach((val, index) => {
             if (val.key == activeKey) {
                 if (!val.id) {
                     if (val.key == "jx") {
-                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=15&categories=" + catId
-                        var value = val;
+                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page + "&categories=" + catId
                     } else if (val.key == "new") {
-                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=15&categories=" + catId
-                        var value = val;
+                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page + "&categories=" + catId
                     } else {
-                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=15&categories=" + catId
-                        var value = val;
+                        var api = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page + "&categories=" + catId
                     }
                 } else {
-                    var api = "https://wallpaper.zuimeix.com/wp-json/wp/v2/posts?categories=" + val.id
-                    var value = val;
+                    var api = "https://wallpaper.zuimeix.com/wp-json/wp/v2/posts?categories=" + val.id + "&per_page=" + page
                 }
+                var useValue = [];
                 wx.$util.request({
                     url: api
                 }).then(result => {
@@ -63,21 +65,41 @@ Page({
                     data.forEach(val => {
                         let data = val.wallpaper;
                         data.forEach(val => {
-                            value['value'].push(val.full)
+                            let data = {
+                                src: val.full,
+                                show: false,
+                                def: "/public/img/img-default.jpeg"
+                            };
+                            useValue.push(data)
                         })
                     });
-                    let tabs = that.data.tabs
+                    let id = index;
+                    let svalue = 'tabs[' + id + '].value';
                     that.setData({
-                        tabs,
+                        [svalue]: useValue,
                         loading: false
                     })
+                    wx.getSystemInfo({ // 获取页面可视区域的高度
+                        success: (res) => {
+                            this.setData({
+                                height: res.screenHeight
+                            })
+                        },
+                    })
+                    that.showImg()
+                })
+            } else {
+                let value = 'tabs[' + index + '].value';
+                that.setData({
+                    [value]: [],
                 })
             }
+
         });
     },
 
     // 图片点击事件
-    imgInfo: function(e) {
+    imgInfo: function (e) {
         let index = e.currentTarget.dataset.index;
         let type = this.data.type;
         let tabs = this.data.tabs;
@@ -136,6 +158,31 @@ Page({
         }, 1000);
     },
 
+    showImg: function () {
+        let type = this.data.type;
+        let tabs = this.data.tabs;
+        let height = this.data.height;
+        tabs.forEach(val => {
+            if (type == val.key) {
+                let data = val.value;
+                wx.createSelectorQuery().selectAll('.item').boundingClientRect((ret) => {
+                    ret.forEach((item, index) => {
+                        if (item.top <= height) {
+                            data[index].show = true
+                        }
+                    })
+                    this.setData({
+                        tabs
+                    })
+                }).exec()
+            }
+        })
+    },
+
+    onPageScroll: function () { // 滚动事件
+        this.showImg()
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -175,7 +222,24 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        var getStatus = this.data.getStatus;
+        var page = this.data.page;
+        var type = this.data.type;
+        if (getStatus == true) {
+            this.setData({
+                getStatus: false,
+                page: page + 5
+            })
+            setTimeout(() => {
+                this.changeTabs(type);
+            }, 500)
+            this.setData({
+                getStatus: true,
+            })
+            console.log(getStatus, "这里让它请求")
+        } else {
+            console.log(getStatus, "现在不请求")
+        }
     },
 
     /**

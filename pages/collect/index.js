@@ -28,6 +28,10 @@ Page({
                         "userid": res1.data
                     }
                 }).then(res2 => {
+                    wx.setStorage({
+                      data: res2.data,
+                      key: 'coll',
+                    })
                     that.setData({
                         collectImg:res2.data
                     })
@@ -40,7 +44,7 @@ Page({
     getImgInfo:function(e){
         let index = e.target.dataset.index;
         wx.navigateTo({
-            url: '/pages/imgInfo/index?index='+index,
+            url: '/pages/imgInfo/index?index='+index+'&coll='+true,
         })
     },
     /**

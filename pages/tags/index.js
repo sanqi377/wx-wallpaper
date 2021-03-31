@@ -4,7 +4,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-        value: []
+        // 图片内容
+        value: [],
+        // 是否在加载中
+        loading: true,
+        // 内容页数
+        page: 25,
+        // 标签ID
+        tag: null,
+        // 标题
+        title: null,
+        height: null
     },
 
     // 点击图片事件
@@ -15,34 +25,80 @@ Page({
         })
     },
 
+    showImg: function () {
+        var value = this.data.value;
+        var height = this.data.height;
+        wx.createSelectorQuery().selectAll('.item').boundingClientRect((ret) => {
+            console.log(ret)
+            ret.forEach((item, index) => {
+                if (item.top <= height) {
+                    value[index].show = true
+                }
+            })
+            this.setData({
+                value
+            })
+        }).exec()
+    },
+
+    // 加载图片数据
+    getData: function () {
+        var that = this;
+        var value = [];
+        var page = this.data.page;
+        var tag = this.data.tag;
+        var title = this.data.title;
+        wx.setNavigationBarTitle({
+            title: title
+        })
+        wx.$util.request({
+            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page + "&access_token=YzZiNzA1ODVjYjAwYTA2NzQ0MDQwYzlkZTI1MWU3NDQ0NWUyNmEzMDVjNzNiMTk0MGJhMjNjZTVmODZhMWI2Mw&tags=" + tag
+        }).then(result => {
+            let data = result.data;
+            data.forEach(val => {
+                (val.wallpaper).forEach(val1 => {
+                    let data = {
+                        src: val1.full,
+                        show: false,
+                        def: "/public/img/img-default.jpeg"
+                    };
+                    value.push(data)
+                })
+            });
+            that.setData({
+                value,
+                loading: false
+            })
+            wx.setStorage({
+                key: 'value',
+                data: value
+            })
+            wx.getSystemInfo({ // 获取页面可视区域的高度
+                success: (res) => {
+                    this.setData({
+                        height: res.screenHeight
+                    })
+                },
+            })
+            that.showImg();
+        })
+    },
+
+    onPageScroll: function () { // 滚动事件
+        this.showImg()
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         var tag = options.tag;
         var title = options.title;
-        var that = this;
-        var value = [];
-        wx.setNavigationBarTitle({
-            title: title
+        this.setData({
+            tag,
+            title
         })
-        wx.$util.request({
-            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=15&access_token=YzZiNzA1ODVjYjAwYTA2NzQ0MDQwYzlkZTI1MWU3NDQ0NWUyNmEzMDVjNzNiMTk0MGJhMjNjZTVmODZhMWI2Mw&tags=" + tag + "&page=1"
-        }).then(result => {
-            let data = result.data;
-            data.forEach(val => {
-                (val.wallpaper).forEach(val1 => {
-                    value.push(val1.full)
-                })
-            });
-            that.setData({
-                value
-            })
-            wx.setStorage({
-                key: 'value',
-                data: value
-            })
-        })
+        this.getData();
     },
 
     /**
@@ -84,7 +140,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        
     },
 
     /**

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 30/03/2021 15:22:03
+ Date: 31/03/2021 10:23:30
 */
 
 SET NAMES utf8mb4;
@@ -28,15 +28,15 @@ CREATE TABLE `collect`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of collect
 -- ----------------------------
-INSERT INTO `collect` VALUES (1, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193205635.jpeg', 7);
-INSERT INTO `collect` VALUES (2, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193205635.jpeg', 7);
-INSERT INTO `collect` VALUES (3, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193209274.jpeg', 7);
-INSERT INTO `collect` VALUES (4, 'https://cdn.zuimeix.com/wp-content/uploads/2021/03/20210326193213816.jpeg', 7);
+INSERT INTO `collect` VALUES (7, 'https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203741614.jpeg', 10);
+INSERT INTO `collect` VALUES (8, 'https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203741614.jpeg', 10);
+INSERT INTO `collect` VALUES (9, 'https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201031203744108.jpeg', 10);
+INSERT INTO `collect` VALUES (10, 'https://cdn.zuimeix.com/wp-content/uploads/2020/10/20201019195634582.jpeg', 10);
 
 -- ----------------------------
 -- Table structure for integration
@@ -76,12 +76,14 @@ CREATE TABLE `sign`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
+  `last_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sign
 -- ----------------------------
+INSERT INTO `sign` VALUES (5, 10, 2, 1617152116339);
 
 -- ----------------------------
 -- Table structure for sign_log
@@ -89,14 +91,16 @@ CREATE TABLE `sign`  (
 DROP TABLE IF EXISTS `sign_log`;
 CREATE TABLE `sign_log`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sgin_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `sign_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sign_log
 -- ----------------------------
+INSERT INTO `sign_log` VALUES (8, 10, 1617111724538);
+INSERT INTO `sign_log` VALUES (22, 10, 1617152116339);
 
 -- ----------------------------
 -- Table structure for user
@@ -107,11 +111,12 @@ CREATE TABLE `user`  (
   `openid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `session_key` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (7, '5e543256c480ac577d30f76f9120eb74', '5e543256c480ac577d30f76f9120eb74');
+INSERT INTO `user` VALUES (9, '5e543256c480ac577d30f76f9120eb74', '5e543256c480ac577d30f76f9120eb74');
+INSERT INTO `user` VALUES (10, 'afa1d770f5ef23de763f2f85ef923cef', '84a00be7630b7c3419c15aa5895c070c');
 
 SET FOREIGN_KEY_CHECKS = 1;

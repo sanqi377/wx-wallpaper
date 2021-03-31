@@ -19,14 +19,12 @@
     <view class="todayImg">
         <view class="header">
             <view>每日壁纸</view>
-            <view class="yesterday">往日</view>
         </view>
         <view class="content">
             <scroll-view scroll-x="{{true}}" enable-flex="{{true}}">
                 <view wx:for="{{todayImg}}">
                     <image src="{{item}}" data-type="today" data-index="{{index}}" catchtap="ImgInfo" />
                 </view>
-                <!-- <view>昨日壁纸</view> -->
             </scroll-view>
         </view>
     </view>
@@ -39,11 +37,10 @@
                 <l-segment-item tab="最新壁纸" key="new" />
             </l-segment>
         </view>
-        <l-toast show="{{show}}" icon="loading" title="加载中" />
         <view class="hotImg">
             <block wx:for="{{hotImg}}">
                 <l-transition show="{{!show}}">
-                    <image src="{{item}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
+                    <image src="{{item.src}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
                 </l-transition>
             </block>
             <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中"></l-loadmore>
