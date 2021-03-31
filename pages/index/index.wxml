@@ -48,7 +48,10 @@
         </view>
     </view>
 </view>
-<l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请授权登录" bind:linconfirm="openAuth"
+<!-- <l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请授权登录" bind:linconfirm="openAuth"
     confirm-color="#fea731" bind:lincancel="clickCancel" id="my-dialog" />
-<l-dialog type="confirm" confirm-color="#fea731" id="my-dialog1" />
+<l-dialog type="alert" confirm-color="#fea731" id="my-dialog1" /> -->
+<dialog isShow="{{dialogShow}}" id="dialog" bind:confirmEvent="clickSure">
+    为了更好玩的壁纸体验，快去授权登录吧！
+</dialog>
 <tabber></tabber>
