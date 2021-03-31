@@ -4,7 +4,7 @@
             <view class="logo">猫耳壁纸</view>
             <view style="{{scrollTop > 515 ? 'display:none' : 'display:block'}}">
                 <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}"
-                    bg-color="#f4f5f7" shape="circle" />
+                    bg-color="#f4f5f7" shape="circle" bind:linconfirm="clickSearch"/>
             </view>
         </view>
         <view class="swiper" style="margin-top: 270rpx">

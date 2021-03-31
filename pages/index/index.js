@@ -1,4 +1,4 @@
-const app=getApp();
+const app = getApp();
 Page({
     data: {
         // 轮播图数据
@@ -30,7 +30,7 @@ Page({
         dialogShow: false,
     },
 
-    clickSure:function(){
+    clickSure: function () {
         app.sure();
     },
     onPageScroll: function (e) {
@@ -49,6 +49,12 @@ Page({
         })
     },
 
+    //搜索事件
+    clickSearch: function (value) {
+        wx.navigateTo({
+            url: '/pages/search/index?search=' + value.detail.value,
+        })
+    },
     /*
      * 每日壁纸事件
      */
@@ -192,201 +198,201 @@ Page({
                 todayImg,
             });
         })
-},
+    },
 
-/**
- * 生命周期函数--监听页面显示
- */
-onShow: function () {},
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {},
 
-/**
- * 生命周期函数--监听页面隐藏
- */
-onHide: function () {
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
 
-},
+    },
 
-/**
- * 生命周期函数--监听页面卸载
- */
-onUnload: function () {
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
 
-},
+    },
 
-/**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-onPullDownRefresh: function () {
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
 
-},
+    },
 
-/**
- * 页面上拉触底事件的处理函数
- */
-onReachBottom: function () {
-    var that = this;
-    let hotImg = [];
-    wx.getStorage({
-        key: 'page',
-        success: function (res) {
-            wx.getStorage({
-                key: 'type',
-                success: function (result) {
-                    let type = result.data;
-                    let page = res.data + 2;
-                    if (type == "hot") {
-                        if (page <= 90) {
-                            wx.setStorage({
-                                key: 'page',
-                                data: page,
-                                success: function () {
-                                    if (page > 5) {
-                                        that.setData({
-                                            buttomLoad: true
-                                        })
-                                    }
-                                    wx.$util.request({
-                                        url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
-                                    }).then(result => {
-                                        let data = result.data;
-                                        data.forEach(val => {
-                                            val.wallpaper.forEach(val => {
-                                                let data = {
-                                                    src: val.full
-                                                }
-                                                hotImg.push(data);
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+        var that = this;
+        let hotImg = [];
+        wx.getStorage({
+            key: 'page',
+            success: function (res) {
+                wx.getStorage({
+                    key: 'type',
+                    success: function (result) {
+                        let type = result.data;
+                        let page = res.data + 2;
+                        if (type == "hot") {
+                            if (page <= 90) {
+                                wx.setStorage({
+                                    key: 'page',
+                                    data: page,
+                                    success: function () {
+                                        if (page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
                                             })
-                                        });
-                                        that.setData({
-                                            hotImg,
-                                            show: false
-                                        });
-                                    })
-                                }
-                            })
-                        } else {
-                            wx.$util.request({
-                                url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=99"
-                            }).then(result => {
-                                let data = result.data;
-                                data.forEach(val => {
-                                    val.wallpaper.forEach(val => {
-                                        hotImg.push(val.full);
-                                    })
-                                });
-                            })
-                        }
-                    } else if (type == "love") {
-                        if (page <= 90) {
-                            wx.setStorage({
-                                key: 'page',
-                                data: page,
-                                success: function () {
-                                    if (page > 5) {
-                                        that.setData({
-                                            buttomLoad: true
-                                        })
-                                    }
-                                    wx.$util.request({
-                                        url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page
-                                    }).then(result => {
-                                        let data = result.data;
-                                        data.forEach(val => {
-                                            val.wallpaper.forEach(val => {
-                                                let data = {
-                                                    src: val.full
-                                                }
-                                                hotImg.push(data);
-                                            })
-                                        });
-                                        that.setData({
-                                            hotImg,
-                                            show: false
-                                        });
-                                    })
-                                }
-                            })
-                        } else {
-                            wx.$util.request({
-                                url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=99"
-                            }).then(result => {
-                                let data = result.data;
-                                data.forEach(val => {
-                                    val.wallpaper.forEach(val => {
-                                        let data = {
-                                            src: val.full
                                         }
-                                        hotImg.push(data);
-                                    })
-                                });
-                                that.setData({
-                                    hotImg,
-                                    buttom: true
-                                });
-                            })
-                            console.log("到底了")
-                        }
-                    } else {
-                        if (page <= 90) {
-                            wx.setStorage({
-                                key: 'page',
-                                data: page,
-                                success: function () {
-                                    if (page > 5) {
-                                        that.setData({
-                                            buttomLoad: true
+                                        wx.$util.request({
+                                            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page
+                                        }).then(result => {
+                                            let data = result.data;
+                                            data.forEach(val => {
+                                                val.wallpaper.forEach(val => {
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
+                                                })
+                                            });
+                                            that.setData({
+                                                hotImg,
+                                                show: false
+                                            });
                                         })
                                     }
-                                    wx.$util.request({
-                                        url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page
-                                    }).then(result => {
-                                        let data = result.data;
-                                        data.forEach(val => {
-                                            val.wallpaper.forEach(val => {
-                                                let data = {
-                                                    src: val.full
-                                                }
-                                                hotImg.push(data);
+                                })
+                            } else {
+                                wx.$util.request({
+                                    url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=99"
+                                }).then(result => {
+                                    let data = result.data;
+                                    data.forEach(val => {
+                                        val.wallpaper.forEach(val => {
+                                            hotImg.push(val.full);
+                                        })
+                                    });
+                                })
+                            }
+                        } else if (type == "love") {
+                            if (page <= 90) {
+                                wx.setStorage({
+                                    key: 'page',
+                                    data: page,
+                                    success: function () {
+                                        if (page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
                                             })
-                                        });
-                                        that.setData({
-                                            hotImg,
-                                            show: false
-                                        });
-                                    })
-                                }
-                            })
-                        } else {
-                            wx.$util.request({
-                                url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=99"
-                            }).then(result => {
-                                let data = result.data;
-                                data.forEach(val => {
-                                    val.wallpaper.forEach(val => {
-                                        let data = {
-                                            src: val.full
                                         }
-                                        hotImg.push(data);
-                                    })
-                                });
-                                that.setData({
-                                    hotImg,
-                                    buttom: true
-                                });
-                            })
-                            console.log("到底了")
+                                        wx.$util.request({
+                                            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page
+                                        }).then(result => {
+                                            let data = result.data;
+                                            data.forEach(val => {
+                                                val.wallpaper.forEach(val => {
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
+                                                })
+                                            });
+                                            that.setData({
+                                                hotImg,
+                                                show: false
+                                            });
+                                        })
+                                    }
+                                })
+                            } else {
+                                wx.$util.request({
+                                    url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=99"
+                                }).then(result => {
+                                    let data = result.data;
+                                    data.forEach(val => {
+                                        val.wallpaper.forEach(val => {
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
+                                        })
+                                    });
+                                    that.setData({
+                                        hotImg,
+                                        buttom: true
+                                    });
+                                })
+                                console.log("到底了")
+                            }
+                        } else {
+                            if (page <= 90) {
+                                wx.setStorage({
+                                    key: 'page',
+                                    data: page,
+                                    success: function () {
+                                        if (page > 5) {
+                                            that.setData({
+                                                buttomLoad: true
+                                            })
+                                        }
+                                        wx.$util.request({
+                                            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page
+                                        }).then(result => {
+                                            let data = result.data;
+                                            data.forEach(val => {
+                                                val.wallpaper.forEach(val => {
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
+                                                })
+                                            });
+                                            that.setData({
+                                                hotImg,
+                                                show: false
+                                            });
+                                        })
+                                    }
+                                })
+                            } else {
+                                wx.$util.request({
+                                    url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=99"
+                                }).then(result => {
+                                    let data = result.data;
+                                    data.forEach(val => {
+                                        val.wallpaper.forEach(val => {
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
+                                        })
+                                    });
+                                    that.setData({
+                                        hotImg,
+                                        buttom: true
+                                    });
+                                })
+                                console.log("到底了")
+                            }
                         }
                     }
-                }
-            })
-        }
-    })
-},
+                })
+            }
+        })
+    },
 
-/**
- * 用户点击右上角分享
- */
-onShareAppMessage: function () {
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
 
-}
+    }
 })

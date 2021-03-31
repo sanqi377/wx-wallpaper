@@ -34,9 +34,15 @@ Page({
         // 标签数据
         tags: [],
         // 分类数据
-        cats: []
+        cats: [],
     },
 
+    //搜索事件
+    clickSearch:function(value){
+        wx.navigateTo({
+          url: '/pages/search/index?search='+value.detail.value,
+        })
+    },
     // 分类点击事件
     catInfo: function(e) {
         let catId = e.currentTarget.dataset.id;

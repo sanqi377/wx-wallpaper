@@ -1,17 +1,23 @@
 /* pages/collect/index.wxss */
 .history{
     margin-top: 10px;
-    display: flex;
 }
 .history .collect-image{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+}
+.image-box{
+    width: 100%;
+}
+.history .collect-image .image-box::after{
+    display: flex;
+    width: 30%;
 }
 .history image{
     box-sizing: border-box;
-    width: 115px;
-    height: 220px;
+    width: 30%;
     border-radius: 10px;
     margin: 5px 6px;
 }

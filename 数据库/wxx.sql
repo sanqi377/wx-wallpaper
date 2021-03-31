@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 31/03/2021 10:23:30
+ Date: 31/03/2021 16:05:51
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `collect`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of collect
@@ -78,12 +78,13 @@ CREATE TABLE `sign`  (
   `count` int(11) NOT NULL,
   `last_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sign
 -- ----------------------------
 INSERT INTO `sign` VALUES (5, 10, 2, 1617152116339);
+INSERT INTO `sign` VALUES (6, 9, 1, 1617171001266);
 
 -- ----------------------------
 -- Table structure for sign_log
@@ -94,13 +95,14 @@ CREATE TABLE `sign_log`  (
   `user_id` int(11) NOT NULL,
   `sign_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sign_log
 -- ----------------------------
 INSERT INTO `sign_log` VALUES (8, 10, 1617111724538);
 INSERT INTO `sign_log` VALUES (22, 10, 1617152116339);
+INSERT INTO `sign_log` VALUES (23, 9, 1617171001266);
 
 -- ----------------------------
 -- Table structure for user

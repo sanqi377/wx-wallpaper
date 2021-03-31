@@ -1,4 +1,4 @@
-<l-loadmore show="{{collectImg[0]?false:true}}" type="end" end-text="暂时没有内容哦，快去收藏吧！" l-class="end">
+<l-loadmore show="{{collectImg[0]?false:true}}" type="end" end-text="暂时没有你想到的内容哦！" l-class="end">
     <view slot="content">
         <view class="collect">
             <view class="container">
@@ -11,5 +11,6 @@
                 </view>
             </view>
         </view>
+        <l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
     </view>
 </l-loadmore>

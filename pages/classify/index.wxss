@@ -44,7 +44,6 @@
     color: #ffffff;
     border-radius: 8px;
 }
-
 .content .rank view text {
     display: block;
 }

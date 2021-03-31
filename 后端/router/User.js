@@ -3,59 +3,55 @@ const db = require("../config/mysql");
 const md5 = require("md5-node");
 const request = require("request");
 router
-    // 登录接口
-    .post("/login", (req, res) => {
-        const code = req.body.code;
-        const AppId = "wxe9cf93cfd4b2619f";
-        const AppSecret = "f678f2442d0fea6a994a50e914374ad3";
-        if (!code) {
-            res.status(200).send({
-                code: 0,
-                message: "code is null"
-            });
+  // 登录接口
+  .post("/login", (req, res) => {
+    const code = req.body.code;
+    const AppId = "wxe9cf93cfd4b2619f";
+    const AppSecret = "f678f2442d0fea6a994a50e914374ad3";
+    if (!code) {
+      res.status(200).send({
+        code: 0,
+        message: "code is null",
+      });
+    }
+    let loginUrl = `https://api.weixin.qq.com/sns/jscode2session?appid=${AppId}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`;
+    request(loginUrl, (err, res1, body) => {
+      body = JSON.parse(body);
+      let openid = body.openid;
+      let sessionKey = body.session_key;
+      sessionKey = md5(sessionKey);
+      openid = md5(openid);
+      db.select("*", "user", "openid", openid, (val) => {
+        if (!val[0]) {
+          db.insert(
+            "openid,session_key",
+            `${openid}','${sessionKey}`,
+            "user",
+            (val1) => {
+              res.status(200).send({
+                id: val1.insertId,
+                sessionKey,
+                message: "登录成功",
+              });
+            }
+          );
+        } else {
+          db.update(
+            `openid='${openid}'`,
+            `session_key='${sessionKey}'`,
+            "user",
+            (val2) => {
+              res.status(200).send({
+                id: val[0].id,
+                sessionKey,
+                message: "登录成功",
+              });
+            }
+          );
         }
-        let loginUrl = `https://api.weixin.qq.com/sns/jscode2session?appid=${AppId}&secret=${AppSecret}&js_code=${code}&grant_type=authorization_code`;
-        request(loginUrl, (err, res1, body) => {
-            body = JSON.parse(body);
-            let openid = body.openid;
-            let sessionKey = body.session_key;
-            sessionKey = md5(sessionKey);
-            openid = md5(openid);
-            db.select("*", "user", "openid", openid, (val) => {
-                if (!val[0]) {
-                    db.insert(
-                        "openid,session_key",
-                        `${openid}','${sessionKey}`,
-                        "user",
-                        (val1) => {
-                            res
-                                .status(200)
-                                .send({
-                                    id: val1.insertId,
-                                    sessionKey,
-                                    message: "登录成功"
-                                });
-                        }
-                    );
-                } else {
-                    db.update(
-                        `openid='${openid}'`,
-                        `session_key='${sessionKey}'`,
-                        "user",
-                        (val2) => {
-                            res
-                                .status(200)
-                                .send({
-                                    id: val[0].id,
-                                    sessionKey,
-                                    message: "登录成功"
-                                });
-                        }
-                    );
-                }
-            });
-        });
-    })
+      });
+    });
+  })
 
   // 添加到收藏
   .post("/addcollect", (req, res) => {
@@ -98,15 +94,10 @@ router
     db.query("*", "collect", `user_id='${user_id}'`, (val) => {
       let arr = [];
       val.forEach((item) => {
-        arr.push({src:item.image_url});
+        arr.push({ src: item.image_url });
       });
       res.status(200).send({ data: arr });
     });
-  })
-  // 用户取消收藏
-  .post("/delcollect", (req, res) => {
-    const { userid, imgurl } = req.body;
-    
   })
   // 用户签到
   .post("/sign", (req, res) => {
@@ -153,9 +144,7 @@ router
               `${userid}','1','${time}`,
               "sign",
               (val2) => {
-                res
-                  .status(200)
-                  .send({ message: "签到成功", count:1 });
+                res.status(200).send({ message: "签到成功", count: 1 });
               }
             );
           }
@@ -164,15 +153,14 @@ router
     });
   })
   // 获取签到天数
-  .post("/getsign",(req,res)=>{
-    const user_id=req.body.userid;
-    db.query('*',"sign",`user_id='${user_id}'`,(val)=>{
-      if(val[0]){
-
-        res.status(200).send({count:val[0].count});
-      }else{
-        res.status(200).send({count:0});
+  .post("/getsign", (req, res) => {
+    const user_id = req.body.userid;
+    db.query("*", "sign", `user_id='${user_id}'`, (val) => {
+      if (val[0]) {
+        res.status(200).send({ count: val[0].count });
+      } else {
+        res.status(200).send({ count: 0 });
       }
-    })
-  })
+    });
+  });
 module.exports = router;

@@ -7,7 +7,7 @@ Page({
   data: {
     city: '',
     signday: 0,
-    sign:false
+    sign:true
   },
 
 
