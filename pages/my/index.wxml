@@ -20,13 +20,13 @@
 						</view>
 					</button>
 				</view>
-				<view class="main">
+				<view class="main" bindtap="clickSign">
 					<view class="menu-content">
 						<view class="icon">
-							<image mode="widthFix" src="../../public/ico/my-sign.png"></image>
+							<image mode="widthFix" src="{{sign?'/public/ico/my-sign-o.png':'/public/ico/my-sign.png'}}"></image>
 						</view>
 						<view class="text">点击签到</view>
-						<view class="tips">已签到一天</view>
+						<view class="tips">已签到{{signday}}天</view>
 					</view>
 				</view>
 				<view class="main" bindtap="clickTask">
@@ -41,7 +41,7 @@
 			</view>
 			<view class="content">
 				<l-list l-class="l-list" title="我的积分" image="/public/ico/my-jifen.png" />
-				<l-list l-class="l-list" title="消息" image="/public/ico/my-xx.png" />
+				<l-list l-class="l-list" title="我的消息" image="/public/ico/my-xx.png" />
 			</view>
 			<view class="content">
 				<l-list bind:lintap="clickCollect" l-class="l-list" title="我的收藏" image="/public/ico/my-collect.png" />
@@ -57,7 +57,9 @@
 					<l-list l-class="l-list" title="联系客服" image="/public/ico/my-contact.png" />
 				</button>
 				<l-list l-class="l-list" title="清理缓存" image="/public/ico/my-clear.png" />
-				<l-list l-class="l-list" title="关于我们" image="/public/ico/my-we.png" />
+				<navigator url="../about/index">
+					<l-list l-class="l-list" title="关于我们" image="/public/ico/my-we.png" />
+				</navigator>
 			</view>
 		</view>
 	</view>

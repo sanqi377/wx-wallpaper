@@ -51,6 +51,12 @@
                 {
                     "name": "pages/ranking/index",
                     "pathName": "pages/ranking/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/about/index",
+                    "pathName": "pages/about/index",
                     "scene": null
                 }
             ]

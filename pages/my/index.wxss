@@ -40,8 +40,8 @@ l-list:last-child .l-list {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 120px;
-    height: 130px;
+    width: 220rpx;
+    height: 250rpx;
     border-radius: 10px;
     background: #fff;
     box-shadow: 5px 5px 20px #efefef;
@@ -57,6 +57,8 @@ l-list:last-child .l-list {
 }
 
 .menu .main .icon {
+    box-shadow: 5px 10px 10px #efefef;
+    border-radius: 50%;
     width: 45px;
     height: 45px;
 }

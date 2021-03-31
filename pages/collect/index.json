@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "l-loadmore":"/miniprogram_npm/lin-ui/loadmore"
+  },
   "navigationBarTitleText": "我的收藏"
 }

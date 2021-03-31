@@ -1,0 +1,50 @@
+/* pages/about/index.wxss */
+.about .head{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about .head image{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 10px 10px #f6f6f6;
+    margin-bottom: 8px;
+}
+.about .head .title{
+    font-size: 18px;
+}
+.about .head .tips{
+    font-size: 15px;
+    color: #666666;
+    padding: 5px 0;
+}
+.about .head .ver{
+    font-size: 13px;
+}
+.con{
+    margin: 40px 0;
+    box-shadow: 0px 0px 10px #f6f6f6;
+    border-radius: 15px;
+    padding: 0 15px;
+}
+.l-list{
+    min-height: 65px !important;
+}
+.l-list .l-text{
+    padding: 0  15px !important;
+}
+.about .foot{
+    padding: 0 5px;
+    position: fixed;
+    bottom: 20px;
+    font-size: 14px;
+    color: #949596;
+    text-align: center;
+}

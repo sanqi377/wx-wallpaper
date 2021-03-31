@@ -1,9 +1,13 @@
-<view class="history">
-    <view class="container">
-        <view class="collect-image">
-            <block wx:for="{{collectImg}}">
-                <image src="{{item}}" data-type="index" data-index="{{index}}" catchtap="getImgInfo"/>
-            </block>
+<l-loadmore show="{{collectImg[0]?false:true}}" type="end" end-text="没有更多了QAQ" l-class="end">
+    <view slot="content">
+        <view class="history">
+            <view class="container">
+                <view class="collect-image">
+                    <block wx:for="{{collectImg}}">
+                        <image src="{{item}}" data-type="index" data-index="{{index}}" catchtap="getImgInfo" />
+                    </block>
+                </view>
+            </view>
         </view>
     </view>
-</view>
+</l-loadmore>

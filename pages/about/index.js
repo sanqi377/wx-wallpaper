@@ -1,48 +1,20 @@
-const {
-    req
-} = require("../../utils/util")
-
-// pages/collect/index.js
+// pages/about/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        collectImg:[]
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const that=this;
-        let imgArr=[];
-        wx.getStorage({
-            key: 'userid',
-            success: function (res1) {
-                req({
-                    url: "user/getcollect",
-                    method: "POST",
-                    data: {
-                        "userid": res1.data
-                    }
-                }).then(res2 => {
-                    that.setData({
-                        collectImg:res2.data
-                    })
-                })
-            }
-        })
+
     },
 
-    // 点击图片
-    getImgInfo:function(e){
-        let index = e.target.dataset.index;
-        wx.navigateTo({
-            url: '/pages/imgInfo/index?index='+index,
-        })
-    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

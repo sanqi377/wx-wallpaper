@@ -1,0 +1,17 @@
+<view class="about">
+    <view class="container">
+        <view class="head">
+            <image src="/public/ico/t.jpg"></image>
+            <view class="title">猫耳壁纸</view>
+            <view class="tips">超高清全面屏手机壁纸</view>
+            <view class="ver">V1.0.0</view>
+        </view>
+        <view class="con">
+            <l-list l-class="l-list" title="用户协议" />
+            <l-list l-class="l-list" title="隐私政策" />
+        </view>
+        <view class="foot">
+            免责声明：部分内容来源自互联网，如果涉及版权问题，请随时联系告知我们
+        </view>
+    </view>
+</view>
