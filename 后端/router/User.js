@@ -65,7 +65,7 @@ router
     db.query(
       "*",
       "collect",
-      `image_url='${imgurl}' and user_id='${userid}'`,
+      `image_url='${imgurl.src}' and user_id='${userid}'`,
       (val1) => {
         if (!val1[0]) {
           db.insert(
@@ -79,7 +79,17 @@ router
             }
           );
         } else {
-          res.status(200).send({ message: "该用户已收藏当前图片", code: 0 });
+          db.delete(
+            `user_id='${userid}' and image_url='${imgurl.src}'`,
+            "collect",
+            (val) => {
+              if (val.affectedRows > 0) {
+                res.status(200).send({ message: "取消成功", code: 1 });
+              } else {
+                res.status(200).send({ message: "取消失败", code: 0 });
+              }
+            }
+          );
         }
       }
     );
@@ -98,17 +108,7 @@ router
   // 用户取消收藏
   .post("/delcollect", (req, res) => {
     const { userid, imgurl } = req.body;
-    db.delete(
-      `user_id='${userid}' and image_url='${imgurl}'`,
-      "collect",
-      (val) => {
-        if (val.affectedRows > 0) {
-          res.status(200).send({ message: "取消成功", code: 1 });
-        } else {
-          res.status(200).send({ message: "取消失败", code: 0 });
-        }
-      }
-    );
+    
   })
   // 用户签到
   .post("/sign", (req, res) => {

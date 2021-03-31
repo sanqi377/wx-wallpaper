@@ -11,12 +11,12 @@ Component({
         value: '提示'
       },
       // 弹窗确认按钮文字
-      confirmText: {
+      sureText: {
         type: String,
         value: '授权登录',
       },
       // 弹窗取消按钮文字
-      cancelText: {
+      canlText: {
         type: String,
         value: '暂时不用'
       }
