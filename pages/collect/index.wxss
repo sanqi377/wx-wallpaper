@@ -5,11 +5,12 @@
 .collect .collect-image{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
 }
-.collect image{
-    width: 123px;
+.collect .collect-image image{
+    box-sizing: border-box;
+    width: 115px;
     height: 220px;
     border-radius: 10px;
-    margin: 5px 0;
+    margin: 5px 6px;
 }

@@ -126,27 +126,39 @@ Page({
     onLoad: function (options) {
         var that = this;
         let index = options.index;
-        wx.getStorage({
-            key: 'value',
-            success: function (res) {
+        if(options.coll){
+            wx.getStorage({
+              key: 'coll',
+              success:(res=>{
                 that.setData({
                     index: index,
-                    value: res.data,
-                    loading: false
+                    value: res.data
                 })
-            },
-            fail: function () {
-                wx.getStorage({
-                    key: 'collect',
-                    success: function (res) {
-                        that.setData({
-                            index: index,
-                            value: res.data
-                        })
-                    }
-                })
-            }
-        })
+              })
+            })
+        }else{
+            wx.getStorage({
+                key: 'value',
+                success: function (res) {
+                    that.setData({
+                        index: index,
+                        value: res.data,
+                        loading: false
+                    })
+                },
+                fail: function () {
+                    wx.getStorage({
+                        key: 'collect',
+                        success: function (res) {
+                            that.setData({
+                                index: index,
+                                value: res.data
+                            })
+                        }
+                    })
+                },
+            })
+        }
         /*
          * 添加到用户历史界面
          */
@@ -180,7 +192,7 @@ Page({
     // 添加用户浏览历史方法
     addHis(index, result) {
         let index1 = app.collect.data.findIndex(item => {
-            return item === result.data[index];
+            return item.src === result.data[index].src;
         })
         if (index1 < 0) {
             app.collect.data.unshift(result.data[index]);

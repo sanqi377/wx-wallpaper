@@ -60,4 +60,15 @@ module.exports = {
             callback(res);
         });
     },
+    // 封装 mysql 删除
+    delete: (where, table, callback) => {
+        var sql = `delete from ${table} where ${where}`;
+        connection.query(sql, (err, res) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
 };

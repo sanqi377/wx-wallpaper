@@ -5,34 +5,77 @@ Page({
    * 页面的初始数据
    */
   data: {
-    city:''
+    city: '',
+    signday: 0,
+    sign:false
   },
 
 
-  clickTask:function(){
+  clickTask: function () {
     wx.navigateTo({
       url: '../task/index',
     })
   },
-  clickCollect:function(){
+  clickSign: function () {
+    const that = this;
+    wx.getStorage({
+      key: 'userid',
+      success: function (res) {
+        wx.$util.req({
+          url: 'user/sign',
+          method: "POST",
+          data: {
+            userid: res.data
+          }
+        }).then(res => {
+          that.setData({
+            signday: res.count,
+          })
+          that.setData({
+            sign: true,
+          })
+          wx.showToast({
+            title: res.message,
+          })
+        })
+      }
+    })
+  },
+  clickCollect: function () {
     wx.navigateTo({
       url: '../collect/index',
     })
   },
-  clickHistory:function(){
+  clickHistory: function () {
     wx.navigateTo({
       url: '../history/index',
     })
   },
-    /**
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.getStorage({
       key: 'userinfo',
-      success:(res=>{
+      success: (res => {
         this.setData({
-          city:res.data.province+','+res.data.city
+          city: res.data.province + ' ' + res.data.city
+        })
+      })
+    })
+    wx.getStorage({
+      key: 'userid',
+      success: (res => {
+        wx.$util.req({
+          url: "user/getsign",
+          method: "POST",
+          data: {
+            userid: res.data
+          }
+        }).then(res => {
+          this.setData({
+            signday: res.count
+          })
         })
       })
     })
@@ -41,8 +84,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示

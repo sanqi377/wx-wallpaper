@@ -6,6 +6,7 @@
         "pages/my/addposts",
         "pages/task/index",
         "pages/history/index",    
+        "pages/about/index",    
         "pages/collect/index",
         "pages/classify/index",
         "pages/imgInfo/index",

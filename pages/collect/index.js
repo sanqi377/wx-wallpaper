@@ -17,6 +17,7 @@ Page({
      */
     onLoad: function (options) {
         const that=this;
+        let imgArr=[];
         wx.getStorage({
             key: 'userid',
             success: function (res1) {
@@ -27,14 +28,25 @@ Page({
                         "userid": res1.data
                     }
                 }).then(res2 => {
+                    wx.setStorage({
+                      data: res2.data,
+                      key: 'coll',
+                    })
                     that.setData({
-                        collectImg:res2
+                        collectImg:res2.data
                     })
                 })
             }
         })
     },
 
+    // 点击图片
+    getImgInfo:function(e){
+        let index = e.target.dataset.index;
+        wx.navigateTo({
+            url: '/pages/imgInfo/index?index='+index+'&coll='+true,
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
