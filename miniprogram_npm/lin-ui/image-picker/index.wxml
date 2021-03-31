@@ -12,6 +12,6 @@
     <view class="lin-image-picker__item-slot-wrapper">
       <slot/>
     </view>
-    <image src="./image/add.png" class="lin-image-picker__image--add"/>
+    <image src="/public/img/add.png" class="lin-image-picker__image--add"/>
   </view>
 </view>

@@ -51,6 +51,18 @@
                 {
                     "name": "pages/ranking/index",
                     "pathName": "pages/ranking/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my/posts",
+                    "pathName": "pages/my/posts",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/my/addposts",
+                    "pathName": "pages/my/addposts",
                     "scene": null
                 }
             ]

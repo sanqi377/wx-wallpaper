@@ -2,6 +2,8 @@ const router = require("express").Router();
 const db = require("../config/mysql");
 const md5 = require("md5-node");
 const request = require("request");
+const axios = require("axios");
+const FormData = require("form-data");
 router
     // 登录接口
     .post("/login", (req, res) => {

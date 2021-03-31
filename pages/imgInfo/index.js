@@ -76,7 +76,7 @@ Page({
         var that = this;
         value.forEach((val, ixd) => {
             if (ixd == index) {
-                imgSrc = val;
+                imgSrc = val.src;
             }
         })
         wx.downloadFile({

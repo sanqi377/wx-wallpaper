@@ -1,0 +1,16 @@
+.lin-image-picker__container {
+    margin-top: 15px;
+}
+
+.lin-image-picker__item {
+    background: #f8f8f8 !important;
+    height: 260px !important;
+    width: 120px !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+}
+
+.lin-image-picker__image {
+    border: 0 !important;
+    border-radius: 10px !important;
+}

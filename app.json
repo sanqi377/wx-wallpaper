@@ -2,6 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/my/index",
+        "pages/my/posts",
+        "pages/my/addposts",
         "pages/task/index",
         "pages/history/index",    
         "pages/collect/index",
