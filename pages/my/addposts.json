@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "l-image-picker": "/miniprogram_npm/lin-ui/image-picker",
+        "l-button": "/miniprogram_npm/lin-ui/button",
+        "l-toast": "/miniprogram_npm/lin-ui/toast"
+    }
+}

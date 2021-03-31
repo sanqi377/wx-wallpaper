@@ -13,11 +13,111 @@ Page({
         downloadShow: false,
         // 页面加载轻提示
         loading: true,
-        dialog:false
+        dialog: false,
+        tuShow: false,
+        posterInfo: {
+            width: null,
+            height: null
+        }
     },
+
     // 返回上一页
     back: function () {
         wx.navigateBack();
+    },
+
+    // 海报分享
+    poster: function () {
+        let index = this.data.index;
+        let value = this.data.value;
+        var img = null;
+        var that = this;
+        value.forEach((val, idx) => {
+            if (index == idx) {
+                img = val;
+            }
+        })
+
+        // 获取屏幕宽度
+        wx.getSystemInfo({
+            success: function (data) {
+                var screenWidth = data.windowWidth;
+                var screenHeight = data.windowHeight;
+                var posterInfo = {
+                    'width': screenWidth * 2,
+                    'height': screenHeight * 2
+                };
+                that.setData({
+                    posterInfo
+                })
+                wx.downloadFile({
+                    url: img.src,
+                    success(res) {
+                        if (res.statusCode === 200) {
+                            let fileSrc = res.tempFilePath;
+                            const ctx = wx.createCanvasContext('myCanvas');
+                            // 背景图片
+                            ctx.drawImage(fileSrc, 0, 0, (posterInfo.width - posterInfo.width / 6), (posterInfo.height - posterInfo.height / 4));
+                            // 底部白色矩形
+                            ctx.fillStyle = '#fff';
+                            ctx.fillRect(0, (posterInfo.height - posterInfo.height / 4) - (posterInfo.height / 8), (posterInfo.width - posterInfo.width / 6), ((posterInfo.height / 8)))
+
+
+                            // console.log((posterInfo.height - posterInfo.height / 4) - (posterInfo.height / 8))
+
+                            console.log((posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 65 / 30) / 20))
+
+                            console.log((posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 35 / 30) / 20))
+
+                            // console.log(((posterInfo.height / 8) / 2))
+                            // // 底部文字
+                            ctx.setFontSize(30)
+                            ctx.setFillStyle('#000000')
+                            ctx.fillText('超高清全面屏手机壁纸', 215, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 65 / 30) / 20))
+                            ctx.setFontSize(25)
+                            ctx.setFillStyle('#727272')
+                            ctx.fillText('长按识别小程序码，看更多精选壁纸', 215, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 35 / 30) / 20))
+
+                            ctx.draw(false, function () {
+                                wx.canvasToTempFilePath({
+                                    x: 0,
+                                    y: 0,
+                                    width: (posterInfo.width - posterInfo.width / 6),
+                                    height: (posterInfo.height - posterInfo.height / 4),
+                                    destWidth: (posterInfo.width - posterInfo.width / 6),
+                                    destHeight: (posterInfo.height - posterInfo.height / 4),
+                                    canvasId: 'myCanvas',
+                                    success(res) {
+                                        wx.saveImageToPhotosAlbum({
+                                            filePath: res.tempFilePath,
+                                            success() {
+                                                setTimeout(() => {
+                                                    that.setData({
+                                                        tuShow: false
+                                                    })
+                                                }, 500)
+                                            },
+                                            fail: function () {
+                                                setTimeout(() => {
+                                                    that.setData({
+                                                        tuShow: false
+                                                    })
+                                                }, 500)
+                                            }
+                                        })
+                                    }
+                                })
+                            })
+
+                            that.setData({
+                                tuShow: true
+                            })
+                        }
+                    }
+                })
+            }
+        })
+
     },
 
     // 点击收藏
@@ -76,7 +176,7 @@ Page({
         var that = this;
         value.forEach((val, ixd) => {
             if (ixd == index) {
-                imgSrc = val;
+                imgSrc = val.src;
             }
         })
         wx.downloadFile({
@@ -126,17 +226,17 @@ Page({
     onLoad: function (options) {
         var that = this;
         let index = options.index;
-        if(options.coll){
+        if (options.coll) {
             wx.getStorage({
-              key: 'coll',
-              success:(res=>{
-                that.setData({
-                    index: index,
-                    value: res.data
+                key: 'coll',
+                success: (res => {
+                    that.setData({
+                        index: index,
+                        value: res.data
+                    })
                 })
-              })
             })
-        }else{
+        } else {
             wx.getStorage({
                 key: 'value',
                 success: function (res) {

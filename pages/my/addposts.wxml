@@ -1,0 +1,6 @@
+<view class="container">
+    <l-image-picker count="3" bind:linchange="onChangeTap" />
+    <l-button type="default" bindtap="submit">发布</l-button>
+</view>
+
+<l-toast show="{{loading}}" mask="{{true}}" icon="loading" title="正在上传" />
