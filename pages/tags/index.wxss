@@ -2,11 +2,34 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.content::after {
+    content: "";
+    display: flex;
+    width: 30%;
+}
+
+.content .item {
+    width: 30%;
 }
 
 .content image {
-    width: 30%;
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 15px;
     border-radius: 10px;
+}
+
+.container {
+    margin-bottom: 0;
+}
+
+image {
+    transition: all .3s ease;
+    opacity: 0;
+}
+
+.active {
+    opacity: 1;
 }

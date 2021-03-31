@@ -237,7 +237,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+
     },
 
     /**
@@ -292,7 +292,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -331,7 +334,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -348,7 +354,10 @@ Page({
                                     let data = result.data;
                                     data.forEach(val => {
                                         val.wallpaper.forEach(val => {
-                                            hotImg.push(val.full);
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
                                         })
                                     });
                                     that.setData({
@@ -375,7 +384,10 @@ Page({
                                             let data = result.data;
                                             data.forEach(val => {
                                                 val.wallpaper.forEach(val => {
-                                                    hotImg.push(val.full);
+                                                    let data = {
+                                                        src: val.full
+                                                    }
+                                                    hotImg.push(data);
                                                 })
                                             });
                                             that.setData({
@@ -392,7 +404,10 @@ Page({
                                     let data = result.data;
                                     data.forEach(val => {
                                         val.wallpaper.forEach(val => {
-                                            hotImg.push(val.full);
+                                            let data = {
+                                                src: val.full
+                                            }
+                                            hotImg.push(data);
                                         })
                                     });
                                     that.setData({

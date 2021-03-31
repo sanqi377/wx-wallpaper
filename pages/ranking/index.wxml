@@ -1,15 +1,21 @@
-<l-tabs bind:linchange="changeTabs" animated="{{true}}" animated-for-line="{{true}}" active-color="#f1d15d"
-    active-key="{{type}}">
+<l-tabs bind:linchange="changeTabs" animated="{{true}}" animated-for-line="{{true}}" active-key="{{type}}"
+    l-header-class="tabs">
     <block wx:for="{{tabs}}">
         <l-tabpanel tab="{{item.name}}" key="{{item.key}}" slot="{{item.key}}">
-            <view class="container">
-                <block wx:for="{{item.value}}">
-                    <image src="{{item}}" bindtap="imgInfo" data-index="{{index}}"/>
-                </block>
+            <view style="margin: 0 15px">
+                <view class="container">
+                    <view wx:for="{{item.value}}" class="item item-{{index}}">
+                        <image class="{{item.show ? 'active': ''}}" src="{{item.show ? item.src : item.def}}"
+                            bindtap="imgInfo" data-index="{{index}}" />
+                    </view>
+                </view>
             </view>
         </l-tabpanel>
     </block>
 </l-tabs>
 
-<!-- 加载中提示 -->
-<l-toast show="{{loading}}" icon="loading" title="加载中" zIndex="9999" mask="{{true}}" />
+<!-- 页底加载完提示 -->
+<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
+
+<!-- 页底加载完提示 -->
+<l-loadmore show="{{false}}" line="{{true}}" type="end" end-text="被你看光了啦" />

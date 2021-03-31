@@ -1,8 +1,9 @@
 {
-  "usingComponents": {
-    "l-toast": "/miniprogram_npm/lin-ui/toast/index",
-    "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
-    "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index"
-  },
-  "navigationBarTitleText": "排行榜"
+    "usingComponents": {
+        "l-toast": "/miniprogram_npm/lin-ui/toast/index",
+        "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
+        "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
+        "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
+    },
+    "navigationBarTitleText": "排行榜"
 }

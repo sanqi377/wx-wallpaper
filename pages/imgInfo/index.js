@@ -19,6 +19,36 @@ Page({
         wx.navigateBack();
     },
 
+    // 点击收藏
+    collect: function () {
+        let index = this.data.index;
+        let value = this.data.value;
+        var img = null;
+        value.forEach((val, idx) => {
+            if (index == idx) {
+                img = val;
+            }
+        })
+        wx.getStorage({
+            key: 'userid',
+            success: function (res) {
+                let data = {
+                    data: {
+                        imgurl: img,
+                        userid: res.data
+                    },
+                    method: 'POST',
+                    url: 'user/addcollect'
+                }
+                wx.$util.req(data).then((res) => {
+                    console.log(res)
+                })
+            }
+        })
+
+        console.log(img)
+    },
+
     // 弹出权限获取界面
     openAuth: function () {
         var that = this;
