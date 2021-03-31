@@ -30,6 +30,7 @@ Page({
                 img = val;
             }
         })
+        console.log(img);
         wx.getStorage({
             key: 'userid',
             success: function (res) {
@@ -46,8 +47,6 @@ Page({
                 })
             },
         })
-
-        console.log(img)
     },
 
     // 弹出权限获取界面
