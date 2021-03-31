@@ -16,6 +16,27 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+       
+    },
+
+    // 点击图片
+    getImgInfo:function(e){
+        let index = e.target.dataset.index;
+        wx.navigateTo({
+            url: '/pages/imgInfo/index?index='+index+'&coll='+true,
+        })
+    },
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
         const that=this;
         let imgArr=[];
         wx.getStorage({
@@ -38,27 +59,6 @@ Page({
                 })
             }
         })
-    },
-
-    // 点击图片
-    getImgInfo:function(e){
-        let index = e.target.dataset.index;
-        wx.navigateTo({
-            url: '/pages/imgInfo/index?index='+index+'&coll='+true,
-        })
-    },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
     },
 
     /**
