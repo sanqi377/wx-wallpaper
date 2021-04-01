@@ -1,8 +1,9 @@
-const axios =require("axios");
+const axios = require("axios");
 
-module.exports = class api{
-    mm(){
-
-    }
+function mm() {
+    return 1;
 }
 
+module.exports = {
+    mm,
+};
