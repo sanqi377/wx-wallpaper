@@ -18,7 +18,9 @@ Page({
         posterInfo: {
             width: null,
             height: null
-        }
+        },
+        hbLoading: false,
+        hbImg: null
     },
 
     // 返回上一页
@@ -32,6 +34,9 @@ Page({
         let value = this.data.value;
         var img = null;
         var that = this;
+        that.setData({
+            hbLoading: true
+        })
         value.forEach((val, idx) => {
             if (index == idx) {
                 img = val;
@@ -44,8 +49,8 @@ Page({
                 var screenWidth = data.windowWidth;
                 var screenHeight = data.windowHeight;
                 var posterInfo = {
-                    'width': screenWidth * 2,
-                    'height': screenHeight * 2
+                    'width': screenWidth,
+                    'height': screenHeight
                 };
                 that.setData({
                     posterInfo
@@ -58,56 +63,50 @@ Page({
                             const ctx = wx.createCanvasContext('myCanvas');
                             // 背景图片
                             ctx.drawImage(fileSrc, 0, 0, (posterInfo.width - posterInfo.width / 6), (posterInfo.height - posterInfo.height / 4));
+
                             // 底部白色矩形
                             ctx.fillStyle = '#fff';
                             ctx.fillRect(0, (posterInfo.height - posterInfo.height / 4) - (posterInfo.height / 8), (posterInfo.width - posterInfo.width / 6), ((posterInfo.height / 8)))
 
-
-                            // console.log((posterInfo.height - posterInfo.height / 4) - (posterInfo.height / 8))
-
-                            console.log((posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 65 / 30) / 20))
-
-                            console.log((posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 35 / 30) / 20))
-
-                            // console.log(((posterInfo.height / 8) / 2))
-                            // // 底部文字
-                            ctx.setFontSize(30)
+                            // 底部文字
+                            ctx.setFontSize(16)
                             ctx.setFillStyle('#000000')
-                            ctx.fillText('超高清全面屏手机壁纸', 215, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 65 / 30) / 20))
-                            ctx.setFontSize(25)
+                            ctx.fillText('超高清全面屏手机壁纸', (posterInfo.width - posterInfo.width / 6) / 4, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 58 / 30) / 20))
+                            ctx.setFontSize(14)
                             ctx.setFillStyle('#727272')
-                            ctx.fillText('长按识别小程序码，看更多精选壁纸', 215, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 35 / 30) / 20))
+                            ctx.fillText('长按识别小程序码，看更多精选壁纸', (posterInfo.width - posterInfo.width / 6) / 4, (posterInfo.height - posterInfo.height / 8) - (posterInfo.height / 10) - ((posterInfo.height * 35 / 30) / 20))
 
-                            ctx.draw(false, function () {
+                            // 二维码图片
+                            ctx.drawImage('/public/img/ewm.jpg', 10, (posterInfo.height - posterInfo.height / 10) - (posterInfo.height / 10) - ((posterInfo.height * 61.5 / 30) / 13.5), (posterInfo.width - posterInfo.width / 6) / 5, (posterInfo.width - posterInfo.width / 6) / 5);
+
+                            ctx.draw();
+
+                            setTimeout(function () {
                                 wx.canvasToTempFilePath({
                                     x: 0,
                                     y: 0,
                                     width: (posterInfo.width - posterInfo.width / 6),
                                     height: (posterInfo.height - posterInfo.height / 4),
-                                    destWidth: (posterInfo.width - posterInfo.width / 6),
-                                    destHeight: (posterInfo.height - posterInfo.height / 4),
+                                    destWidth: (posterInfo.width - posterInfo.width / 6) * 2,
+                                    destHeight: (posterInfo.height - posterInfo.height / 4) * 2,
                                     canvasId: 'myCanvas',
                                     success(res) {
-                                        wx.saveImageToPhotosAlbum({
-                                            filePath: res.tempFilePath,
-                                            success() {
-                                                setTimeout(() => {
-                                                    that.setData({
-                                                        tuShow: false
-                                                    })
-                                                }, 500)
-                                            },
-                                            fail: function () {
-                                                setTimeout(() => {
-                                                    that.setData({
-                                                        tuShow: false
-                                                    })
-                                                }, 500)
+                                        var tempFilePath = res.tempFilePath;
+                                        that.setData({
+                                            hbImg: tempFilePath
+                                        })
+                                        wx.previewImage({
+                                            current: that.data.hbImg,
+                                            urls: [that.data.hbImg],
+                                            success: function () {
+                                                that.setData({
+                                                    hbLoading: true,
+                                                })
                                             }
                                         })
                                     }
                                 })
-                            })
+                            }, 500);
 
                             that.setData({
                                 tuShow: true
@@ -117,7 +116,6 @@ Page({
                 })
             }
         })
-
     },
 
     // 点击收藏
