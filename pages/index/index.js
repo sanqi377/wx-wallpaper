@@ -171,20 +171,6 @@ Page({
      */
     onReady: function () {
         var that = this;
-        wx.setStorage({
-            key: 'type',
-            data: 'hot',
-            success: function () {
-                wx.setStorage({
-                    key: 'page',
-                    data: 3,
-                    success: function () {
-                        that.onReachBottom();
-                    }
-                })
-            }
-        })
-
         // 获取每日壁纸
         let todayImg = []
         wx.$util.request({
@@ -203,7 +189,22 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
+    onShow: function () {
+        var that = this;
+        wx.setStorage({
+            key: 'type',
+            data: 'love',
+            success: function () {
+                wx.setStorage({
+                    key: 'page',
+                    data: 3,
+                    success: function () {
+                        that.onReachBottom();
+                    }
+                })
+            }
+        })
+    },
 
     /**
      * 生命周期函数--监听页面隐藏
@@ -293,8 +294,11 @@ Page({
                                                 buttomLoad: true
                                             })
                                         }
+                                        that.setData({
+                                            hotImg: []
+                                        })
                                         wx.$util.request({
-                                            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page
+                                            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?orderby=rand&per_page=" + page + "&time=" + new Date().getTime()
                                         }).then(result => {
                                             let data = result.data;
                                             data.forEach(val => {

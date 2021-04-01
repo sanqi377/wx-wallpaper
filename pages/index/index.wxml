@@ -31,7 +31,7 @@
     <view class="main">
         <view class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}">
             <l-segment bind:linchange="changeTabs" l-inactive-class="tabs_default" l-active-class="tabs_active"
-                has-line="{{false}}">
+                has-line="{{false}}" active-key="love">
                 <l-segment-item tab="热门壁纸" key="hot" />
                 <l-segment-item tab="猜你喜欢" key="love" />
                 <l-segment-item tab="最新壁纸" key="new" />
