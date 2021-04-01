@@ -77,6 +77,17 @@ Page({
             signday: res.count
           })
         })
+        wx.$util.req({
+          url: "user/getsigns",
+          method: "POST",
+          data: {
+            userid: res.data
+          }
+        }).then(res => {
+          this.setData({
+            sign: !res.status
+          })
+        })
       })
     })
   },
