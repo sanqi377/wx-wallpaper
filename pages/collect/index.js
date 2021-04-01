@@ -9,22 +9,23 @@ Page({
      * 页面的初始数据
      */
     data: {
-        collectImg:[],
-        loading:true
+        collectImg: [],
+        loading: true,
+        end: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-       
+
     },
 
     // 点击图片
-    getImgInfo:function(e){
+    getImgInfo: function (e) {
         let index = e.target.dataset.index;
         wx.navigateTo({
-            url: '/pages/imgInfo/index?index='+index+'&coll='+true,
+            url: '/pages/imgInfo/index?index=' + index + '&coll=' + true,
         })
     },
     /**
@@ -38,8 +39,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        const that=this;
-        let imgArr=[];
+        const that = this;
+        let imgArr = [];
         wx.getStorage({
             key: 'userid',
             success: function (res1) {
@@ -51,11 +52,13 @@ Page({
                     }
                 }).then(res2 => {
                     wx.setStorage({
-                      data: res2.data,
-                      key: 'coll',
+                        data: res2.data,
+                        key: 'coll',
                     })
                     that.setData({
-                        collectImg:res2.data
+                        collectImg: res2.data,
+                        loading: false,
+                        end: true
                     })
                 })
             }

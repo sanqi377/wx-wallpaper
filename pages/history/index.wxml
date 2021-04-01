@@ -1,15 +1,11 @@
-<l-loadmore show="{{collectImg[0]?false:true}}" type="end" end-text="没有更多了QAQ" l-class="end">
-    <view slot="content">
-        <view class="history">
-            <view class="container">
-                <view class="collect-image">
-                    <view class="image-box">
-                        <block wx:for="{{collectImg}}">
-                            <image src="{{item.src}}" data-type="index" data-index="{{index}}" catchtap="getImgInfo" />
-                        </block>
-                    </view>
-                </view>
-            </view>
+<view class="container" style="margin-top: 15px;">
+    <view class="content">
+        <view wx:for="{{collectImg}}" class="item">
+            <image src="{{item.src}}" bindtap="getImgInfo"
+                data-index="{{index}}" />
         </view>
     </view>
-</l-loadmore>
+</view>
+
+<!-- 页底加载完提示 -->
+<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />

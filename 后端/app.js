@@ -2,7 +2,7 @@ const express = require("express");
 
 const userRouter = require("./router/User");
 
-const classRouter = require("./router/Class");
+const apiRouter = require("./router/Api");
 
 const md5 = require("md5-node");
 
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
 app.use("/user", userRouter);
 
-app.use("/class", classRouter);
+app.use("/api", apiRouter);
 
 app.listen(3000, () => {
   console.log("网站服务器已启动");

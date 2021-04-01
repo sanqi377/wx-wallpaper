@@ -1,23 +1,35 @@
-/* pages/search/index.wxss *//* pages/collect/index.wxss */
-.collect{
-    margin-top: 10px;
-}
-.collect .collect-image{
+.content {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    width: 100%;
     justify-content: space-between;
 }
-.collect .collect-image .image-box::after{
+
+.content::after {
+    content: "";
     display: flex;
     width: 30%;
 }
-.collect .collect-image image{
-    box-sizing: border-box;
+
+.content .item {
     width: 30%;
-    border-radius: 10rpx;
-    margin: 10rpx;
 }
-.image-box{
+
+.content image {
     width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.container {
+    margin-bottom: 0;
+}
+
+image {
+    transition: all .3s ease;
+    opacity: 1;
+}
+
+.active {
+    opacity: 1;
 }

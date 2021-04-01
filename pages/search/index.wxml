@@ -1,16 +1,11 @@
-<l-loadmore show="{{collectImg[0]?false:true}}" type="end" end-text="暂时没有你想到的内容哦！" l-class="end">
-    <view slot="content">
-        <view class="collect">
-            <view class="container">
-                <view class="collect-image">
-                    <view class="image-box">
-                        <block wx:for="{{collectImg}}">
-                            <image src="{{item.src}}" data-index="{{index}}" catchtap="getImgInfo" />
-                        </block>
-                    </view>
-                </view>
-            </view>
+<view class="container" style="margin-top: 15px;">
+    <view class="content">
+        <view wx:for="{{value}}" class="item item-{{index}}">
+            <image class="{{item.show ? 'active': ''}}" src="{{item.show ? item.src : item.def}}" bindtap="imgInfo"
+                data-index="{{index}}" />
         </view>
-        <l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
     </view>
-</l-loadmore>
+</view>
+
+<!-- 页底加载完提示 -->
+<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
