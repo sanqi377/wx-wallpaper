@@ -12,15 +12,15 @@ const grandMaster = async function (req) {
   switch (type) {
     //   最热
     case "hot":
-      url = Mpurl + `posts?custom=most&per_page=${page * 2}`;
+      url = Mpurl + `posts?custom=most&per_page=${page * 6}&page=${page}`;
       break;
     // 最新
     case "new":
-      url += Mpurl + `posts?custom=rand&per_page=${page * 2}`;
+      url += Mpurl + `posts?custom=rand&per_page=${page * 6}&page=${page}`;
       break;
     // 随机
     case "rank":
-      url = Mpurl + `posts?orderby=rand&per_page=${page * 2}`;
+      url = Mpurl + `posts?orderby=rand&per_page=${page * 6}&page=${page}`;
       break;
     // 所有标签
     case "alltags":
@@ -40,25 +40,25 @@ const grandMaster = async function (req) {
       break;
     // 分类最新
     case "newcats":
-      url = Wpurl + `posts?categories=1&per_page=${page * 9}`;
+      url = Wpurl + `posts?categories=1&per_page=${page * 9}&page=${page}`;
       break;
     // 分类热门
     case "hotcats":
       url =
-        Mpurl + `posts?custom=most&per_page=${page * 9}&categories=${cats}`;
+        Mpurl + `posts?custom=most&per_page=${page * 9}&categories=${cats}&page=${page}`;
       break;
     // 分类精选
     case "bccats":
       url =
-        Mpurl + `posts?custom=rand&per_page=${page * 9}&categories=${cats}`;
+        Mpurl + `posts?custom=rand&per_page=${page * 9}&categories=${cats}&page=${page}`;
       break;
     // 下载榜
     case "down":
-      url = Mpurl + `posts?custom=most&per_page=${page * 2}&meta=downs`;
+      url = Mpurl + `posts?custom=most&per_page=${page * 6}&meta=downs&page=${page}`;
       break;
     // 收藏榜
     case "collect":
-      url = Mpurl + `posts?custom=most&per_page=${page*2}&meta=favs`;
+      url = Mpurl + `posts?custom=most&per_page=${page*6}&meta=favs&page=${page}`;
       break;
   }
   console.log(url);
