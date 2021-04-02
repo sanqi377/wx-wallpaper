@@ -7,7 +7,7 @@ Page({
     data: {
         // 排行榜数据
         rank: [{
-                key: "download",
+                key: "down",
                 name: "下载榜",
                 class: "download",
                 ename: "Top download"

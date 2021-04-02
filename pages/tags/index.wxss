@@ -24,12 +24,3 @@
 .container {
     margin-bottom: 0;
 }
-
-image {
-    transition: all .3s ease;
-    opacity: 0;
-}
-
-.active {
-    opacity: 1;
-}

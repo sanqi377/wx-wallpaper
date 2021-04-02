@@ -30,10 +30,6 @@
     </view>
 </view>
 
-<view class="hb">
-    <image src="{{hbImg}}" />
-</view>
-
 <canvas style="{{hbLoading ? 'top:-10000px;' : ''}}{{tuShow ? '' : 'top:-10000px;'}}width:{{posterInfo.width - posterInfo.width / 6}}px;height:{{posterInfo.height - posterInfo.height / 4}}px;transform: translate(-{{(posterInfo.width - posterInfo.width / 6) / 2}}px, -{{(posterInfo.height - posterInfo.height / 4) / 2}}px);" canvas-id="myCanvas" class="poster"></canvas>
 
 <l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请打开保存到相册权限" bind:linconfirm="openAuth"

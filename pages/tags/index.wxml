@@ -1,11 +1,11 @@
 <view class="container" style="margin-top: 15px;">
     <view class="content">
         <view wx:for="{{value}}" class="item item-{{index}}">
-            <image class="{{item.show ? 'active': ''}}" src="{{item.show ? item.src : item.def}}" bindtap="imgInfo"
+            <image src="{{item.src}}" bindtap="imgInfo"
                 data-index="{{index}}" />
         </view>
     </view>
 </view>
 
-<!-- 页底加载完提示 -->
-<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
+<!-- 页底加载中提示 -->
+<l-loadmore show="{{loading}}" type="loading" loading-text="加载中" />

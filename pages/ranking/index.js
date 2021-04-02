@@ -10,7 +10,7 @@ Page({
         tabs: [
             {
                 id: 0,
-                key: "download",
+                key: "down",
                 name: "下载榜",
                 value: []
             },
@@ -38,7 +38,7 @@ Page({
         // 页面显示高度
         height: null,
         // 页面默认加载页数
-        page: 15,
+        page: 5,
         getStatus: true
     },
 
@@ -78,84 +78,44 @@ Page({
             type: activeKey
         })
         var that = this;
-        var value = that.data.tabs;
+        var tabs = that.data.tabs;
         var page = that.data.page;
-        if (activeKey == "download") {
-            var rankapi = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page + "&meta=downs";
-        } else if (activeKey == "new") {
-            var rankapi = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=meta&date=year&per_page=" + page;
-        } else if (activeKey == "collect") {
-            var rankapi = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page + "&meta=favs";
-        } else {
-            var rankapi = "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?custom=most&per_page=" + page;
-        }
+        var type = activeKey;
         var useValue = [];
-        wx.$util.request({
-            url: rankapi
-        }).then(result => {
-            let data = result.data;
-            value.forEach((val, index) => {
+        wx.$util.req({
+            data: {
+                type: type,
+                page: page
+            },
+            method: "POST",
+            url: "api/gm"
+        }).then((res) => {
+            tabs.forEach((val, index) => {
                 if (val.id == index) {
                     if (val.key == activeKey) {
-                        data.forEach(val => {
-                            let data = val.wallpaper;
-                            data.forEach(val => {
-                                let data = {
-                                    src: val.full,
-                                    show: false,
-                                    def: "/public/img/img-default.jpeg"
-                                };
-                                useValue.push(data)
-                            })
-                        });
-                        let id = val.id;
-                        let value = 'tabs[' + id + '].value';
+                        let data = res.data;
+                        data.forEach(val1 => {
+                            let data = {
+                                src: val1.src,
+                            };
+                            useValue.push(data);
+                        })
+                        let value = 'tabs[' + val.id + '].value';
                         that.setData({
                             [value]: useValue,
                             loading: false
                         })
-                    } else {
-                        let value = 'tabs[' + val.id + '].value';
-                        that.setData({
-                            [value]: [],
-                        })
                     }
                 }
             })
-            wx.getSystemInfo({ // 获取页面可视区域的高度
-                success: (res) => {
-                    this.setData({
-                        height: res.screenHeight
-                    })
-                },
+            that.setData({
+                getStatus: true,
             })
-            that.showImg(activeKey)
-        })
-    },
-
-    showImg: function (rankType) {
-        let tabs = this.data.tabs;
-        let height = this.data.height;
-        tabs.forEach(val => {
-            if (rankType == val.key) {
-                let data = val.value;
-                wx.createSelectorQuery().selectAll('.item').boundingClientRect((ret) => {
-                    ret.forEach((item, index) => {
-                        if (item.top <= height) {
-                            data[index].show = true
-                        }
-                    })
-                    this.setData({
-                        tabs
-                    })
-                }).exec()
-            }
         })
     },
 
     onPageScroll: function () { // 滚动事件
-        let type = this.data.type;
-        this.showImg(type)
+        
     },
 
     /**
@@ -216,12 +176,7 @@ Page({
                 getStatus: false,
                 page: page + 5
             })
-            setTimeout(() => {
-                this.changeTabs(type);
-            }, 500)
-            this.setData({
-                getStatus: true,
-            })
+            this.changeTabs(type);
             console.log(getStatus, "这里让它请求")
         } else {
             console.log(getStatus, "现在不请求")

@@ -1,5 +1,5 @@
 .container {
-    margin-bottom: 120rpx;
+    margin-bottom: 130px;
 }
 
 .header .logo {
@@ -60,9 +60,10 @@
     width: 30%;
 }
 
-.main l-transition::after {
+.main .hotImg::after {
     content: "";
     display: flex;
+    width: 30%;
 }
 
 .main l-loadmore {
@@ -73,8 +74,8 @@
 
 .main .hotImg {
     display: flex;
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
     margin-bottom: 90px;
 }
@@ -115,9 +116,9 @@
 
 .todayImg .content scroll-view view {
     display: inline-block;
-    width: 38%;
+    width: 30%;
     height: 100%;
-    margin-right: 8px;
+    margin-right: 20px;
 }
 
 .todayImg .content scroll-view view:last-child {
@@ -138,10 +139,11 @@
     background: linear-gradient(to right,#faeb69 , #f1d15d);
     box-shadow: 0 3px 5px rgb(241, 209, 93,.5);
     border-bottom: 0 !important;
+    max-width: 30% !important;
 }
 
 .tabs_default {
-    margin: 0 10px;
+    max-width: 30% !important;
     min-height: 30px !important;
     background: #f8f8f8;
     border-radius: 30px;
@@ -159,4 +161,40 @@
 
 .tbas_fixed l-segment {
     margin: 0 15px !important;
+}
+
+.loading {
+    position: fixed;
+    bottom: 95px;
+    width: 100%;
+    background: #ffffff;
+}
+
+.tabs_class {
+    height: 0 !important;
+}
+
+.img_content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.img_content .item {
+    width: 30%;
+}
+
+.img_content::after {
+    content: "";
+    display: flex;
+    width: 30%;
+}
+
+.img_content image {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
 }

@@ -9,12 +9,13 @@ Page({
         // 是否在加载中
         loading: true,
         // 内容页数
-        page: 25,
+        page: 5,
         // 标签ID
         tag: null,
         // 标题
         title: null,
-        height: null
+        height: null,
+        getStatus: true
     },
 
     // 点击图片事件
@@ -29,7 +30,6 @@ Page({
         var value = this.data.value;
         var height = this.data.height;
         wx.createSelectorQuery().selectAll('.item').boundingClientRect((ret) => {
-            console.log(ret)
             ret.forEach((item, index) => {
                 if (item.top <= height) {
                     value[index].show = true
@@ -51,23 +51,30 @@ Page({
         wx.setNavigationBarTitle({
             title: title
         })
-        wx.$util.request({
-            url: "https://wallpaper.zuimeix.com/wp-json/mp/v2/posts?per_page=" + page + "&access_token=YzZiNzA1ODVjYjAwYTA2NzQ0MDQwYzlkZTI1MWU3NDQ0NWUyNmEzMDVjNzNiMTk0MGJhMjNjZTVmODZhMWI2Mw&tags=" + tag
-        }).then(result => {
-            let data = result.data;
+        that.setData({
+            loading: true
+        })
+        wx.$util.req({
+            data: {
+                tags: tag,
+                page: page
+            },
+            method: "POST",
+            url: "api/mm"
+        }).then((res) => {
+            let data = res.data;
             data.forEach(val => {
-                (val.wallpaper).forEach(val1 => {
-                    let data = {
-                        src: val1.full,
-                        show: false,
-                        def: "/public/img/img-default.jpeg"
-                    };
-                    value.push(data)
-                })
+                let data = {
+                    src: val.src,
+                    show: false,
+                    def: "/public/img/img-default.jpeg"
+                };
+                value.push(data)
             });
             that.setData({
                 value,
-                loading: false
+                loading: false,
+                getStatus: true,
             })
             wx.setStorage({
                 key: 'value',
@@ -140,7 +147,18 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        
+        var getStatus = this.data.getStatus;
+        var page = this.data.page;
+        if (getStatus == true) {
+            this.setData({
+                getStatus: false,
+                page: page + 5
+            })
+            this.getData();
+            console.log(getStatus, "这里让它请求")
+        } else {
+            console.log(getStatus, "现在不请求")
+        }
     },
 
     /**

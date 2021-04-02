@@ -15,4 +15,4 @@
 </l-tabs>
 
 <!-- 页底加载完提示 -->
-<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
+<l-loadmore show="{{loading}}" type="loading" loading-text="加载中" />

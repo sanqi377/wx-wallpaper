@@ -1,10 +1,12 @@
+<l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中" class="loading"></l-loadmore>
+
 <view class="container">
     <view class="header">
         <view class="content">
-            <view class="logo">猫耳壁纸</view>
+            <view class="logo">小纸壁</view>
             <view style="{{scrollTop > 515 ? 'display:none' : 'display:block'}}">
                 <l-search-bar l-container-class="search" placeholder="搜索想要的壁纸" show-cancel="{{false}}"
-                    bg-color="#f4f5f7" shape="circle" bind:linconfirm="clickSearch"/>
+                    bg-color="#f4f5f7" shape="circle" bind:linconfirm="clickSearch" />
             </view>
         </view>
         <view class="swiper" style="margin-top: 270rpx">
@@ -23,13 +25,25 @@
         <view class="content">
             <scroll-view scroll-x="{{true}}" enable-flex="{{true}}">
                 <view wx:for="{{todayImg}}">
-                    <image src="{{item}}" data-type="today" data-index="{{index}}" catchtap="ImgInfo" />
+                    <image src="{{item.src}}" data-type="today" data-index="{{index}}" catchtap="ImgInfo" />
                 </view>
             </scroll-view>
         </view>
     </view>
     <view class="main">
-        <view class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}">
+        <l-tabs bind:linchange="changeTabs" l-line-class="tabs_class" l-inactive-class="tabs_default"
+            l-active-class="tabs_active" l-content-class="xx" has-line="{{false}}">
+            <block wx:for="{{tabs}}">
+                <l-tabpanel tab="{{item.title}}" key="{{item.key}}" slot="{{item.key}}">
+                    <view class="img_content">
+                        <view class="item" wx:for="{{item.value}}">
+                            <image src="{{item.src}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
+                        </view>
+                    </view>
+                </l-tabpanel>
+            </block>
+        </l-tabs>
+        <!-- <view class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}">
             <l-segment bind:linchange="changeTabs" l-inactive-class="tabs_default" l-active-class="tabs_active"
                 has-line="{{false}}">
                 <l-segment-item tab="热门壁纸" key="hot" />
@@ -43,11 +57,11 @@
                     <image src="{{item.src}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
                 </l-transition>
             </block>
-            <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中"></l-loadmore>
-            <l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
-        </view>
+        </view> -->
     </view>
 </view>
+
+<l-loadmore show="{{buttom}}" type="end" end-text="已经到底了" line></l-loadmore>
 <!-- <l-dialog show="{{dialogShow}}" type="confirm" show-title="{{false}}" content="请授权登录" bind:linconfirm="openAuth"
     confirm-color="#fea731" bind:lincancel="clickCancel" id="my-dialog" />
 <l-dialog type="alert" confirm-color="#fea731" id="my-dialog1" /> -->

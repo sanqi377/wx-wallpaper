@@ -13,8 +13,8 @@ const request = (params) => {
         })
     })
 }
-const req=(options)=>{
-      /**
+const req = (options) => {
+    /**
      * @param {object} data 传参
      * @param {string} method 请求方法
      * @param {string} url
@@ -33,7 +33,7 @@ const req=(options)=>{
             success: function (res) {
                 wx.request({
                     // 如果是config之外的服务器地址，则自定义传入
-                    url:configs.serverPath + url+'?session_key='+res.data,
+                    url: configs.serverPath + url + '?session_key=' + res.data,
                     method: method,
                     ...etcs,
                     data: data,
@@ -56,7 +56,26 @@ const req=(options)=>{
         })
     })
 }
+
+function isquire($arr) {
+    if (Array.isArray($arr)) {
+        var s = new Set($arr);
+        if (s.size <= 0) {
+            return "数组为空";
+        } else {
+            var newarr = new Array();
+            s.forEach(function (key) {
+                newarr.push(key);
+            })
+            return newarr;
+        }
+    } else {
+        return "不是数组";
+    }
+}
+
 module.exports = {
     request,
-    req
+    req,
+    isquire
 }

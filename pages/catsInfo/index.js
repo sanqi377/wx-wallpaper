@@ -25,7 +25,7 @@ Page({
         catId: null,
         loading: true,
         // 页面默认加载页数
-        page: 15,
+        page: 5,
         getStatus: true
     },
 
