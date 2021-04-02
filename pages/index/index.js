@@ -116,6 +116,7 @@ Page({
         var that = this;
         var useValue = [];
         var reqStatus = true;
+        var api = "api/mm";
         if (typeof (e) == "string") {
             var type = e;
             that.setData({
@@ -132,6 +133,7 @@ Page({
                         reqStatus = false;
                     } else {
                         that.setData({
+                            page: 5,
                             buttomLoad: true
                         })
                     }
@@ -144,16 +146,13 @@ Page({
         if (!reqStatus) {
             return
         }
-        if (type == "rank") {
-            page = 5;
-        }
         wx.$util.req({
             data: {
                 type: type,
                 page: page
             },
             method: "POST",
-            url: "api/gm"
+            url: api
         }).then((res) => {
             tabs.forEach((val, index) => {
                 if (val.id == index) {
@@ -166,13 +165,15 @@ Page({
                             useValue.push(data);
                         })
                         let value = 'tabs[' + val.id + '].value';
-                        for (let i = 0; i <= 3; i++) {
-                            if (i == val.id) {
-                                var oldValue = that.data.tabs[i].value;
+                        if (api == "api/gm" || type == "rank") {
+                            for (let i = 0; i <= 3; i++) {
+                                if (i == val.id) {
+                                    var oldValue = that.data.tabs[i].value;
+                                }
                             }
-                        }
-                        if (oldValue.length != 0) {
-                            useValue = oldValue.concat(useValue);
+                            if (oldValue.length != 0) {
+                                useValue = oldValue.concat(useValue);
+                            }
                         }
                         that.setData({
                             [value]: useValue,
@@ -274,7 +275,7 @@ Page({
         if (getStatus == true) {
             this.setData({
                 getStatus: false,
-                page: page + 5
+                page: page + 3
             })
             this.changeTabs(type);
             console.log(getStatus, "这里让它请求")
