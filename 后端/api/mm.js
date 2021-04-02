@@ -71,7 +71,6 @@ function mm(data = {}, callback) {
         handlePage(data.page);
     }
     url = apiUrl + url;
-    console.log(url);
     axios({
         url: url,
         method: "GET",

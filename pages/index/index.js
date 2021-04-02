@@ -111,19 +111,42 @@ Page({
      * 点击 Tabs 事件
      */
     changeTabs: function (e) {
-        if (typeof (e) == "string") {
-            var type = e;
-        } else {
-            var type = e.detail.activeKey;
-        }
-        this.setData({
-            type: type,
-            buttomLoad: true
-        })
         var page = this.data.page;
         var tabs = this.data.tabs;
         var that = this;
         var useValue = [];
+        var reqStatus = true;
+        if (typeof (e) == "string") {
+            var type = e;
+            that.setData({
+                buttomLoad: true
+            })
+        } else {
+            var type = e.detail.activeKey;
+            if (type == this.data.type) {
+                return;
+            }
+            tabs.forEach((val) => {
+                if (val.key == type) {
+                    if (val.value.length > 0) {
+                        reqStatus = false;
+                    } else {
+                        that.setData({
+                            buttomLoad: true
+                        })
+                    }
+                }
+            })
+        }
+        that.setData({
+            type: type,
+        })
+        if (!reqStatus) {
+            return
+        }
+        if (type == "rank") {
+            page = 5;
+        }
         wx.$util.req({
             data: {
                 type: type,
@@ -143,6 +166,13 @@ Page({
                             useValue.push(data);
                         })
                         let value = 'tabs[' + val.id + '].value';
+                        if (type == "rank") {
+                            let oldValue = that.data.tabs[0].value;
+                            if (oldValue.length != 0) {
+                                useValue = oldValue.concat(useValue);
+                            }
+
+                        }
                         that.setData({
                             [value]: useValue,
                             buttomLoad: false

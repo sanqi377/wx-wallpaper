@@ -152,8 +152,7 @@
 .tbas_fixed {
     position: fixed;
     top: 90px;
-    left: 0;
-    width: 100%;
+    width: 93%;
     background: #ffffff;
     padding-top: 10px;
     z-index: 999;
@@ -167,7 +166,6 @@
     position: fixed;
     bottom: 95px;
     width: 100%;
-    background: #ffffff;
 }
 
 .tabs_class {

@@ -1,4 +1,6 @@
-const { default: axios } = require("axios");
+const {
+    default: axios
+} = require("axios");
 
 const Mpurl = "https://www.gqbzds.com/wp-json/mp/v2/";
 const Wpurl = "https://www.gqbzds.com/wp-json/wp/v2/";
@@ -63,28 +65,36 @@ const grandMaster = async function (req) {
   return gethot(url, status);
 };
 async function gethot(url, status) {
-  const data = axios.get(url).then((res) => {
-    if (status) {
-      return gettags(res.data);
-    }
-    return getdata(res.data);
-  });
-  return await data;
-}
-function gettags(data) {
-  let dataArr = [];
-  data.forEach((item) => {
-    dataArr.push({ id: item.id, name: item.name });
-  });
-  return dataArr;
-}
-function getdata(data) {
-  let dataArr = [];
-  data.forEach((item) => {
-    item.wallpaper.forEach((val) => {
-      dataArr.push({ id: val.id, src: val.full });
+    const data = axios.get(url).then((res) => {
+        if (status) {
+            return gettags(res.data);
+        }
+        return getdata(res.data);
     });
-  });
-  return dataArr;
+    return await data;
+}
+
+function gettags(data) {
+    let dataArr = [];
+    data.forEach((item) => {
+        dataArr.push({
+            id: item.id,
+            name: item.name
+        });
+    });
+    return dataArr;
+}
+
+function getdata(data) {
+    let dataArr = [];
+    data.forEach((item) => {
+        item.wallpaper.forEach((val) => {
+            dataArr.push({
+                id: val.id,
+                src: val.full
+            });
+        });
+    });
+    return dataArr;
 }
 module.exports = grandMaster;
