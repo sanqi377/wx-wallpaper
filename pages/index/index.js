@@ -166,12 +166,13 @@ Page({
                             useValue.push(data);
                         })
                         let value = 'tabs[' + val.id + '].value';
-                        if (type == "rank") {
-                            let oldValue = that.data.tabs[0].value;
-                            if (oldValue.length != 0) {
-                                useValue = oldValue.concat(useValue);
+                        for (let i = 0; i <= 3; i++) {
+                            if (i == val.id) {
+                                var oldValue = that.data.tabs[i].value;
                             }
-
+                        }
+                        if (oldValue.length != 0) {
+                            useValue = oldValue.concat(useValue);
                         }
                         that.setData({
                             [value]: useValue,
