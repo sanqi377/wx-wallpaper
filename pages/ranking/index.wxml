@@ -4,8 +4,8 @@
         <l-tabpanel tab="{{item.name}}" key="{{item.key}}" slot="{{item.key}}">
             <view style="margin: 0 15px">
                 <view class="container">
-                    <view wx:for="{{item.value}}" class="item item-{{index}}">
-                        <image class="{{item.show ? 'active': ''}}" src="{{item.show ? item.src : item.def}}"
+                    <view class="item" wx:for="{{item.value}}">
+                        <image src="{{item.src}}"
                             bindtap="imgInfo" data-index="{{index}}" />
                     </view>
                 </view>
@@ -15,7 +15,7 @@
 </l-tabs>
 
 <!-- 页底加载完提示 -->
-<l-loadmore show="{{loading}}" line="{{true}}" type="loading" loading-text="加载中" />
+<l-loadmore show="{{loading}}" type="loading" loading-text="加载中" />
 
 <!-- 页底加载完提示 -->
 <l-loadmore show="{{false}}" line="{{true}}" type="end" end-text="被你看光了啦" />

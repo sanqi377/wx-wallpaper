@@ -23,14 +23,6 @@
     border-radius: 10px;
 }
 
-image {
-    opacity: 0;
-}
-
-.active {
-    opacity: 1;
-}
-
 .tabs {
     position: fixed;
     top: 0;
