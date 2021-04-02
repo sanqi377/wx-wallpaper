@@ -31,8 +31,8 @@
         </view>
     </view>
     <view class="main">
-        <l-tabs bind:linchange="changeTabs" l-line-class="tabs_class" l-inactive-class="tabs_default"
-            l-active-class="tabs_active" l-content-class="xx" has-line="{{false}}">
+        <l-tabs bind:linchange="changeTabs" l-header-class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}" l-line-class="tabs_class" l-inactive-class="tabs_default"
+            l-active-class="tabs_active" has-line="{{false}}">
             <block wx:for="{{tabs}}">
                 <l-tabpanel tab="{{item.title}}" key="{{item.key}}" slot="{{item.key}}">
                     <view class="img_content">
@@ -43,21 +43,6 @@
                 </l-tabpanel>
             </block>
         </l-tabs>
-        <!-- <view class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}">
-            <l-segment bind:linchange="changeTabs" l-inactive-class="tabs_default" l-active-class="tabs_active"
-                has-line="{{false}}">
-                <l-segment-item tab="热门壁纸" key="hot" />
-                <l-segment-item tab="猜你喜欢" key="love" />
-                <l-segment-item tab="最新壁纸" key="new" />
-            </l-segment>
-        </view>
-        <view class="hotImg">
-            <block wx:for="{{hotImg}}">
-                <l-transition show="{{!show}}">
-                    <image src="{{item.src}}" data-type="index" data-index="{{index}}" catchtap="ImgInfo" />
-                </l-transition>
-            </block>
-        </view> -->
     </view>
 </view>
 
