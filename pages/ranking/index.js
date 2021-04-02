@@ -88,7 +88,7 @@ Page({
                 page: page
             },
             method: "POST",
-            url: "api/mm"
+            url: "api/gm"
         }).then((res) => {
             tabs.forEach((val, index) => {
                 if (val.id == index) {
