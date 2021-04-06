@@ -3,14 +3,14 @@ Page({
     data: {
         // 轮播图数据
         img: [{
-                src: "../../public/img/1.jpg"
-            },
-            {
-                src: "../../public/img/2.jpg"
-            },
-            {
-                src: "../../public/img/3.jpg"
-            }
+            src: "../../public/img/1.jpg"
+        },
+        {
+            src: "../../public/img/2.jpg"
+        },
+        {
+            src: "../../public/img/3.jpg"
+        }
         ],
         // 当前轮播图 Index
         swiperIndex: 0,
@@ -26,7 +26,8 @@ Page({
         scrollTop: null,
         // 提示用户登录的弹窗
         dialogShow: false,
-        tabs: [{
+        tabs: [
+            {
                 id: 0,
                 key: "rank",
                 title: "猜你喜欢",
@@ -116,7 +117,7 @@ Page({
         var that = this;
         var useValue = [];
         var reqStatus = true;
-        var api = "api/mm";
+        var api = "api/gm";
         if (typeof (e) == "string") {
             var type = e;
             that.setData({
@@ -166,7 +167,7 @@ Page({
                         })
                         let value = 'tabs[' + val.id + '].value';
                         if (api == "api/gm" || type == "rank") {
-                            for (let i = 0; i <= 3; i++) {
+                            for (let i = 0; i <= tabs.length; i++) {
                                 if (i == val.id) {
                                     var oldValue = that.data.tabs[i].value;
                                 }
@@ -197,21 +198,7 @@ Page({
             type: type
         })
         this.changeTabs(type)
-        const that = this;
-        wx.checkSession({
-            success() {
-                //session_key 未过期，并且在本生命周期一直有效
-                that.setData({
-                    dialogShow: false
-                })
-            },
-            fail() {
-                // session_key 已经失效，需要重新执行登录流程
-                that.setData({
-                    dialogShow: true
-                })
-            }
-        })
+
     },
 
     /**
@@ -242,7 +229,23 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
+    onShow: function () {
+        var that = this;
+        wx.getStorage({
+            key: 'userid',
+            success: function () {
+                that.setData({
+                    dialogShow: false
+                })
+            },
+            fail: function (e) {
+                console.log(e)
+                that.setData({
+                    dialogShow: true
+                })
+            }
+        })
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

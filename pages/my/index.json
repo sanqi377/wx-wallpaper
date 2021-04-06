@@ -4,5 +4,5 @@
 		"l-avatar": "/miniprogram_npm/lin-ui/avatar",
 		"tabber": "/components/tabber/tabber"
 	},
-	"navigationBarTitleText": ""
+	"navigationBarTitleText": "我的"
 }

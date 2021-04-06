@@ -13,6 +13,7 @@ const request = (params) => {
         })
     })
 }
+
 const req = (options) => {
     /**
      * @param {object} data 传参
@@ -24,7 +25,6 @@ const req = (options) => {
         data,
         method,
         url,
-        server,
         etcs
     } = options
     return new Promise(function (resolve, reject) {
@@ -34,6 +34,29 @@ const req = (options) => {
                 wx.request({
                     // 如果是config之外的服务器地址，则自定义传入
                     url: configs.serverPath + url + '?session_key=' + res.data,
+                    method: method,
+                    ...etcs,
+                    data: data,
+                    success(response) {
+                        resolve({
+                            success: true,
+                            statusCode: response.statusCode,
+                            ...response.data
+                        })
+                    },
+                    fail(errors) {
+                        reject({
+                            error: true,
+                            success: false,
+                            statusCode: errors.statusCode
+                        })
+                    }
+                })
+            },
+            fail: function () {
+                wx.request({
+                    // 如果是config之外的服务器地址，则自定义传入
+                    url: configs.serverPath + url,
                     method: method,
                     ...etcs,
                     data: data,

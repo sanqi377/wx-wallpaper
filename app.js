@@ -5,12 +5,10 @@ App({
     collect: {
         data: []
     },
-    cond:{
-        data:true
+    cond: {
+        data: true
     },
-    
-    _cancelEvent() {
-    },
+
     //确认事件
     sure() {
         wx.login({

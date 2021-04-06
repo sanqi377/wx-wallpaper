@@ -1,5 +1,4 @@
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -100,6 +99,12 @@ Page({
                             };
                             useValue.push(data);
                         })
+                        for (let i = 0; i <= tabs.length; i++) {
+                            if (i == val.id) {
+                                var oldValue = that.data.tabs[i].value;
+                            }
+                        }
+                        useValue = oldValue.concat(useValue);
                         let value = 'tabs[' + val.id + '].value';
                         that.setData({
                             [value]: useValue,
@@ -115,7 +120,7 @@ Page({
     },
 
     onPageScroll: function () { // 滚动事件
-        
+
     },
 
     /**
