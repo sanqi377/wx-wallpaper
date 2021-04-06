@@ -57,7 +57,10 @@ router
 
   // 取消与到收藏
   .post("/addcollect", (req, res) => {
-    const { imgurl, userid } = req.body;
+    const {
+      imgurl,
+      userid
+    } = req.body;
     console.log(req.body);
     db.query(
       "*",
@@ -116,7 +119,9 @@ router
   })
   // 用户签到
   .post("/sign", (req, res) => {
-    const { userid } = req.body;
+    const {
+      userid
+    } = req.body;
     db.query("*", "sign", `user_id=${userid}`, (val) => {
       // 判断是否是同一天
       const time = new Date().getTime();
@@ -213,16 +218,25 @@ router
   })
   // 获取用户是否收藏当前图片
   .post("/getiscollect", (req, res) => {
-    const { userid, imgurl } = req.body;
+    const {
+      userid,
+      imgurl
+    } = req.body;
     db.query(
       "*",
       "collect",
       `user_id='${userid}'and image_url='${imgurl.src}'`,
       (val) => {
         if (val[0]) {
-          res.status(200).send({ message: "用户已收藏", code: 1 });
+          res.status(200).send({
+            message: "用户已收藏",
+            code: 1
+          });
         } else {
-          res.status(200).send({ message: "用户未收藏", code: 0 });
+          res.status(200).send({
+            message: "用户未收藏",
+            code: 0
+          });
         }
       }
     );
