@@ -116,6 +116,7 @@ Page({
         var that = this;
         var useValue = [];
         var reqStatus = true;
+        var api = "api/gm";
         if (typeof (e) == "string") {
             var type = e;
             that.setData({
@@ -132,6 +133,7 @@ Page({
                         reqStatus = false;
                     } else {
                         that.setData({
+                            page: 5,
                             buttomLoad: true
                         })
                     }
@@ -144,16 +146,13 @@ Page({
         if (!reqStatus) {
             return
         }
-        if (type == "rank") {
-            page = 5;
-        }
         wx.$util.req({
             data: {
                 type: type,
                 page: page
             },
             method: "POST",
-            url: "api/gm"
+            url: api
         }).then((res) => {
             tabs.forEach((val, index) => {
                 if (val.id == index) {
@@ -166,13 +165,15 @@ Page({
                             useValue.push(data);
                         })
                         let value = 'tabs[' + val.id + '].value';
-                        for (let i = 0; i <= 3; i++) {
-                            if (i == val.id) {
-                                var oldValue = that.data.tabs[i].value;
+                        if (api == "api/gm" || type == "rank") {
+                            for (let i = 0; i <= 3; i++) {
+                                if (i == val.id) {
+                                    var oldValue = that.data.tabs[i].value;
+                                }
                             }
-                        }
-                        if (oldValue.length != 0) {
-                            useValue = oldValue.concat(useValue);
+                            if (oldValue.length != 0) {
+                                useValue = oldValue.concat(useValue);
+                            }
                         }
                         that.setData({
                             [value]: useValue,
@@ -191,12 +192,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let type = "rank";
-        this.setData({
-            type: type
-        })
-        this.changeTabs(type)
-        const that = this;
+        const that=this;
         wx.checkSession({
             success() {
                 //session_key 未过期，并且在本生命周期一直有效
@@ -211,6 +207,7 @@ Page({
                 })
             }
         })
+      
     },
 
     /**
@@ -226,6 +223,7 @@ Page({
             url: "api/mm/today"
         }).then((res) => {
             let data = res.data;
+            console.log(data);
             data.forEach(val => {
                 let data = {
                     src: val
@@ -236,6 +234,11 @@ Page({
                 todayImg,
             });
         })
+        let type = "rank";
+        this.setData({
+            type: type
+        })
+        this.changeTabs(type)
     },
 
     /**
@@ -274,7 +277,7 @@ Page({
         if (getStatus == true) {
             this.setData({
                 getStatus: false,
-                page: page + 5
+                page: page + 3
             })
             this.changeTabs(type);
             console.log(getStatus, "这里让它请求")

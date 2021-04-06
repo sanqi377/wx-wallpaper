@@ -63,6 +63,13 @@ Page({
         })
       })
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    const that =this;
     wx.getStorage({
       key: 'userid',
       success: (res => {
@@ -84,18 +91,15 @@ Page({
             userid: res.data
           }
         }).then(res => {
-          this.setData({
-            sign: !res.status
+          that.setData({
+            sign: res.status
           })
+          console.log(res)
+          console.log(this.data)
         })
       })
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示

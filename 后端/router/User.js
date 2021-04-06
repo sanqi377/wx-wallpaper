@@ -189,7 +189,7 @@ router
   })
   // 获取用户当天是否签到
   .post("/getsigns", (req, res) => {
-    const user_id = req.body.user_id;
+    const user_id = req.body.userid;
     db.query("*", "sign", `user_id='${user_id}'`, (val) => {
       if (val[0]) {
         const a =
@@ -205,6 +205,7 @@ router
           });
         }
       } else {
+        console.log("false");
         res.status(200).send({
           status: false,
         });

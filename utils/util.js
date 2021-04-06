@@ -24,7 +24,6 @@ const req = (options) => {
         data,
         method,
         url,
-        server,
         etcs
     } = options
     return new Promise(function (resolve, reject) {
@@ -43,6 +42,31 @@ const req = (options) => {
                             statusCode: response.statusCode,
                             ...response.data
                         })
+                        console.log('----');
+                    },
+                    fail(errors) {
+                        reject({
+                            error: true,
+                            success: false,
+                            statusCode: errors.statusCode
+                        })
+                    }
+                })
+            },
+            fail:function(){
+                wx.request({
+                    // 如果是config之外的服务器地址，则自定义传入
+                    url: configs.serverPath + url,
+                    method: method,
+                    ...etcs,
+                    data: data,
+                    success(response) {
+                        resolve({
+                            success: true,
+                            statusCode: response.statusCode,
+                            ...response.data
+                        })
+                        console.log('----');
                     },
                     fail(errors) {
                         reject({
