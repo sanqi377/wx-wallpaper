@@ -223,6 +223,7 @@ router
       userid,
       imgurl
     } = req.body;
+    console.log(req.body)
     db.query(
       "*",
       "collect",
@@ -231,12 +232,12 @@ router
         if (val[0]) {
           res.status(200).send({
             message: "用户已收藏",
-            code: 1
+            code: true
           });
         } else {
           res.status(200).send({
             message: "用户未收藏",
-            code: 0
+            code: false
           });
         }
       }

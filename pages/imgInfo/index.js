@@ -20,7 +20,8 @@ Page({
             height: null
         },
         hbLoading: false,
-        hbImg: null
+        hbImg: null,
+        isCollect:false
     },
 
     // 返回上一页
@@ -145,6 +146,9 @@ Page({
                 })
             },
         })
+        this.setData({
+            isCollect:!this.data.isCollect
+        })
     },
 
     // 弹出权限获取界面
@@ -217,6 +221,8 @@ Page({
             index: e.detail.current
         })
         this.addHistory(e.detail.current);
+        this.isGetCollect(that);
+
     },
     /**
      * 生命周期函数--监听页面加载
@@ -261,8 +267,33 @@ Page({
          * 添加到用户历史界面
          */
         this.addHistory(index);
+        this.isGetCollect(that);
     },
 
+    // 判断用户是否收藏
+    isGetCollect(that){
+        let imgurl='';
+        wx.getStorage({
+          key: 'value',
+          success:function(res){
+              imgurl=res.data[that.data.index];
+              wx.getStorage({
+                key: 'userid',
+                success:function(res1){
+                    wx.$util.req({url:'user/getiscollect',data:{
+                        userid:res1.data,
+                        imgurl,
+                    },method:"POST"}).then(res2=>{
+                        that.setData({
+                            isCollect:res2.code
+                        })
+                    });
+                }
+              })
+          }
+        })
+
+    },
     // 添加到历史方法
     addHistory(index) {
         const that = this;

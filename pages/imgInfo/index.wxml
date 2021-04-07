@@ -12,7 +12,7 @@
             <text>返回</text>
         </view>
         <view bindtap="collect">
-            <image src="/public/ico/bigimg-collect.png" />
+            <image src="{{isCollect?'/public/ico/bigimg-collect-o.png':'/public/ico/bigimg-collect.png'}}" />
             <text>收藏</text>
         </view>
         <view bindtap="download">
@@ -24,8 +24,10 @@
             <text>海报</text>
         </view>
         <view>
-            <image src="/public/ico/bigimg-share.png" />
-            <text>分享</text>
+            <button class="btn" open-type="share">
+                <image src="/public/ico/bigimg-share.png" />
+                <text>分享</text>
+            </button>
         </view>
     </view>
 </view>

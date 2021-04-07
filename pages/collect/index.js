@@ -25,7 +25,7 @@ Page({
     getImgInfo: function (e) {
         let index = e.target.dataset.index;
         wx.navigateTo({
-            url: '/pages/imgInfo/index?index=' + index + '&coll=' + true,
+            url: '/pages/imgInfo/index?index=' + index,
         })
     },
     /**
@@ -53,7 +53,7 @@ Page({
                 }).then(res2 => {
                     wx.setStorage({
                         data: res2.data,
-                        key: 'coll',
+                        key: 'value',
                     })
                     that.setData({
                         collectImg: res2.data,

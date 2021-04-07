@@ -42,3 +42,13 @@
     box-shadow: 0 0 20px 6px rgb(0, 0, 0, .5);
     background: #ffffff;
 }
+button{
+    margin: 0 !important;
+    background-color: transparent;
+    padding: 0px 0px !important;
+    width: 100% !important;
+    color: #5d5c5d;
+    font-size: 13px !important;
+    height: 100% !important;
+    font-weight: 300 !important;
+}
