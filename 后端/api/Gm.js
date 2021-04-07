@@ -1,6 +1,4 @@
-const {
-    default: axios
-} = require("axios");
+const { default: axios } = require("axios");
 
 const Mpurl = "https://www.gqbzds.com/wp-json/mp/v2/";
 const Wpurl = "https://www.gqbzds.com/wp-json/wp/v2/";
@@ -9,8 +7,8 @@ const grandMaster = async function (req) {
   const { page, type, tags, cats } = req.body;
   let url = "";
   let status = false;
-  console.log(page)
-  console.log(type)
+  console.log(page);
+  console.log(type);
   switch (type) {
     //   最热
     case "hot":
@@ -67,36 +65,37 @@ const grandMaster = async function (req) {
   return gethot(url, status);
 };
 async function gethot(url, status) {
-    const data = axios.get(url).then((res) => {
-        if (status) {
-            return gettags(res.data);
-        }
-        return getdata(res.data);
-    });
-    return await data;
+  const data = axios.get(url).then((res) => {
+    if (status) {
+      return gettags(res.data);
+    }
+    return getdata(res.data);
+  });
+  return await data;
 }
 
 function gettags(data) {
-    let dataArr = [];
-    data.forEach((item) => {
-        dataArr.push({
-            id: item.id,
-            name: item.name
-        });
+  let dataArr = [];
+  data.forEach((item) => {
+    dataArr.push({
+      id: item.id,
+      cover: item.cover,
+      name: item.name,
     });
-    return dataArr;
+  });
+  return dataArr;
 }
 
 function getdata(data) {
-    let dataArr = [];
-    data.forEach((item) => {
-        item.wallpaper.forEach((val) => {
-            dataArr.push({
-                id: val.id,
-                src: val.full
-            });
-        });
+  let dataArr = [];
+  data.forEach((item) => {
+    item.wallpaper.forEach((val) => {
+      dataArr.push({
+        id: val.id,
+        src: val.full,
+      });
     });
-    return dataArr;
+  });
+  return dataArr;
 }
 module.exports = grandMaster;

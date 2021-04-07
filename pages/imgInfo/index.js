@@ -20,7 +20,8 @@ Page({
             height: null
         },
         hbLoading: false,
-        hbImg: null
+        hbImg: null,
+        isCollect:false
     },
 
     // 返回上一页
@@ -261,6 +262,25 @@ Page({
          * 添加到用户历史界面
          */
         this.addHistory(index);
+        let imgurl='';
+        wx.getStorage({
+          key: 'value',
+          success:function(res){
+              imgurl=res.data[that.data.index];
+              wx.getStorage({
+                key: 'userid',
+                success:function(res1){
+                    wx.$util.req({url:'getiscollect',data:{
+                        userid:res1.data,
+                        imgurl,
+                    }}).then(res2=>{
+                        console.log(res2);
+                    });
+                }
+              })
+          }
+        })
+
     },
 
     // 添加到历史方法

@@ -43,7 +43,6 @@ const req = (options) => {
                             statusCode: response.statusCode,
                             ...response.data
                         })
-                        console.log('----');
                     },
                     fail(errors) {
                         reject({
@@ -67,7 +66,6 @@ const req = (options) => {
                             statusCode: response.statusCode,
                             ...response.data
                         })
-                        console.log('----');
                     },
                     fail(errors) {
                         reject({
