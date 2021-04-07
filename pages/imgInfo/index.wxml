@@ -24,7 +24,7 @@
             <text>海报</text>
         </view>
         <view>
-            <button class="btn" open-type="share">
+            <button class="btn" open-type="share" hover-class="none">
                 <image src="/public/ico/bigimg-share.png" />
                 <text>分享</text>
             </button>
