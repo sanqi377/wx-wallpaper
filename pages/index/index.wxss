@@ -1,6 +1,3 @@
-.container {
-    margin-bottom: 130px;
-}
 
 .header .logo {
     display: block;
@@ -49,11 +46,6 @@
 .main l-segment {
     display: block;
     margin: 15px 0;
-}
-
-.main .loading {
-    position: absolute;
-    bottom: 50px;
 }
 
 .main l-transition {
@@ -160,12 +152,6 @@
 
 .tbas_fixed l-segment {
     margin: 0 15px !important;
-}
-
-.loading {
-    position: fixed;
-    bottom: 95px;
-    width: 100%;
 }
 
 .tabs_class {

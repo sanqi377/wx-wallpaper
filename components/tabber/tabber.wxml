@@ -1,5 +1,0 @@
-<!--components/tabber/tabber.wxml-->
-<view id="tabber">
-  <l-tab-bar l-class="tab-ber" text-selected-color="#fea731" list="{{list}}" />
-</view>
-

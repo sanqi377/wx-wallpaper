@@ -1,4 +1,4 @@
-<l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中" class="loading"></l-loadmore>
+
 
 <view class="container">
     <view class="header">
@@ -31,8 +31,8 @@
         </view>
     </view>
     <view class="main">
-        <l-tabs bind:linchange="changeTabs" l-header-class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}" l-line-class="tabs_class" l-inactive-class="tabs_default"
-            l-active-class="tabs_active" has-line="{{false}}">
+        <l-tabs bind:linchange="changeTabs" l-header-class="{{scrollTop > 515 ? 'tbas_fixed' : ''}}"
+            l-line-class="tabs_class" l-inactive-class="tabs_default" l-active-class="tabs_active" has-line="{{false}}">
             <block wx:for="{{tabs}}">
                 <l-tabpanel tab="{{item.title}}" key="{{item.key}}" slot="{{item.key}}">
                     <view class="img_content">
@@ -43,6 +43,7 @@
                 </l-tabpanel>
             </block>
         </l-tabs>
+        <l-loadmore show="{{buttomLoad}}" type="loading" loading-text="加载中" class="loading"></l-loadmore>
     </view>
 </view>
 
@@ -50,4 +51,4 @@
 <dialog isShow="{{dialogShow}}" id="dialog" bind:confirmEvent="clickSure">
     为了更好玩的壁纸体验，快去授权登录吧！
 </dialog>
-<tabber></tabber>
+<!-- <tabber></tabber> -->
