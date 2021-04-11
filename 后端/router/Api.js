@@ -1,14 +1,15 @@
 const router = require("express").Router();
 const gm = require("../api/Gm");
-const api = require("../api/mm");
+const api = require("../api/Mm");
 
 router
     // 大师
     .post("/gm", async (req, res) => {
-        const data = await gm(req)
-        res.status(200).send({ data: data })
-        // 今日壁纸
+        const data = await gm(req);
+        res.status(200).send({ data: data });
     })
+    
+    // 今日壁纸
     .post("/mm/today", (req, res) => {
         let data = req.body;
         api.today((data) => {

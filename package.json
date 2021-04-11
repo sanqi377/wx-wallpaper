@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lin-ui": "^0.9.4"
+    "body-parser": "^1.19.0",
+    "jsonwebtoken": "^8.5.1",
+    "lin-ui": "^0.9.4",
+    "request": "^2.88.2"
   }
 }

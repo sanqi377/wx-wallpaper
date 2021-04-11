@@ -38,10 +38,28 @@ App({
         wx.getUserProfile({
             desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
             success: (res) => {
-                wx.setStorage({
-                    data: res.userInfo,
-                    key: 'userinfo',
+                let data = JSON.parse(res.rawData);
+                wx.getStorage({
+                    key: 'userid',
+                    success: function (res) {
+                        let user_id = res.data;
+                        wx.$util.req(
+                            {
+                                data: {
+                                    user_id:user_id,
+                                    nickname: data.nickName,
+                                    sex: data.gender,
+                                    city: data.city
+                                },
+                                method: 'POST',
+                                url: 'user/setInfo'
+                            }
+                        ).then((res) => {
+                            console.log(res)
+                        })
+                    }
                 })
+
             }
         })
     },

@@ -4,7 +4,7 @@
             <image src="/public/ico/t.jpg"></image>
             <view class="title">小纸壁</view>
             <view class="tips">超高清全面屏手机壁纸</view>
-            <view class="ver">V1.0.4</view>
+            <view class="ver">V1.0.3</view>
         </view>
         <view class="con">
             <l-list l-class="l-list" title="用户协议" />
