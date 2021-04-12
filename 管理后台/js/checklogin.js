@@ -31,19 +31,9 @@ function checkLogin() {
     }
 }
 
-function formatDate(now) {
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var date = now.getDate();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var second = now.getSeconds();
-    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
-}
-
 window.onload = checkLogin();
 
-var HttpRequest = function(options) {
+var HttpRequest = function (options) {
     var defaults = {
         type: "get",
         headers: {},
@@ -56,7 +46,7 @@ var HttpRequest = function(options) {
         complete: null,
     };
     var o = $.extend({}, defaults, options);
-    o.data.token = token
+    o.data.token = token;
     $.ajax({
         url: o.url,
         type: o.type,
@@ -66,26 +56,29 @@ var HttpRequest = function(options) {
         data: o.data,
         dataType: o.dataType,
         async: o.async,
-        beforeSend: function() {
+        beforeSend: function () {
             o.beforeSend && o.beforeSend();
         },
-        success: function(res) {
+        success: function (res) {
+            if (res.code === 201) {
+                window.localStorage.removeItem("access_token");
+            }
             o.success && o.success(res);
         },
-        complete: function(res) {
+        complete: function (res) {
             o.complete && o.complete();
         },
     });
 };
 
-var loginHttp = function(options) {
+var loginHttp = function (options) {
     // 后台如果要求 Content-Type
     if (options.type == "post") {
         options.contentType = "application/x-www-form-urlencoded";
     }
     HttpRequest(options);
 };
-var ajaxHttp = function(options) {
+var ajaxHttp = function (options) {
     if (options.type == "post") {
         options.contentType = "application/x-www-form-urlencoded";
     }

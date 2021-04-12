@@ -30,7 +30,7 @@ router
 
     // 壁紙採集
     .get("/caiji", (req, res) => {
-        let data = req.query;
+        var data = req.query;
         caiji(data).then((result) => {
             result.forEach((val) => {
                 let addtime = Date.parse(new Date()) / 1000;
@@ -48,10 +48,20 @@ router
 function caiji(data) {
     return new Promise((resolve, reject) => {
         var value = [];
+        var url = "";
+        switch (data.caiji_yuan) {
+            case "xiaoquan":
+                url = `https://diy.youxie.ren/wp-json/mp/v2/posts?per_page=100&categories=40&page=1`;
+                data.caiji_yuan = "小圈壁纸";
+                data.release_cat = "游戏";
+                break;
+
+            default:
+                break;
+        }
         request(
             {
-                url:
-                    "https://diy.youxie.ren/wp-json/mp/v2/posts?per_page=100&categories=49&page=1",
+                url: url,
                 method: "GET",
             },
             function (err, res, body) {
@@ -59,7 +69,7 @@ function caiji(data) {
                     reject("采集失败");
                     return;
                 }
-                let data = JSON.parse(body);
+                var data = JSON.parse(body);
                 data.forEach((val1) => {
                     val1.wallpaper.forEach((val2) => {
                         let data = {

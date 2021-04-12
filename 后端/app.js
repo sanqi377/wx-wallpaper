@@ -88,23 +88,6 @@ app.use("/admin", (req, res, next) => {
 app.use("/admin/user", adminUser);
 app.use("/admin/wallpaper", adminWallpaper);
 
-// app.post("/admin/user/token", (req, res) => {
-//     let user_id = req.body.user_id;
-//     let token = req.body.token;
-//     if (user_id && token) {
-//         let chcektoken = Token.checkToken(token);
-//         chcektoken.then((result) => {
-//             if (result.code == 201) {
-//                 res.send({ code: 201, msg: "登录超时，请重新登录" });
-//             } else {
-//                 res.send({ code: 200, msg: "登录状态验证成功" });
-//             }
-//         });
-//     } else {
-//         res.send({ code: 201, msg: "登录超时，请重新登录" });
-//     }
-// });
-
 app.listen(3000, () => {
     console.log("网站服务器已启动");
 });

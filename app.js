@@ -1,12 +1,12 @@
 wx.$util = require("./utils/util");
-import serverPath from "./config/cofig.js"
+import serverPath from "./config/cofig.js";
 App({
     // 全局变量
     collect: {
-        data: []
+        data: [],
     },
     cond: {
-        data: true
+        data: true,
     },
 
     //确认事件
@@ -14,79 +14,71 @@ App({
         wx.login({
             success(res) {
                 wx.request({
-                    url: serverPath.serverPath + 'user/login',
-                    method: 'POST',
+                    url: serverPath.serverPath + "user/login",
+                    method: "POST",
                     data: {
-                        code: res.code
+                        code: res.code,
                     },
                     success(res) {
                         wx.setStorage({
                             data: res.data.sessionKey,
-                            key: 'sessionkey',
-                        })
+                            key: "sessionkey",
+                        });
                         wx.setStorage({
                             data: res.data.id,
-                            key: 'userid',
-                        })
+                            key: "userid",
+                        });
                         wx.showToast({
-                            title: '登录成功',
-                        })
+                            title: "登录成功",
+                        });
                     },
-                })
-            }
-        })
+                });
+            },
+        });
         wx.getUserProfile({
-            desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            desc: "用于完善会员资料", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
             success: (res) => {
                 let data = JSON.parse(res.rawData);
                 wx.getStorage({
-                    key: 'userid',
+                    key: "userid",
                     success: function (res) {
                         let user_id = res.data;
-                        wx.$util.req(
-                            {
+                        wx.$util
+                            .req({
                                 data: {
-                                    user_id:user_id,
+                                    user_id: user_id,
                                     nickname: data.nickName,
                                     sex: data.gender,
-                                    city: data.city
+                                    city: data.city,
                                 },
-                                method: 'POST',
-                                url: 'user/setInfo'
-                            }
-                        ).then((res) => {
-                            console.log(res)
-                        })
-                    }
-                })
-
-            }
-        })
+                                method: "POST",
+                                url: "user/setInfo",
+                            })
+                            .then((res) => {
+                                console.log(res);
+                            });
+                    },
+                });
+            },
+        });
     },
     /**
      * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
      */
-    onLaunch: function () {
-    },
+    onLaunch: function () {},
 
     /**
      * 当小程序启动，或从后台进入前台显示，会触发 onShow
      */
-    onShow: function (options) {
-
-    },
+    onShow: function (options) {},
 
     /**
      * 当小程序从前台进入后台，会触发 onHide
      */
-    onHide: function () {
-
-    },
+    onHide: function () {},
 
     /**
      * 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
      */
-    onError: function (msg) {
-
-    }
-})
+    onError: function (msg) {},
+});

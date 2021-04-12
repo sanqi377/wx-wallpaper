@@ -38,26 +38,25 @@
                 <div class="layui-input-inline">
                     <select name="caiji_yuan" lay-verify="required">
                         <option value="">采集源</option>
-                        <option value="猫耳壁纸">猫耳壁纸</option>
+                        <option value="xiaoquan">小圈壁纸</option>
                     </select>
                 </div>
                 <div class="layui-input-inline">
                     <select name="caiji_cat" lay-verify="required">
                         <option value="">采集分类</option>
-                        <option value="小姐姐">小姐姐</option>
+                        <option value="xjj">小姐姐</option>
                     </select>
                 </div>
                 <div class="layui-input-inline">
                     <select name="type" lay-verify="required">
                         <option value="">采集方式</option>
                         <option value="new">最新</option>
-                        <option value="hot">最热</option>
                     </select>
                 </div>
                 <div class="layui-input-inline">
                     <select name="release_cat" lay-verify="required" lay-search="">
                         <option value="">发布分类</option>
-                        <option value="小姐姐">小姐姐</option>
+                        <option value="xjj">小姐姐</option>
                         <option value="xgg">小哥哥</option>
                         <option value="dm">动漫</option>
                     </select>
@@ -87,6 +86,12 @@
             ajaxHttp({
                 url: "http://localhost:3000/admin/wallpaper/caiji",
                 type: "get",
+                data: {
+                    caiji_cat: val.caiji_cat,
+                    release_cat: val.release_cat,
+                    caiji_yuan: val.caiji_yuan,
+                    type: val.type
+                },
                 success: function(result) {
                     for (let i = 0; i < result.data.length; i++) {
                         let text = `<li>${result.msg}：${result.data[i].src}</li>`;
