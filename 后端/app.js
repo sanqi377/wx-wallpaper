@@ -11,6 +11,7 @@ const apiRouter = require("./router/Api");
 // 后端 router 引入
 const adminUser = require("./router/admin/User");
 const adminWallpaper = require("./router/admin/Wallpaper");
+const adminCate = require("./router/admin/Cate")
 
 // 将接收到的数据转换为 JSON 格式
 app.use(express.json());
@@ -87,6 +88,7 @@ app.use("/admin", (req, res, next) => {
 // 后端 router 使用
 app.use("/admin/user", adminUser);
 app.use("/admin/wallpaper", adminWallpaper);
+app.use("/admin/cate", adminCate);
 
 app.listen(3000, () => {
     console.log("网站服务器已启动");
